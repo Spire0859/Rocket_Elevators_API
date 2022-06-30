@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+		<meta charset="utf-8" />
+		<title>Rocket Elevators Home Page</title>
+		<meta name="description" content="" />
+		<meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+		<!-- mobile settings -->
+		<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+		<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+
+		<!-- WEB FONTS : use %7C instead of | (pipe) -->
+    <%= stylesheet_link_tag 'fontg', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<!-- CORE CSS -->
+    <%= stylesheet_link_tag 'bootstrap.min', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+		<!-- REVOLUTION SLIDER -->
+    <%= stylesheet_link_tag 'extralayers', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'settings', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+		<!-- THEME CSS -->
+    <%# <%= stylesheet_link_tag 'essentials', media: 'all', 'data-turbolinks-track': 'reload' %> %>
+    <%# <%= stylesheet_link_tag 'layout', media: 'all', 'data-turbolinks-track': 'reload' %> %>
+
+		<!-- PAGE LEVEL SCRIPTS -->
+    <%= stylesheet_link_tag 'header-1', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'dark.blue', media: 'all', 'data-turbolinks-track': 'reload' %>
+	</head>
+
+<!-- wrapper -->
+		<div id="wrapper">
+
+			<div id="header" class="navbar-toggleable-md sticky header-md clearfix transparent b-0 ">
+
+				<!-- TOP NAV -->
+				<header id="topNav">
+					
+					<div class="container">
+
+								<!-- Logo -->
+								<a class="logo float-left scrollTo" href="#top" style="opacity: 0.8; ">
+									<%= image_tag "R2.png" %>
+								</a>
+						
+						<!-- Mobile Menu Button -->
+						<button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+							<i class="fa fa-bars"></i>
+						</button>
+
+						
+
+						<div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
+							<nav class="nav-main">
+
+								<!-- 
+									
+								-->
+								<ul id="topMain" class="nav nav-pills nav-main nav-onepage ">
+									<li class="active"><!-- HOME -->
+										<a class="scrollTo" href="#home-nav">
+											HOME
+										</a>
+									</li>
+									<li><!-- SERVICES -->
+										<a class="scrollTo" href="#services-nav">
+											SERVICES
+										</a>
+									</li>
+									<li><!-- WORK -->
+										<a class="scrollTo" href="#portfolio-nav">
+											PORTFOLIO
+										</a>
+									</li>
+									<li><!-- NEWS -->
+										<a  class="scrollTo" href="#news-nav">
+											NEWS
+										</a>
+									</li>
+									
+									<li><!-- CLIENTS -->
+										<a class="scrollTo" href="#clients-nav">
+											CLIENTS
+										</a>
+									</li>
+								
+									<li><!-- CONTACT -->
+										<a class="scrollTo" href="#contact-nav">
+											CONTACT
+										</a>
+									</li>
+								</ul>
+
+							</nav>
+						</div>
+
+					</div>
+				</header>
+				<!-- /Top Nav -->
+
+			</div>
+
+			<div class="fullscreenbanner" data-navigationStyle="preview2" id="home-nav" >
+				<ul class="hide">
+
+ <body class="smoothscroll enable-animation">
+    <%= yield %>
+  </body>
+
+
+<!-- FOOTER -->
+			<footer id="footer">
+				<div class="container">
+
+
+					<div class="row">
+
+						<!-- col #1 -->
+						<div class="col-md-8">
+
+							<h3 class="letter-spacing-1">WHY US?</h3>
+
+							<!-- Small Description -->
+							<p>
+								We have the conviction that we create the most innovative and reliable products on the market. Contact us today for any questions you might have.
+							</p>
+							<h2>(418) 555-1234</h2>
+						</div>
+						<!-- /col #1 -->
+
+						<!-- col #2 -->
+						<div class="col-md-4">
+							<h3 class="letter-spacing-1">KEEP IN TOUCH</h3>
+
+							<!-- Newsletter Form -->
+							<p>Subscribe to Our Newsletter to get Important News & Offers</p>
+
+							<form class="validate" action="php/newsletter.php" method="post" data-success="Subscribed! Thank you!" data-toastr-position="bottom-right">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+									<input type="email" id="email" name="email" class="form-control required" placeholder="Enter your Email">
+									<span class="input-group-btn">
+										<button class="btn bg-maroon btn-lg " style="color:white ;" type="submit">Subscribe</button>
+									</span>
+								</div>
+							</form>
+							<!-- /Newsletter Form -->
+
+
+						</div>
+						<!-- /col #2 -->
+
+					</div>
+
+
+				</div>
+
+				<div class="copyright">
+					<div class="container">
+						<ul class="float-right m-0 list-inline mobile-block">
+							<li><a >Terms &amp; Conditions</a></li>
+							<li>&bull;</li>
+							<li><a >Privacy</a></li>
+						</ul>
+						&copy; All Rights Reserved, Company LTD
+					</div>
+				</div>
+
+			</footer>
+			<!-- /FOOTER -->
+
+		</div>
+		<!-- /wrapper -->
+
+
+		<!-- SCROLL TO TOP -->
+		<a href="#" id="toTop"></a>
+
+
+		<!-- PRELOADER -->
+		<div id="preloader">
+			<div class="inner">
+				<span class="loader"></span>
+			</div>
+		</div><!-- /PRELOADER -->
+
+
+		<!-- JAVASCRIPT FILES -->
+		<script>var plugin_path = 'assets/plugins/';</script>
+    <%= javascript_include_tag 'jquery-3.3.1.min.js'%>
+		<%# <script src="assets/plugins/jquery/jquery-3.3.1.min.js"></script> %>
+
+    <%= javascript_include_tag 'scripts.js'%>
+		<%# <script src="assets/js/scripts.js"></script> %>
+		
+		<!-- STYLESWITCHER - REMOVE -->
+		<!-- <script async src="demo_files/styleswitcher/styleswitcher.js"></script> -->
+
+		<!-- REVOLUTION SLIDER -->
+    <%= javascript_include_tag 'jquery.themepunch.tools.min.js'%>
+    <%= javascript_include_tag 'jquery.themepunch.revolution.min.js'%>
+    <%= javascript_include_tag 'demo.revolution_slider.js'%>
+
+		<%# <script src="assets/plugins/slider.revolution/js/jquery.themepunch.tools.min.js"></script>
+		<script src="assets/plugins/slider.revolution/js/jquery.themepunch.revolution.min.js"></script>
+		<script src="assets/js/view/demo.revolution_slider.js"></script> %>
+
+		<!-- PAGELEVEL SCRIPTS -->
+    <%= javascript_include_tag 'contact.js'%>
+		<%# <script src="assets/js/contact.js"></script> %>
+
+		<!-- 
+			GMAP.JS 
+			http://hpneo.github.io/gmaps/
+		-->
+</html>
