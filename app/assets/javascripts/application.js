@@ -19,5 +19,6 @@
 //= require bootstrap.min
 //= require popper
 //= require bootstrap-sprockets
+//= require owl.carousel
 
  
