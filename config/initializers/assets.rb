@@ -38,4 +38,21 @@ Rails.application.config.assets.precompile += %w( jquery.themepunch.tools.min.js
 
 Rails.application.config.assets.precompile += %w( jquery.themepunch.revolution.min.js )
 
+Rails.application.config.assets.precompile += %w( smoothscroll.js )
+
+#new ones
+Rails.application.config.assets.precompile += %w( bootstrap.min.js )
+
+Rails.application.config.assets.precompile += %w( owl.carousel.min.js )
+
+Rails.application.config.assets.precompile += %w( jquery.magnific-popup.min.js )
+
+Rails.application.config.assets.precompile += %w( jquery.mixitup.min.js )
+
+Rails.application.config.assets.precompile += %w( jquery.form.min.js )
+
+Rails.application.config.assets.precompile += %w( custom.fle_upload.js )
+
+Rails.application.config.assets.precompile += %w( jquery.nav.min.js )
+
 Rails.application.config.assets.precompile += %w( demo.revolution_slider.js )
