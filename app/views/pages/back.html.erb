@@ -1,0 +1,10 @@
+<% if current_user%>
+<p>you are singed in</p>
+<% else %>
+<p>you are NOT singed in</p>
+
+<%= link_to "sign up", new_user_registration_path%>
+
+<%= link_to "login", new_user_session_path%>
+
+<%end%>
