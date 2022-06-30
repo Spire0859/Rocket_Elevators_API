@@ -56,3 +56,5 @@ Rails.application.config.assets.precompile += %w( custom.fle_upload.js )
 Rails.application.config.assets.precompile += %w( jquery.nav.min.js )
 
 Rails.application.config.assets.precompile += %w( demo.revolution_slider.js )
+
+Rails.application.config.assets.precompile += %w( quote.js )
