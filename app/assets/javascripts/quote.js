@@ -1,346 +1,245 @@
-/******************************** QUOTE PAGE**/
+//global const which points to which section to load
+//const res =  document.querySelectorAll(".res");
+const com =  document.querySelectorAll(".com");
+const cor =  document.querySelectorAll(".cor");
+const hyb =  document.querySelectorAll(".hyb");
 
-/**Selection */
 
-$(document).ready(() => {
-    
-    /** Hide everything upon arriving on site */ 
 
-    hideAll();
+function reset(){
 
-   
-   /** Hide, show input depending on radio clicked and reset fields*/
+    const reset =  document.querySelectorAll(".reset");
+    const resetv =  document.querySelectorAll(".resetv");
 
-    $('#building-type').change(function () {
+    for (var y = 0; y < resetv.length; y++){
+        resetv[y].value = "0";
+    }
 
-        resetFields();
+    for (var i = 0 ; i < reset.length ; i++){
+            reset[i].style.display = "none"
+            }
 
-        if ($(this).val() == 'empty') {
-            hideAll();
-        } else if ($(this).val() == 'residential') {
-            residentialSHOW();
-        } else if ($(this).val() == 'commercial') {
-            commercialSHOW();
-        } else if ($(this).val() == 'corporate') {
-            corporateSHOW();
-        } else if ($(this).val() == 'hybrid') {
-            hybridSHOW();
-        }
-    })
 
-    /** Fonctions work on input change */
 
-    $(".quote-input").on("input", function() {
+     
+}
+
+
+
+function section(){
+    var pageSlect = document.getElementById("building-type").value;
+
+    if (pageSlect == "residential") {
+        const res =  document.querySelectorAll(".res");
+        reset();
         
-        let buildingType = $("#building-type :selected").text();
+        for (var i = 0 ; i < res.length ; i++){
+            res[i].style.display = "block"
+        }
+    }
+
+    if(pageSlect == "commercial"){
+        reset();
         
-        if (buildingType == 'Residential') {
-            calculateResidential();
-        } else if (buildingType == 'Commercial') {
-            calculateCommercial();
-        } else if (buildingType == 'Corporate') {
-            calculateCorpHybrid();
-        } else if (buildingType == 'Hybrid') {
-            calculateCorpHybrid();
+       for (var i = 0 ; i < com.length ; i++){
+           com[i].style.display = "block"
         }
-    })
+    }
 
-    /** Fonctions work on radio click */
-
-    $('input[name="product_line"]').click(function () {
-        let buildingType = $("#building-type :selected").text();
-        if (buildingType == 'Residential') {
-            calculateResidential();
-        } else if (buildingType == 'Commercial') {
-            calculateCommercial();
-        } else if (buildingType == 'Corporate') {
-            calculateCorpHybrid();
-        } else if (buildingType == 'Hybrid') {
-            calculateCorpHybrid();
+    if (pageSlect == "corporate"){
+        reset();
+        
+        for (var i = 0 ; i < cor.length ; i++){
+            cor[i].style.display = "block"
         }
-    })    
-});
+    }
 
-/** Calculation for Commercial */
+    if (pageSlect == "hybrid"){
+        reset();
+        
+        for (var i = 0 ; i < hyb.length ; i++){
+            hyb[i].style.display = "block"
+            }
+        }
 
-function calculateCommercial() {
-  
-    var elevatorReq = $('input[name="elevator_cages"]').val();
-    var productLine = $("input[name='product_line']:checked").val();
-    var unitPrice = getPricePerElevator(productLine);
-    var installationFeeMultiplier = getInstallationFeeMultiplier(productLine);
+
+}
+
+
+
+//residential section and math
+function residentialSec() {
+   // const res =  document.querySelectorAll(".res");
+
+   const res =  document.querySelectorAll(".res");
+
+
+   if (res[0].style.display == "none"){
+        reset();
+        for (var i = 0 ; i < res.length ; i++){
+            res[i].style.display = "block"
+           }
+   } else{
+    for (var i = 0 ; i < res.length ; i++){
+            res[i].style.display = "none"
+            }
+   }
+
+  }
+
+function residentialMath(){
+
+
+   var RnAppar = document.getElementById("number-of-apartments").children[1].valueAsNumber ;
+   var RnFloors = document.getElementById("number-of-floors").children[1].valueAsNumber ;
+   var EleDeploy = document.getElementById("number-of-elevators").children[1].valueAsNumber;
+   var OccPerFloor = document.getElementById("maximum-occupancy").children[1].valueAsNumber;
+   var Basements = document.getElementById("number-of-basements").children[1].valueAsNumber;
+   var NumOfOccu = 0;
+   var EleUnitPrice = 7565;
+   var tierPercentage = 10;
+   var FinalP = 0;
+   var EleCost = 0;
+   var ExtraShaft = 1;
+   var instalationFee = 0;
+
+                    // math for res section
+if (document.getElementById("building-type").value == "residential") {
+
+    if( document.getElementById("Rstandard").checked == true ) {
+        tierPercentage = 10;
+        EleUnitPrice = 7565;
+    }
+
+        else if( document.getElementById("Rpremium").checked == true ) {
+            tierPercentage = 13;
+            EleUnitPrice = 12345;
+        }
+            else if( document.getElementById("Rexcelium").checked == true ) {
+                tierPercentage = 16;
+                EleUnitPrice = 15400;
+        
+            }
+
+            var numOfEve = Math.ceil(( RnAppar / RnFloors ) / 6);
+
+            if (RnFloors > 20){
+                ExtraShaft = (numOfEve * 2 ) ;
+            }else {
+                ExtraShaft = 0;
+            }
+            
+            numOfEve += ExtraShaft;
+
+            EleCost = numOfEve * EleUnitPrice ;
+            instalationFee = EleCost / 100 * tierPercentage ;
+            FinalP = EleCost + instalationFee ;
     
-    // Step 2: implement calculation logic
+        
+        document.getElementById("elevator-amount").children[1].value = numOfEve;
+        document.getElementById("elevator-unit-price").children[1].value = EleUnitPrice.toLocaleString("en-US", {style:"currency", currency:"USD"});
+        document.getElementById("elevator-total-price").children[1].value = EleCost.toLocaleString("en-US", {style:"currency", currency:"USD"});
+        document.getElementById("installation-fees").children[1].value = instalationFee.toLocaleString("en-US", {style:"currency", currency:"USD"});
+        document.getElementById("final-price").children[1].value = FinalP.toLocaleString("en-US", {style:"currency", currency:"USD"});
+   }
 
-    let elevatorNeeded = elevatorReq;
-    let totalElevatorPrice = unitPrice * elevatorNeeded;
-    let installationFees = totalElevatorPrice * installationFeeMultiplier;
-    let totalElPrice = totalElevatorPrice + installationFees;
-    
-    // Step 3: display elevatorRequired as the value of the answer on the HTML /
 
-    if(isNaN(elevatorNeeded)) {
-        $('input[name=amount_of_elevators]').val("Loading...");
-    } else {
-        parseInt($('input[name=amount_of_elevators]').val(elevatorNeeded));
+
+                    //math for commercial sections
+
+    if (document.getElementById("building-type").value == "commercial"){
+
+        if( document.getElementById("Rstandard").checked == true ) {
+            tierPercentage = 10;
+            EleUnitPrice = 7565;
+        }
+        
+            else if( document.getElementById("Rpremium").checked == true ) {
+                tierPercentage = 13;
+                EleUnitPrice = 12345;
+            }
+                else if( document.getElementById("Rexcelium").checked == true ) {
+                    tierPercentage = 16;
+                    EleUnitPrice = 15400;
+            
+                }
+
+                
+                
+                EleCost = EleDeploy * EleUnitPrice ;
+                instalationFee = EleCost / 100 * tierPercentage;
+                FinalP = EleCost + instalationFee;
+
+
+            document.getElementById("elevator-amount").children[1].value = EleDeploy;
+            document.getElementById("elevator-unit-price").children[1].value = EleUnitPrice.toLocaleString("en-US", {style:"currency", currency:"USD"});
+            document.getElementById("elevator-total-price").children[1].value = EleCost.toLocaleString("en-US", {style:"currency", currency:"USD"});
+            document.getElementById("installation-fees").children[1].value = instalationFee.toLocaleString("en-US", {style:"currency", currency:"USD"});
+            document.getElementById("final-price").children[1].value = FinalP.toLocaleString("en-US", {style:"currency", currency:"USD"});
     }
 
-    if(isNaN(unitPrice)) {
-        $('input[name=unit_price]').val("Loading...");
-    } else {
-        parseInt($('input[name=unit_price]').val(unitPrice.toLocaleString("en-US", {style:"currency", currency:"USD"})));
+    if (document.getElementById("building-type").value == "hybrid" || document.getElementById("building-type").value == "corporate"){
+
+        
+
+            if( document.getElementById("Rstandard").checked == true ) {
+                tierPercentage = 10;
+                EleUnitPrice = 7565;
+            }
+            
+                else if( document.getElementById("Rpremium").checked == true ) {
+                    tierPercentage = 13;
+                    EleUnitPrice = 12345;
+                }
+                    else if( document.getElementById("Rexcelium").checked == true ) {
+                        tierPercentage = 16;
+                        EleUnitPrice = 15400;
+                
+                    }
+                    
+                    console.log(RnFloors);
+
+                   NumOfOccu = (RnFloors + Basements) * OccPerFloor;
+                   numOfEve = NumOfOccu / 1000;
+                   
+                   if ((RnFloors + Basements) > 20){
+                        ExtraShaft = Math.ceil((RnFloors + Basements)/ 20) ;
+                    }else {
+                        ExtraShaft = 1;
+                    }
+                    console.log(ExtraShaft);
+                    var temp;
+
+                    temp = Math.ceil(numOfEve / ExtraShaft);
+                    console.log(temp);
+                    numOfEve = Math.ceil(temp * ExtraShaft);
+                    EleCost = numOfEve * EleUnitPrice;
+                    instalationFee = EleCost / 100 * tierPercentage;
+                    FinalP = instalationFee + EleCost;
+
+
+                document.getElementById("elevator-amount").children[1].value = numOfEve;
+                document.getElementById("elevator-unit-price").children[1].value = EleUnitPrice.toLocaleString("en-US", {style:"currency", currency:"USD"});
+                document.getElementById("elevator-total-price").children[1].value = EleCost.toLocaleString("en-US", {style:"currency", currency:"USD"});
+                document.getElementById("installation-fees").children[1].value = instalationFee.toLocaleString("en-US", {style:"currency", currency:"USD"});
+                document.getElementById("final-price").children[1].value = FinalP.toLocaleString("en-US", {style:"currency", currency:"USD"});
+
+
+
+
+        
+
     }
 
-    if(isNaN(totalElevatorPrice)) {
-        $('input[name=total_price]').val("Loading...");
-    } else {
-        parseInt($('input[name=total_price]').val(totalElevatorPrice.toLocaleString("en-US", {style:"currency", currency:"USD"})));
-    }
-
-    if(isNaN(installationFees)) {
-        $('input[name=installation_fee]').val("Loading...");
-    } else {
-        parseInt($('input[name=installation_fee]').val(installationFees.toLocaleString("en-US", {style:"currency", currency:"USD"})));
-    }
-
-    if(isNaN(totalElPrice)) {
-        $('input[name=final-price]').val("Loading...");
-    } else {
-        parseInt($('input[name=final-price]').val(totalElPrice.toLocaleString("en-US", {style:"currency", currency:"USD"})));
-    }
-}
-
-/** Calculation for Residential */
-
-function calculateResidential() {
-  
-    var numApp = parseInt($('input[name=number_of_apartment]').val());
-    var numFloor = parseInt($('input[name=number_of_floor]').val());
-    var productLine = $("input[name='product_line']:checked").val();
-    var unitPrice = getPricePerElevator(productLine);
-    var installationFeeMultiplier = getInstallationFeeMultiplier(productLine);
-    
-    // Step 2: implement calculation logic
-    
-    let elevatorRequired = parseInt(calculateResidentialElevator(numApp, numFloor));
-    let totalElevatorPrice = unitPrice * elevatorRequired;
-    let installationFees = totalElevatorPrice * installationFeeMultiplier;
-    let totalElPrice = totalElevatorPrice * installationFees;
-    
-    // Step 3: display elevatorRequired as the value of the answer on the HTML /
-
-    if(isNaN(elevatorRequired)) {
-        $('input[name=amount_of_elevators]').val("Loading...");
-    } else {
-        parseInt($('input[name=amount_of_elevators]').val(elevatorRequired));
-    }
-
-    if(isNaN(unitPrice)) {
-        $('input[name=unit_price]').val("Loading...");
-    } else {
-        parseInt($('input[name=unit_price]').val(unitPrice.toLocaleString("en-US", {style:"currency", currency:"USD"})));
-    }
-
-    if(isNaN(totalElevatorPrice)) {
-        $('input[name=total_price]').val("Loading...");
-    } else {
-        parseInt($('input[name=total_price]').val(totalElevatorPrice.toLocaleString("en-US", {style:"currency", currency:"USD"})));
-    }
-
-    if(isNaN(installationFees)) {
-        $('input[name=installation_fee]').val("Loading...");
-    } else {
-        parseInt($('input[name=installation_fee]').val(installationFees.toLocaleString("en-US", {style:"currency", currency:"USD"})));
-    }
-
-    if(isNaN(totalElPrice)) {
-        $('input[name=final-price]').val("Loading...");
-    } else {
-        parseInt($('input[name=final-price]').val(totalElPrice.toLocaleString("en-US", {style:"currency", currency:"USD"})));
-    }
-}
-
-/** Calculation for Corporate and Hybrid */
-
-function calculateCorpHybrid() {
-  
-    var numOccFloor = parseInt($('input[name=occupants_per_floor]').val());
-    var numBase = parseInt($('input[name=number_of_basement]').val());
-    var numFloor = parseInt($('input[name=number_of_floor]').val());
-    var productLine = $("input[name='product_line']:checked").val();
-    var unitPrice = getPricePerElevator(productLine);
-    var installationFeeMultiplier = getInstallationFeeMultiplier(productLine);
-    
-    // Step 2: implement calculation logic
-    
-    let elevatorNeeded = parseInt(calculateCorporateHybridElevator(numOccFloor, numBase, numFloor));
-    let totalElevatorPrice = unitPrice * elevatorNeeded;
-    let installationFees = totalElevatorPrice * installationFeeMultiplier;
-    let totalElPrice = totalElevatorPrice * installationFees;
-    
-    // Step 3: display elevatorRequired as the value of the answer on the HTML /
-
-    if(isNaN(elevatorNeeded)) {
-        $('input[name=amount_of_elevators]').val("Loading...");
-    } else {
-        parseInt($('input[name=amount_of_elevators]').val(elevatorNeeded));
-    }
-
-    if(isNaN(unitPrice)) {
-        $('input[name=unit_price]').val("Loading...");
-    } else {
-        parseInt($('input[name=unit_price]').val(unitPrice.toLocaleString("en-US", {style:"currency", currency:"USD"})));
-    }
-
-    if(isNaN(totalElevatorPrice)) {
-        $('input[name=total_price]').val("Loading...");
-    } else {
-        parseInt($('input[name=total_price]').val(totalElevatorPrice.toLocaleString("en-US", {style:"currency", currency:"USD"})));
-    }
-
-    if(isNaN(installationFees)) {
-        $('input[name=installation_fee]').val("Loading...");
-    } else {
-        parseInt($('input[name=installation_fee]').val(installationFees.toLocaleString("en-US", {style:"currency", currency:"USD"})));
-    }
-
-    if(isNaN(totalElPrice)) {
-        $('input[name=final-price]').val("Loading...");
-    } else {
-        parseInt($('input[name=final-price]').val(totalElPrice.toLocaleString("en-US", {style:"currency", currency:"USD"})));
-    }
 }
 
 
-/** Hide every questions and input */
-
-function hideAll() {
-
-    $('.residential').hide();
-    $('.commercial').hide();
-    $('.corporate').hide();
-    $('.hybrid').hide();
-    $('.radios').hide();
-    $('.answer').hide();
-}
-
-/** Only show residential questions, input and answers */
-
-function residentialSHOW() {
-
-    hideAll();
-
-    $('.residential').show();
-    $('.radios').show();
-    $('.answer').show();
-}
-
-/** Only show commercial questions, input and answers */
-
-function commercialSHOW() {
-
-    hideAll();
-
-    $('.commercial').show();
-    $('.radios').show();
-    $('.answer').show();
-}
- 
-/** Only show corporate questions, input and answers */
-
-function corporateSHOW() {
-
-    hideAll();
-
-    $('.corporate').show();
-    $('.radios').show();
-    $('.answer').show();
-}
-
-/** Only show hybrid questions, input and answers */
-
-function hybridSHOW() {
-
-    hideAll();
-
-    $('.hybrid').show();
-    $('.radios').show();
-    $('.answer').show();
-}
-
-/** Reset every field upon switching from the dropdownmenu */
-
-function resetFields() {
-
-    $('input[name="number_of_apartment"]').val('');
-    $('input[name="number_of_floor"]').val('');
-    $('input[name="number_of_basement"]').val('');
-    $('input[name="distinct_buisnesses"]').val('');
-    $('input[name="number_of_parking"]').val('');
-    $('input[name="elevator_cages"]').val('');
-    $('input[name="tenant_companies"]').val('');
-    $('input[name="occupants_per_floor"]').val('');
-    $('input[name="activity"]').val('');
-    $('input[name="product_line"]').prop('checked', false);
-    $('input[name="amount_of_elevators"]').val('');
-    $('input[name="unit_price"]').val('');
-    $('input[name="total_price"]').val('');
-    $('input[name="installation_fee"]').val('');
-    $('input[name="final-price"]').val('');
 
 
-}
-
-/** Calculation for # of elevator needed for Residential from values */
-
-function calculateResidentialElevator(numApp, numFloor) {
- 
-    let numberOfAppPerFloor = parseFloat(Math.ceil(numApp / numFloor));
-    let numberOfElevatorReq = Math.ceil(numberOfAppPerFloor / 6);
-    let numberOfColumn = parseFloat(Math.ceil(numFloor / 20));
-    numberOfElevator = numberOfColumn * numberOfElevatorReq //
-    return numberOfElevator
-
-}
-
-/** Calculation for # of elevator needed for Corporate/Hybrid from values */
-
-function calculateCorporateHybridElevator(numOccFloor, numBase, numFloor) {
-
-    let totalNumOcc = Math.floor((numFloor + numBase) * numOccFloor);
-    let numElevatorReq = Math.floor(totalNumOcc / 1000);
-    let numElevatorColumn = Math.ceil((numFloor + numBase) / 20);
-    let numElevatorPerColumn = Math.ceil(numElevatorReq / numElevatorColumn);
-    let totalNumOfElevator = Math.ceil(numElevatorPerColumn * numElevatorColumn);
-
-    return totalNumOfElevator
 
 
-}
 
-/** Get installation fee multiplier */
 
-function getInstallationFeeMultiplier(productLine) {
 
-    if (productLine == "Standard") {
-        return 0.1;
-    } else if (productLine == "Premium") {
-        return 0.13;
-    } else if (productLine = "Excelium") {
-        return 0.16;
-    }
-}
 
-/** Elevator unit price from existing value  */
-
-function getPricePerElevator(productLine) {
-
-    if (productLine == "Standard") {
-        return 7565;
-    } else if (productLine == "Premium") {
-        return 12345;
-    } else if (productLine = "Excelium") {
-        return 15400;
-    }    
-}
 

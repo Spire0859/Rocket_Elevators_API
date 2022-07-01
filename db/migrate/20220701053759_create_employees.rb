@@ -8,3 +8,4 @@
       t.string "title"
     end
  end
+end 
