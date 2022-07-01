@@ -52,6 +52,6 @@ test:
 #
 production:
   <<: *default
-  database: myapp_production
-  username: myapp
-  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
+  database: rocket_elevator_db_production
+  username: spire
+  password: "yes"
