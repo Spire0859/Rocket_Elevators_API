@@ -1,9 +1,12 @@
 class PagesController < ApplicationController
-  skip_before_action :verify_authenticity_token
-  def home 
+  def home
   end
   def back
-
   end
-  
+  def residential
+  end
+  def commercial
+  end
+  def quote
+  end
 end
