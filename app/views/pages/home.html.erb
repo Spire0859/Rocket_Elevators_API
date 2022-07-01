@@ -1,13 +1,59 @@
+			
 			<a class="slidetop-toggle" href="#"><!-- toggle button --></a>
 
 		</div>
+
+<%# <section id="team" class="parallax parallax-1 section-xs dark tp-caption customin ltl tp-resizeme "> %>
+				<div class="overlay dark-7"><!-- dark overlay [1 to 9 opacity] --></div>
+				<div class="container">
+
+					<div class="owl-carousel text-center  m-0 " data-plugin-options='{"singleItem": true, "autoPlay": 3500, "navigation": false, "pagination": true, "transitionStyle":"fade"}'>
+						<div id="1" >
+							<figure>
+                            	<%= image_tag "AdobeStock_179073967.jpeg", :size => '350x350' %>
+							</figure>
+							<div class=" p-0">
+								<h3 class="fs-90 fw-300">Welcome to Rocket Elevators </h3>
+								<h4>we take our craft out of this world</h4>
+								<a href="quote.html" class="btn bg-maroon btn-lg ">
+								<span style="color: white;">FREE QUOTE</span>
+								</a>
+								<!-- wierd bug, seems like the color is not being correctly applying in the section class so i had to manually change it in the p tag right above this comment-->
+							</div>
+						</div>
+						<div id="2">
+							<figure>
+								<%= image_tag "AdobeStock_146216308.jpeg", :size => '350x350' %>							</figure>
+							<div class="p-0">
+								<h3 class="fs-90 fw-300">Residential Solutions</h3>
+								<h4>Who walks up stairs these days ? Acess your home the better way</h4>
+								<a href="quote.html" class="btn bg-maroon btn-lg ">
+								<span style="color: white;">FREE QUOTE</span>
+								</a>
+							</div>
+						</div>
+						<div id="3">
+							<figure>
+								<%= image_tag "AdobeStock_179073967.jpeg", :size => '350x350' %>							</figure>
+							<div class="p-0">
+								<h3 class="fs-90 fw-300">Commercial Solutions</h3>
+								<h4>We deliver results, not promises ! Let us worry about <b>your next project</b></h4>
+								<a href="quote.html" class="btn bg-maroon btn-lg ">
+								<span style="color: white;">FREE QUOTE</span>
+								</a>
+							</div>
+						</div>
+				</div>
+				</div>
+			<%# </section> %>
+
 		<!-- /SLIDE TOP -->
 
 
 		
 
-														<!-- SLIDE  -->
-
+														<%# <!-- SLIDE  -->
+<%# 
 					<li data-transition="random" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Home" >
 
 														<!-- SLIDE 1-->
@@ -81,11 +127,11 @@
 						</div>
 
 						<div class="overlay dark-4"><!-- dark overlay [1 to 9 opacity] --></div>
-						<%= image_tag "AdobeStock_179073967.jpeg" %>
+						<%= image_tag("AdobeStock_179073967.jpeg", data:{lazyload: asset_path("AdobeStock_179073967.jpeg"), :size => '5000x3337', bgposition: "center top", bgfit: "cover" , bgrepeat: "no-repeat"}) %>
                         <%# <img src=" AdobeStock_179073967.jpeg" data-lazyload=" AdobeStock_179073967.jpeg" alt="" data-bgfit="cover" data-bgposition="center bottom" data-bgrepeat="no-repeat" /> %>
 
 
-
+<%# 
 					</li>
 
 														<!-- SLIDE 2-->
@@ -182,14 +228,14 @@
 
 						<div class="overlay dark-4"><!-- dark overlay [1 to 9 opacity] --></div>
 						<%# <img src=" AdobeStock_146216308.jpeg" data-lazyload=" AdobeStock_146216308.jpeg" alt="video" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"> %>
-                        <%= image_tag "AdobeStock_146216308.jpeg" %>
+                        <%# <%= image_tag("AdobeStock_146216308.jpeg", data:{lazyload: asset_path("AdobeStock_146216308.jpeg"), :size => '5000x3337', bgposition: "center top", bgfit: "cover" , bgrepeat: "no-repeat"}) %> %>
 						
-					</li>
+					<%# </li> %>
 
 																			<!-- SLIDE 3-->
-							<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Commercial" >
+							<%# <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Commercial" > %>
 
-									<div class="tp-caption customin ltl tp-resizeme large_bold_white"
+									<%# <div class="tp-caption customin ltl tp-resizeme large_bold_white"
 										data-x="center"
 										data-y="230"
 										data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
@@ -218,8 +264,8 @@
 									data-endspeed="1000"
 									data-endeasing="Power4.easeIn" style="z-index: 10; width: 1000px; max-width: 1000px; white-space: normal; text-align:center;">
 											We deliver results, not promises ! <br \ > 
-											Let us worry about <b>your next project</b>
-											
+											Let us worry about <b>your next project</b> %>
+<%# 											
 								</div>
 			
 									<div class="tp-caption customin ltl tp-resizeme"
@@ -244,8 +290,8 @@
 									<div class="tp-caption customin ltl tp-resizeme"
 										data-x="center"
 										data-y="538"
-										data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-										data-speed="800"
+										data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;" %>
+										<%# data-speed="800"
 										data-start="1550"
 										data-easing="easeOutQuad"
 										data-splitin="none"
@@ -260,16 +306,11 @@
 									</div>
 			
 									<div class="overlay dark-4"><!-- dark overlay [1 to 9 opacity] --></div>
-                                    <%= image_tag "AdobeStock_179073967.jpeg" %>
+									<%= image_tag("AdobeStock_179073967.jpeg", data:{lazyload: asset_path("AdobeStock_179073967.jpeg"), :size => '5000x3337', bgposition: "center top", bgfit: "cover" , bgrepeat: "no-repeat"}) %>
 									<%# <img src=" AdobeStock_179073967.jpeg" data-lazyload=" AdobeStock_179073967.jpeg" alt="" data-bgfit="cover" data-bgposition="center bottom" data-bgrepeat="no-repeat" /> %>
-			
-			
-			
-								</li>
-			
-				</ul>
-			</div>
-		</section>
+								<%# </li> %> %>
+				<%# </ul> %>
+			<%# </div> %>
 
 		<a href="#contact-nav" class="btn btn-xlg  bg-maroon fs-20 fullwidth m-0 rad-0 p-40 scrollTo" >
 			<span class="font-lato fs-30" style="color: white">
