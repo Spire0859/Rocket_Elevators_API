@@ -343,4 +343,3 @@ function getPricePerElevator(productLine) {
         return 15400;
     }    
 }
-
