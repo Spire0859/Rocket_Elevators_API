@@ -1,121 +1,234 @@
-<br></br>
+<%# <%= javascript_include_tag 'quote', media: 'all', 'data-turbolinks-track': 'reload' %> 
+		<!-- WELCOME PAGE -->
+<section>
+		<p style="text-align:center"><strong>QUOTE FORM</strong></p>
+		<hr>
 
-<div  style="text-align: center; margin-top: 4%;" 	>
- <%= javascript_include_tag 'quote.js'%>
-			<select id="building-type" onchange="section()">
-				<option selected="true" disabled > --SELECT--</option>
-				<option value="residential"  >RESIDENTIAL</option>
-				<option value="commercial" >COMMERCIAL</option>
-				<option value="corporate" >CORPORATE</option>
-				<option value="hybrid" >HYBRID</option>
-			</select>
-			
-		</div>
+		<!--FORM-->
 
+		<form id="myForm">
+			<div class="container">
+				<div class="row menu">
+					<div class="col">
+						<label for="building_type">Specify building type:</label>
+					</div>
+					<div class="col">
+						<select id="building-type" name="building_type">
+							<option id="empty" value="empty">SELECT BUILDING TYPE</option>
+							<option id="residential" value="residential">Residential</option>
+							<option id="commercial" value="commercial">Commercial</option>
+							<option id="corporate" value="corporate">Corporate</option>
+							<option id="hybrid" value="hybrid">Hybrid</option>
+						</select>
+					</div>
+				</div>
+				<hr>
 
-			
-<!--input section -->
-					<form name="Rform" style="margin-top: 5% ; margin-left:2% ; margin-right:2%" onchange="residentialMath()" id="resSection" >							
-						
-							<div class="row">
-								<div class="col-md-4 res reset"  style="display: none" id="number-of-apartments">
-									<label >Nº Apparments In the building</label>
-									<input type="number" class="form-control resetv" id="Rnumber-of-apartments" min="0">
-								</div>
-								
-								<div class="col-md-4 res cor com hyb reset"  style="display: none" id="number-of-floors">
-									<label >Nº floors Contained In The Building</label>
-									<input type="number" class="form-control resetv" id="Rnumber-of-floors" min="0">
-								</div>
+				<!--/For RESIDENTIAL-->
 
-								<div class="col-md-4 res cor com hyb reset"  style="display: none" id="number-of-basements">
-									<label>Nº Basements</label>
-									<input  type="number"  class="form-control resetv" id="Rnumber-of-basements" min="0">
-								</div>
-							</div>		
-							<div class="row">
-									<div class="col-md-4 com hyb reset"  style="display: none" id="number-of-companies">
-										<label >Nº Of Distinct business</label>
-										<input rtype="number" value="" class="form-control resetv" id="Cnumber-of-companies" min="0">
-									</div>
-
-									<div class="col-md-4 hyb reset "  style="display: none" id="business-hours" >
-										<label >Hours Of Activity</label>
-										<input type="number" value="" class="form-control resetv"  id="hbusiness-hours" min="0">
-									</div>	
-
-									<div class="col-md-4 com cor hyb reset"  style="display: none" id="number-of-parking-spots">
-										<label >Nº Of Parking Spaces</label>
-										<input type="number" value="" class="form-control resetv"  id="Cnumber-of-parking-spots" min="0">
-									</div>
-						    </div>
-
-							<div class="row">
-									<div class="col-md-4 cor reset"  style="display: none" id="number-of-corporations">
-										<label for="contact:name">Nº Of Separate Tenant Companies</label>
-										<input required type="text"  class="form-control resetv" id="COnumber-of-corporations" min="0">
-									</div>
-
-									<div class="col-md-4 com reset"  style="display: none" id="number-of-elevators"min="0">
-										<label >Nº Of Cage Elevetors To Deploy</label>
-										<input  type="number" value="" class="form-control resetv" id="Cnumber-of-elevators" min="0">
-									</div>
-
-									<div class="col-md-4 cor hyb reset"  style="display: none" id="maximum-occupancy">
-										<label for="contact:email">Max Nº Of Occupants Per Floor</label>
-										<input type="number" value="" class="form-control resetv" id="COmaximum-occupancy"min="0"	 >
-									</div>
-
-							</div>
-
-							
-									
-														
-							
-						
-										<!--tier secletion-->
-						<div class="row" >
-							<div class="col-md-4 res cor com hyb reset " style="display: none">
-								<label for="contact:name">Standard</label>
-								<input type="radio" name="Rtier" value="Standard" id="Rstandard" checked>
-								
-							</div>
-							<div class="col-md-4 res cor com hyb reset " style="display: none">
-								<label for="contact:name">Premium</label>
-								<input type="radio" name="Rtier" value="Premium" id="Rpremium">
-								
-							</div>
-							<div class="col-md-4 res cor com hyb reset " style="display: none">
-								<label for="contact:name">Excelium</label>
-								<input type="radio" name="Rtier" value="Excelium" id="Rexcelium">
-								
-							</div>
-						</div>		
-								
-					
-						
-						<div class="row ">
-
-							<div class="col-md-2 res cor com hyb reset " id="elevator-amount" style="display: none">
-								<label > Amount Of Elevators Needed: </label>
-								<input value="" readonly class="resetv">  </input>
-							</div>		
-							<div class="row col-md-2 res cor com hyb reset " id="elevator-unit-price" style="display: none">
-								<label >Unit Price Of Each Elevator: </label>
-								<input value="" readonly class="resetv"> </input>
-							</div>
-							<div class="row col-md-2 res cor com hyb reset " id="elevator-total-price" style="display: none">
-								<label for="contact:name"> Total price Of The Elevators: </label>
-								<input value="" readonly class="resetv"> </input>
-							</div>			
-							<div class="row col-md-2 res cor com hyb reset " id="installation-fees" style="display: none">
-								<label >Installation Fees: </label>
-								<input value="" readonly class="resetv"> </input>
-							</div>	
-							<div class="row col-md-2 res cor com hyb reset " id="final-price" style="display: none">
-								<label >Final price: </label>
-								<input value="" readonly class="resetv"> </input>
-							</div>	
-
+				<div class="row residential" id="number-of-apartments">
+					<div class="col">
+						<div>
+							<label>N. of apartments</label>
 						</div>
-			</form>
+					</div>
+					<div class="col">
+						<input type="number" name="number_of_apartment" min="1" id="reset" class="quote-input">
+					</div>
+				</div>
+
+				<div class="row residential commercial corporate hybrid" id="number-of-floors">
+					<div class="col">
+						<div>
+							<label>N. of floor</label>
+						</div>
+					</div>
+					<div class="col">
+						<input type="number" name="number_of_floor" min="1" id="reset" class="quote-input">
+					</div>
+				</div>
+
+				<div class="row residential commercial corporate hybrid" id="number-of-basements">
+					<div class="col">
+						<div>
+							<label>N. of basements</label>
+						</div>
+					</div>
+					<div class="col">
+						<input type="number" name="number_of_basement" min="1" id="reset" class="quote-input">
+					</div>
+				</div>
+
+				<!--For COMMERCIAL-->
+
+				<div class="row commercial hybrid" id="number-of-companies">
+					<div class="col">
+						<div>
+							<label>N. of businesses</label>
+						</div>
+					</div>
+					<div class="col">
+						<input type="number" name="distinct_buisnesses" min="1" id="reset" class="quote-input">
+					</div>
+				</div>
+
+				<div class="row commercial corporate hybrid" id="number-of-parking-spots">
+					<div class="col">
+						<div>
+							<label>N. of parking space</label>
+						</div>
+					</div>
+					<div class="col">
+						<input type="number" name="number_of_parking" min="1" id="reset" class="quote-input">
+ 							 </div>
+					</div>
+					  
+					<div class="row commercial" id="number-of-elevators">
+						<div class="col">
+							<div>
+								<label>N. of elevators</label>
+							</div>
+						</div>
+						<div class="col">
+							<input type="number" name="elevator_cages" min="1" id="reset" class="quote-input">
+						</div>
+					</div>
+
+					<!--For CORPORATE-->
+
+					<div class="row corporate" id="number-of-corporations">
+						<div class="col">
+							<div>
+								<label>N. of companies</label>
+							</div>
+						</div>
+						<div class="col">
+							<input type="number" name="tenant_companies" min="1" id="reset" class="quote-input">
+						</div>
+					</div>
+
+					<div class="row corporate hybrid" id="maximum-occupancy">
+						<div class="col">
+							<div>
+								<label>Max n. of occupants/floor</label>
+							</div>
+						</div>
+						<div class="col">
+							<input type="number" name="occupants_per_floor" min="1" id="reset" name="focus" class="quote-input">
+						</div>
+					</div>
+
+					<!--For HYBRID-->
+
+					<div class="row hybrid" id="business-hours">
+						<div class="col">
+							<div>
+								<label>N. of hours of activity (max 24)</label>
+							</div>
+						</div>
+						<div class="col">
+							<input type="number" name="activity" min="1" max="24" id="reset" class="quote-input">
+						</div>
+					</div>
+
+
+					<!--RADIO FORM-->
+
+					<div class="row radios">
+						<div class="col">
+							<label for="standard">Standard</label>
+						</div>
+						<div class="col">
+							<input type="radio" id="standard" name="product_line" value="Standard">
+						</div>
+					</div>
+
+					<div class="row radios">
+						<div class="col">
+							<label for="premium">Premium</label>
+						</div>
+						<div class="col">
+							<input type="radio" id="premium" name="product_line" value="Premium">
+						</div>
+					</div>
+
+					<div class="row radios">
+						<div class="col">
+							<label for="excelium">Excelium</label>
+						</div>
+						<div class="col">
+							<input type="radio" id="excelium" name="product_line" value="Excelium">
+						</div>
+					</div>
+
+
+
+					<!--CONCLUSION-->
+
+					<div class="row answer" id="elevator-amount">
+						<div class="col">
+							<div>
+								<label>N. of elevators</label>
+							</div>
+						</div>
+						<div class="col">
+							<input type="text" name="amount_of_elevators" id="answers" id="reset" readonly>
+						</div>
+					</div>
+
+					<div class="row answer" id="elevator-unit-price">
+						<div class="col">
+							<div>
+								<label>Price/elevator</label>
+							</div>
+						</div>
+						<div class="col">
+							<input type="text" name="unit_price" id="answers" id="reset" readonly>
+						</div>
+					</div>
+
+					<div class="row answer" id="elevator-total-price">
+						<div class="col">
+							<div>
+								<label>Elevator total price</label>
+							</div>
+						</div>
+						<div class="col">
+							<input type="text" name="total_price" id="answers" id="reset" readonly>
+						</div>
+					</div>
+
+					<div class="row answer" id="installation-fees">
+						<div class="col">
+							<div>
+								<label>Installation fees</label>
+							</div>
+						</div>
+						<div class="col">
+							<input type="text" name="installation_fee" id="answers" id="reset" readonly>
+						</div>
+					</div>
+
+					<div class="row answer" id="final-price">
+						<div class="col">
+							<div>
+								<label>The final price</label>
+							</div>
+						</div>
+						<div class="col">
+							<input type="text" name="final-price" id="answers" id="reset" readonly>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</form>
+
+        <%= javascript_include_tag 'quote', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+                <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+    </section>
+

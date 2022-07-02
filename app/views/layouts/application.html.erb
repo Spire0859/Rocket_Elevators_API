@@ -7,29 +7,29 @@
 		<meta name="description" content="" />
 		<meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+   		<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+   	 	<%= javascript_include_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
 		<!-- mobile settings -->
 		<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 		<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
 
 		<!-- WEB FONTS : use %7C instead of | (pipe) -->
-    <%= stylesheet_link_tag 'fontg', media: 'all', 'data-turbolinks-track': 'reload' %>
+    	<%= stylesheet_link_tag 'fontg', media: 'all', 'data-turbolinks-track': 'reload' %>
 		<!-- CORE CSS -->
-    <%= stylesheet_link_tag 'bootstrap.min', media: 'all', 'data-turbolinks-track': 'reload' %>
+   	 	<%= stylesheet_link_tag 'bootstrap.min', media: 'all', 'data-turbolinks-track': 'reload' %>
 
 		<!-- REVOLUTION SLIDER -->
-    <%= stylesheet_link_tag 'extralayers', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'settings', media: 'all', 'data-turbolinks-track': 'reload' %>
+   		<%= stylesheet_link_tag 'extralayers', media: 'all', 'data-turbolinks-track': 'reload' %>
+   		<%= stylesheet_link_tag 'settings', media: 'all', 'data-turbolinks-track': 'reload' %>
 
 		<!-- THEME CSS -->
-    <%= stylesheet_link_tag 'essentials', media: 'all', 'data-turbolinks-track': 'reload' %> 
-    <%= stylesheet_link_tag 'layout', media: 'all', 'data-turbolinks-track': 'reload' %>
+   		<%= stylesheet_link_tag 'essentials', media: 'all', 'data-turbolinks-track': 'reload' %> 
+    	<%= stylesheet_link_tag 'layout', media: 'all', 'data-turbolinks-track': 'reload' %>
 
 		<!-- PAGE LEVEL SCRIPTS -->
-    <%= stylesheet_link_tag 'header-1', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'dark.blue', media: 'all', 'data-turbolinks-track': 'reload' %>
+   		<%= stylesheet_link_tag 'header-1', media: 'all', 'data-turbolinks-track': 'reload' %>
+  		<%= stylesheet_link_tag 'dark.blue', media: 'all', 'data-turbolinks-track': 'reload' %>
 	</head>
 
 <!-- wrapper -->
@@ -93,6 +93,11 @@
 											CONTACT
 										</a>
 									</li>
+									
+									<li><!-- ADMIN -->
+										<a class="scrollTo" href="#backend-nav">
+											ADMIN
+										</a>
 
 									<li><!-- BACKEND -->
 										<% if current_user%>
@@ -205,7 +210,6 @@
 
 
 		<!-- JAVASCRIPT FILES -->
-		<script>var plugin_path = 'assets/plugins/';</script>
     <%= javascript_include_tag 'jquery-3.3.1.min.js'%>
 		<%# <script src="assets/plugins/jquery/jquery-3.3.1.min.js"></script> %>
 
@@ -227,7 +231,6 @@
 		<!-- PAGELEVEL SCRIPTS -->
     <%= javascript_include_tag 'contact.js'%>
 		<%# <script src="assets/js/contact.js"></script> %>
-
 		<!-- 
 			GMAP.JS 
 			http://hpneo.github.io/gmaps/
