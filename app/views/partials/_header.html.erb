@@ -1,0 +1,69 @@
+
+
+			<div id="header" class="navbar-toggleable-md sticky header-md clearfix transparent b-0 ">
+
+				<!-- TOP NAV -->
+				<header id="topNav">
+					
+					<div class="container">
+
+								<!-- Logo -->
+								<a class="logo float-left scrollTo" href="#top" style="opacity: 0.8; ">
+									<%= image_tag "R2.png" %>
+								</a>
+						
+						<!-- Mobile Menu Button -->
+						<button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+							<i class="fa fa-bars"></i>
+						</button>
+
+						
+
+						<div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
+							<nav class="nav-main">
+
+								<!-- 
+									
+								-->
+								<ul id="topMain" class="nav nav-pills nav-main nav-onepage ">
+									<li class="active"><!-- HOME -->
+
+										<%= link_to "HOME" , root_path %>
+									</li>
+									   <li><!-- NEWS -->
+                                    <%=link_to('NEWS', {}, {:name => 'news-nav'})%>
+                                </li>
+                                <li><!-- CLIENTS -->
+                                    <%= link_to "CLIENTS", 
+                                    root_path(anchor: "clients-nav") 
+                                    %>
+                                </li>
+                                <li><!-- CONTACT -->
+                                    <%= link_to "CONTACT", 
+                                    root_path(anchor: "contact-nav") 
+                                    %>
+
+                                </li>
+
+                                    <!-- BACKEND -->
+										<% if current_user%>
+
+										    <%= link_to 'SIGN OUT', destroy_user_session_path(:authenticity_token => form_authenticity_token()), method: 'delete' %>
+
+										<% else %>
+
+                                             <%= link_to "LOGIN", new_user_session_path%>
+
+                                        <%end%>
+                                        
+									</li>
+								</ul>
+
+							</nav>
+						</div>
+
+					</div>
+				</header>
+		
+			</div>
+			

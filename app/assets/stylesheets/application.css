@@ -1,0 +1,13 @@
+/*
+ *= require_self
+ *= require plugins/bootstrap/css/bootstrap.min
+ *= require slider.revolution/css/extralayers
+ *= require slider.revolution/css/settings
+ *= require css/essentials
+ *= require css/layout
+ *= require css/header-1
+ *= require css/color_scheme/blue
+ *= require css/quote-form
+ *= require jquery-ui
+*/
+
