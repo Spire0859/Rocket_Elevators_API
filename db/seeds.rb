@@ -19,6 +19,7 @@
 # User.create(email: 'eileen.ai@codeboxx.biz',)
 
 users = [
+    
     {email: 'mathieu.houde@codeboxx.biz',password: '123456',employee: true},
     {email: 'patrick.thibault@codeboxx.biz',password: '123456',employee: true},
     {email: 'francis.patry-jessop@codeboxx.biz',password: '123456',employee: true},

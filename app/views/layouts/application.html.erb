@@ -6,8 +6,6 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= yield(:head_tags) %>
-
     <script>
       var plugin_path = 'assets/plugins/'
     </script>
@@ -15,7 +13,9 @@
   </head>
 
   <body>
-    <%= render 'partials/header' %>
+  
+   <%= render 'partials/header' %>
+
     <%= yield %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>

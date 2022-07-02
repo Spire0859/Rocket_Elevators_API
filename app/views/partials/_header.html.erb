@@ -8,7 +8,7 @@
 					<div class="container">
 
 								<!-- Logo -->
-								<a class="logo float-left scrollTo" href="#top" style="opacity: 0.8; ">
+								<a class="logo float-left " href="/" style="opacity: 0.8; ">
 									<%= image_tag "R2.png" %>
 								</a>
 						
@@ -19,31 +19,40 @@
 
 						
 
-						<div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
-							<nav class="nav-main">
-
-								<!-- 
-									
-								-->
-								<ul id="topMain" class="nav nav-pills nav-main nav-onepage ">
+					<ul id="topMain" class="nav nav-pills nav-main nav-onepage float-right">
 									<li class="active"><!-- HOME -->
-
-										<%= link_to "HOME" , root_path %>
+										<a  href="/">
+											HOME
+										</a>
 									</li>
-									   <li><!-- NEWS -->
-                                    <%=link_to('NEWS', {}, {:name => 'news-nav'})%>
-                                </li>
-                                <li><!-- CLIENTS -->
-                                    <%= link_to "CLIENTS", 
-                                    root_path(anchor: "clients-nav") 
-                                    %>
-                                </li>
-                                <li><!-- CONTACT -->
-                                    <%= link_to "CONTACT", 
-                                    root_path(anchor: "contact-nav") 
-                                    %>
-
-                                </li>
+									<li><!-- SERVICES -->
+										<a  href="/#services-nav" data-turbolinks="false" >
+											SERVICES
+										</a>
+									</li>
+									<li><!-- PORTFOLIO -->
+										<a  href="/#portfolio-nav" data-turbolinks="false">
+											PORTFOLIO
+										</a>
+									</li>
+									<li><!-- NEWS -->
+										<a   href="/#news-nav" data-turbolinks="false">
+											NEWS
+										</a>
+									</li>
+									
+									<li><!-- CLIENTS -->
+										<a   href="/#clients-nav" data-turbolinks="false" >
+											CLIENTS
+										</a>
+									</li>
+								
+									<li><!-- CONTACT -->
+										<a  href="/#contact-nav" data-turbolinks="false">
+											CONTACT
+										</a>
+									</li>
+								
 
                                     <!-- BACKEND -->
 										<% if current_user%>
