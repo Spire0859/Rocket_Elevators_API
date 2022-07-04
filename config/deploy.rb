@@ -10,6 +10,20 @@ set :rbenv_roles, :all # default value
 set :application, "MarcosLopez"
 set :repo_url, "git@github.com:MansillaM/Rocket_Elevators_Information_System.git"
 
+
+before "deploy:assets:precompile", "deploy:yarn_install"
+
+namespace :deploy do
+    desc 'Run rake yarn:install'
+    task :yarn_install do
+        on roles(:web) do
+            within release_path do
+                execute("cd #{release_path} && yarn install")
+            end
+        end
+    end
+end
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
