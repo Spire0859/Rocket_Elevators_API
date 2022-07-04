@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root 'pages#home'
   resources :quotes
   get 'pages/back'
+  get 'pages/residential'
+  get 'pages/commercial'
+  get 'pages/quote'
   get 'residential', to: 'pages#residential'
   get 'commercial', to: 'pages#commercial'
   get 'quote', to: 'pages#quote'

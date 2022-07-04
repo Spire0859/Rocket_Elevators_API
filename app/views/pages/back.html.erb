@@ -1,13 +1,16 @@
-<% if current_user%>
-<p>you are singed in</p>
 
-<%= link_to 'Sign out', destroy_user_session_path(:authenticity_token => form_authenticity_token()), method: 'delete' %>
+<div class="container" style="margin-top:20%">
+    <% if current_user%>
+    <p>you are singed in</p>
 
-<% else %>
-<p>you are NOT singed in</p>
+    <%= link_to 'Sign out', destroy_user_session_path(:authenticity_token => form_authenticity_token()), method: 'delete' %>
 
-<%= link_to "Sign up", new_user_registration_path%>
+    <% else %>
+    <p>you are NOT singed in</p>
 
-<%= link_to "Login", new_user_session_path%>
+    <%= link_to "Sign up", new_user_registration_path%>
 
-<%end%>
+    <%= link_to "Login", new_user_session_path%>
+
+    <%end%>
+</div>

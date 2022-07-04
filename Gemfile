@@ -6,7 +6,6 @@ ruby '2.7.6'
 # Bootstrap
 gem 'bootstrap', '~> 4.0.0'
 
-gem 'jquery-rails'
 
 gem 'owlcarousel-rails'
 
@@ -78,3 +77,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "devise", "~> 4.8"
 
 gem "rails_admin", "~> 2.2"
+
+gem 'jquery'
+
+gem 'jquery-rails'
+
+gem 'jquery-ui-rails'
+
+gem 'webpacker', '~> 3.0'
