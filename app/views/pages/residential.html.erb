@@ -1,58 +1,60 @@
 
-		<!-- wrapper -->
+	
 
-			<!-- 
-				AVAILABLE HEADER CLASSES
+	<!--
+		AVAILABLE BODY CLASSES:
+		
+		smoothscroll 			= create a browser smooth scroll
+		enable-animation		= enable WOW animations
 
-				Default nav height: 96px
-				.header-md 		= 70px nav height
-				.header-sm 		= 60px nav height
-
-				. 		= remove bottom border (only with transparent use)
-				.transparent	= transparent header
-				.translucent	= translucent header
-				.sticky			= sticky header
-				.static			= static header
-				.dark			= dark header
-				.bottom			= header on bottom
-				
-				shadow-before-1 = shadow 1 header top
-				shadow-after-1 	= shadow 1 header bottom
-				shadow-before-2 = shadow 2 header top
-				shadow-after-2 	= shadow 2 header bottom
-				shadow-before-3 = shadow 3 header top
-				shadow-after-3 	= shadow 3 header bottom
-
-				.clearfix		= required for mobile menu, do not remove!
-
-				Example Usage:  class="clearfix sticky header-sm transparent b-0"
-			--><div class="overlay dark-4"><!-- dark overlay [1 to 9 opacity] --></div>
-			<div class="container float-right" style="color: white; margin-top: 10%; margin-right: 5%;">
+		bg-grey					= grey background
+		grain-grey				= grey grain background
+		grain-blue				= blue grain background
+		grain-green				= green grain background
+		grain-blue				= blue grain background
+		grain-orange			= orange grain background
+		grain-yellow			= yellow grain background
+		
+		boxed 					= boxed layout
+		pattern1 ... patern11	= pattern background
+		menu-vertical-hide		= hidden, open on click
+		
+		BACKGROUND IMAGE [together with .boxed class]
+		data-background="assets/images/_smarty/boxed_background/1.jpg"
+	-->
 
 
-					<div class="tp-caption customin ltl tp-resizeme large_bold_white"style="text-align:right ;">Corporate Solutions</div>
+				<!-- Video Background-->
+	<body class="smoothscroll enable-animation "></body>
+	
+	<%= video_tag "grand.mp4", autoplay: :autoplay, loop: :loop, muted: :muted, class: "home_video"  %>
+
+		<%# video_tag("OtisElevatorGlobalMajorProjects.mp4") %>
+	
+
+	
+		
+
+
+			<div class="container" style="color: white; margin-top: 10%; margin-left: 5%; margin-bottom: 25%;">
+
+
+					<div class="tp-caption customin ltl tp-resizeme large_bold_white">Corporate Solutions</div>
 
 					<div class="container" style="margin-top: 5% ;">
-                        <%= image_tag "AdobeStock_179073967.jpeg", :size => '420x240', :align=> "middle"%>
-						<h1> Let our team of inudustry leaders take care of your next project </h1>
-						<h2> We've  built over <b>10,000</b> houses !</h2>
-						<h3> Pricing is easy at Rocket Elevator, we charge a flat base fee adding up per level </h3>
+
+						<div class="tp-caption customin ltl tp-resizeme small_light_white">Let our team of inudustry leaders take care of your next project </div>
+						<div class="tp-caption customin ltl tp-resizeme small_light_white">We worked on the Burj Khalifa, we know a thing or two about how to make an elevator</div>
+						<div class="tp-caption customin ltl tp-resizeme small_light_white">Pricing is easy at Rocket Elevator, we charge a flat base fee of 15000$ with an extra 1000$ per level </div>
 						
-							<div class="tp-caption customin ltl tp-resizeme" style="text-align:right ; margin-top: 2%;">
-										<a href="quote.html" class="btn bg-maroon btn-lg">
+							<div class="tp-caption customin ltl tp-resizeme">
+										<a href="quote.html" class="btn bg-maroon btn-lg " style=" margin-top: 2%;">
 											<span style="color: white;">FREE QUOTE</span> 
 										</a>
 							</div>
 					</div>
 			
 			</div>
-
-
-
-
-			</div>
-
-
 
 
 

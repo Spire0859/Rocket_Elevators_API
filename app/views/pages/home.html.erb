@@ -1,60 +1,11 @@
-			
-			<a class="slidetop-toggle" href="#"><!-- toggle button --></a>
 
-		</div>
+		<div class="fullscreenbanner" data-navigationStyle="preview2" id="home-nav" >
+				<ul class="hide">
 
-<%# <section id="team" class="parallax parallax-1 section-xs dark tp-caption customin ltl tp-resizeme "> %>
-				<div class="overlay dark-7"><!-- dark overlay [1 to 9 opacity] --></div>
-				<div class="container">
-
-					<div class="owl-carousel text-center  m-0 " data-plugin-options='{"singleItem": true, "autoPlay": 3500, "navigation": false, "pagination": true, "transitionStyle":"fade"}'>
-						<div id="1" >
-							<figure>
-                            	<%= image_tag "AdobeStock_179073967.jpeg", :size => '350x350' %>
-							</figure>
-							<div class=" p-0">
-								<h3 class="fs-90 fw-300">Welcome to Rocket Elevators </h3>
-								<h4>we take our craft out of this world</h4>
-								<a href="quote.html" class="btn bg-maroon btn-lg ">
-								<span style="color: white;">FREE QUOTE</span>
-								</a>
-								<!-- wierd bug, seems like the color is not being correctly applying in the section class so i had to manually change it in the p tag right above this comment-->
-							</div>
-						</div>
-						<div id="2">
-							<figure>
-								<%= image_tag "AdobeStock_146216308.jpeg", :size => '350x350' %>							</figure>
-							<div class="p-0">
-								<h3 class="fs-90 fw-300">Residential Solutions</h3>
-								<h4>Who walks up stairs these days ? Acess your home the better way</h4>
-								<a href="quote.html" class="btn bg-maroon btn-lg ">
-								<span style="color: white;"RESIDENTIAL QUOTE </span>
-								</a>
-							</div>
-						</div>
-						<div id="3">
-							<figure>
-								<%= image_tag "AdobeStock_179073967.jpeg", :size => '350x350' %>							</figure>
-							<div class="p-0">
-								<h3 class="fs-90 fw-300">Commercial Solutions</h3>
-								<h4>We deliver results, not promises ! Let us worry about <b>your next project</b></h4>
-								<a href="quote.html" class="btn bg-maroon btn-lg ">
-								<span style="color: white;">FREE QUOTE</span>
-								</a>
-							</div>
-						</div>
-				</div>
-				</div>
-			<%# </section> %>
-
-		<!-- /SLIDE TOP -->
+														<!-- SLIDE  -->
 
 
-		
-
-														<%# <!-- SLIDE  -->
-<%# 
-					<li data-transition="random" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Home" >
+					<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Home" >
 
 														<!-- SLIDE 1-->
 						
@@ -103,7 +54,7 @@
 							data-endelementdelay="0.1"
 							data-endspeed="1000"
 							data-endeasing="Power4.easeIn" style="z-index: 10;">
-							<a href="#services-nav" class="btn bg-maroon btn-lg scrollTo">
+							<a href="#services-nav" class="btn bg-maroon btn-lg" >
 								<span style="color: white;">DISCOVER</span> 
 							</a>
 						</div>
@@ -121,17 +72,16 @@
 							data-endelementdelay="0.1"
 							data-endspeed="1000"
 							data-endeasing="Power4.easeIn" style="z-index: 10;">
-							<a href="quote.html" class="btn bg-maroon btn-lg ">
+							<a href="quote" class="btn bg-maroon btn-lg ">
 								<span style="color: white;">FREE QUOTE</span> 
 							</a>
 						</div>
 
 						<div class="overlay dark-4"><!-- dark overlay [1 to 9 opacity] --></div>
-						<%= image_tag("AdobeStock_179073967.jpeg", data:{lazyload: asset_path("AdobeStock_179073967.jpeg"), :size => '5000x3337', bgposition: "center top", bgfit: "cover" , bgrepeat: "no-repeat"}) %>
-                        <%# <img src=" AdobeStock_179073967.jpeg" data-lazyload=" AdobeStock_179073967.jpeg" alt="" data-bgfit="cover" data-bgposition="center bottom" data-bgrepeat="no-repeat" /> %>
+						<%=image_tag("AdobeStock_179073967.jpeg", alt: "Example Image")%>
 
 
-<%# 
+
 					</li>
 
 														<!-- SLIDE 2-->
@@ -169,7 +119,9 @@
 							data-endelementdelay="0.1"
 							data-endspeed="1000"
 							data-endeasing="Power4.easeIn" style="z-index: 3;">
+
 							Residential Solutions
+
 						</div>
 
 						<div class="tp-caption customin ltl tp-resizeme medium_light_white"
@@ -185,6 +137,7 @@
 									data-endelementdelay="0.1"
 									data-endspeed="1000"
 									data-endeasing="Power4.easeIn" style="z-index: 10; width: 1000px; max-width: 1000px; white-space: normal; text-align:center;">
+									
 											Who walks up stairs these days ? <br \ > 
 											Acess your home the better way
 											
@@ -227,15 +180,14 @@
 						</div>
 
 						<div class="overlay dark-4"><!-- dark overlay [1 to 9 opacity] --></div>
-						<%# <img src=" AdobeStock_146216308.jpeg" data-lazyload=" AdobeStock_146216308.jpeg" alt="video" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"> %>
-                        <%# <%= image_tag("AdobeStock_146216308.jpeg", data:{lazyload: asset_path("AdobeStock_146216308.jpeg"), :size => '5000x3337', bgposition: "center top", bgfit: "cover" , bgrepeat: "no-repeat"}) %> %>
+						<%=image_tag("AdobeStock_146216308.jpeg", alt: "Example Image")%>
 						
-					<%# </li> %>
+					</li>
 
 																			<!-- SLIDE 3-->
-							<%# <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Commercial" > %>
+							<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Commercial" >
 
-									<%# <div class="tp-caption customin ltl tp-resizeme large_bold_white"
+									<div class="tp-caption customin ltl tp-resizeme large_bold_white"
 										data-x="center"
 										data-y="230"
 										data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
@@ -264,8 +216,8 @@
 									data-endspeed="1000"
 									data-endeasing="Power4.easeIn" style="z-index: 10; width: 1000px; max-width: 1000px; white-space: normal; text-align:center;">
 											We deliver results, not promises ! <br \ > 
-											Let us worry about <b>your next project</b> %>
-<%# 											
+											Let us worry about <b>your next project</b>
+											
 								</div>
 			
 									<div class="tp-caption customin ltl tp-resizeme"
@@ -290,8 +242,8 @@
 									<div class="tp-caption customin ltl tp-resizeme"
 										data-x="center"
 										data-y="538"
-										data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;" %>
-										<%# data-speed="800"
+										data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+										data-speed="800"
 										data-start="1550"
 										data-easing="easeOutQuad"
 										data-splitin="none"
@@ -306,13 +258,17 @@
 									</div>
 			
 									<div class="overlay dark-4"><!-- dark overlay [1 to 9 opacity] --></div>
-									<%= image_tag("AdobeStock_179073967.jpeg", data:{lazyload: asset_path("AdobeStock_179073967.jpeg"), :size => '5000x3337', bgposition: "center top", bgfit: "cover" , bgrepeat: "no-repeat"}) %>
-									<%# <img src=" AdobeStock_179073967.jpeg" data-lazyload=" AdobeStock_179073967.jpeg" alt="" data-bgfit="cover" data-bgposition="center bottom" data-bgrepeat="no-repeat" /> %>
-								<%# </li> %> %>
-				<%# </ul> %>
-			<%# </div> %>
+									<%=image_tag("AdobeStock_66781279.jpeg", alt: "Example Image")%>
 
-		<a href="#contact-nav" class="btn btn-xlg  bg-maroon fs-20 fullwidth m-0 rad-0 p-40 scrollTo" >
+			
+			
+								</li>
+			
+				</ul>
+			</div>
+		
+
+		<a href="#contact-nav" class="btn btn-xlg  bg-maroon fs-20 fullwidth m-0 rad-0 p-40 " >
 			<span class="font-lato fs-30" style="color: white">
 				Did we convince you? 
 				<strong>Contact us &raquo;</strong>
@@ -333,23 +289,19 @@
 
 					<div class="row" style=" padding-top: 10%">
 						<div class="col">
-							<a class="scrollTo" href="#portfolio-nav" >
-                            <%# <%= link_to portfolio-nav do %> 
-                                <%= image_tag "AdobeStock_122227340.jpeg", :size => '360x240' %>
-                            <%# <% end %> 
-								<%# <img class="img-fluid" src=" AdobeStock_122227340.jpeg" alt="img" /> %>
+							<a class="" href="/#portfolio-nav" >
+								<%=image_tag("AdobeStock_122227340.jpeg", alt: "Example Image", :class => 'img-fluid' )%>
 							</a>
 
 							<h3 class="mt-10">Our Award Winning Projects</h3>
 							<p>Discover just some of the projects Rocket Elevators has won awards for !</p>
-							<a href="#portfolio-nav" class="btn btn-default scrollTo" >LEARN MORE</a>
+							<a href="/#portfolio-nav" class="btn btn-default " >LEARN MORE</a>
 						</div>
 
 						<div class="col">
 							
 							<a href="residential.html">	
-                                <%= image_tag "AdobeStock_72034307.jpeg", :size => '360x240' %>
-								<%# <img class="img-fluid" src=" AdobeStock_72034307.jpeg" alt="img" /> %>
+								<%=image_tag("AdobeStock_72034307.jpeg", alt: "Example Image", :class => 'img-fluid' )%>
 							</a>
 							<h3 class="mt-10">Residential Projects</h3>
 							<p>Discover our residential solutions</p>
@@ -359,14 +311,13 @@
 
 						<div class="col">
 							
-							<a href=" commercial.html">	
-                                <%= image_tag "AdobeStock_130711085.jpeg", :size => '360x240' %>
-								<%# <img class="img-fluid" src=" AdobeStock_130711085.jpeg" alt="img" /> %>
+							<a href="commercial.html">	
+								<%=image_tag("AdobeStock_130711085.jpeg", alt: "Example Image", :class => 'img-fluid' )%>
 							</a>
 							<h3 class="mt-10">Commercial Projects</h3>
 							<p>Discover our commercial solutions</p>
 							<br />
-							<a href=" commercial.html" class="btn btn-default">LEARN MORE</a>
+							<%= link_to "READ MORE", pages_commercial_path, class:"btn btn-default" %>
 						</div>
 
 						
@@ -389,7 +340,7 @@
 
 
 			<!-- Parallax -->
-			<section class="parallax parallax-1">
+			<section class="parallax parallax-1" style="background-image: url(<%= image_path "R201.jpg" %>)">
 				<div class="overlay dark-6"><!-- dark overlay [1 to 9 opacity] --></div>
 
 				<div class="container">
@@ -398,7 +349,7 @@
 						<h1 class="fs-90 fw-300">In business since 1976</h1>
 						<a class="btn bg-maroon btn-lg" href="quote.html">REQUEST A QUOTE </a> 
 						&nbsp; OR &nbsp; 
-						<a class="btn  btn-lg btn-default scrollTo" href="#contact-nav">CONTACT US</a>
+						<a class="btn  btn-lg btn-default " href="/#contact-nav">CONTACT US</a>
 					</div>
 
 				</div>
@@ -424,7 +375,7 @@
 							<li data-filter="Artistic" class="filter"><a href="#">Artistic</a></li>
 						</ul>
 					</div>
-git add 
+
 				</div>
 
 				<div id="portfolio" class="portfolio-nogutter">
@@ -453,8 +404,8 @@ git add
 									<div class="item-box-desc">
 										<h3>Architect Wonder</h3>
 										<ul class="list-inline categories m-0">
-											<li><a href="#">Commercial</a></li>
-											<li><a href="#">Architecture</a></li>
+											<li><a href="">Commercial</a></li>
+											<li><a href="">Architecture</a></li>
 										</ul>
 									</div>
 
@@ -485,8 +436,8 @@ git add
 									<div class="item-box-desc">
 										<h3>Tunnel Tomorrow</h3>
 										<ul class="list-inline categories m-0">
-											<li><a href="#">Artistic</a></li>
-											<li><a href="#">Architecture</a></li>
+											<li><a href="">Artistic</a></li>
+											<li><a href="">Architecture</a></li>
 										</ul>
 									</div>
 
@@ -518,8 +469,8 @@ git add
 									<div class="item-box-desc">
 										<h3>House Development</h3>
 										<ul class="list-inline categories m-0">
-											<li><a href="#">Residential</a></li>
-											<li><a href="#">Material</a></li>
+											<li><a href="">Residential</a></li>
+											<li><a href="">Material</a></li>
 										</ul>
 									</div>
 
@@ -550,8 +501,8 @@ git add
 									<div class="item-box-desc">
 										<h3>Industrial Complex</h3>
 										<ul class="list-inline categories m-0">
-											<li><a href="#">Commercial</a></li>
-											<li><a href="#">Industrial</a></li>
+											<li><a href="">Commercial</a></li>
+											<li><a href="">Industrial</a></li>
 										</ul>
 									</div>
 
@@ -582,8 +533,8 @@ git add
 									<div class="item-box-desc">
 										<h3>Hotel Dwight</h3>
 										<ul class="list-inline categories m-0">
-											<li><a href="#"> commercial</a></li>
-											<li><a href="#">Industrial</a></li>
+											<li><a href=""> commercial</a></li>
+											<li><a href="">Industrial</a></li>
 										</ul>
 									</div>
 
@@ -838,7 +789,8 @@ git add
 
 
 			<!-- ceo and emp of the month -->
-			<section id="team" class="parallax parallax-1 section-xs dark tp-caption customin ltl tp-resizeme ">
+						<section id="team" class="parallax parallax-1 section-xs dark tp-caption customin ltl tp-resizeme" style="background-image: url(<%= image_path "R201.jpg" %>)">
+
 				<div class="overlay dark-6"><!-- dark overlay [1 to 9 opacity] --></div>
 				<div class="container">
 
@@ -898,10 +850,9 @@ git add
 					<div class="owl-carousel owl-padding-10 buttons-autohide controlls-over" data-plugin-options='{"singleItem": false, "items":"4", "autoPlay": 4000, "navigation": true, "pagination": false}'>
 						<!-- item 1-->
 						<div class="img-hover">
-							<%# <a href="https://elevatorworld.com/news/daily-news/modern-elevator-innovations-acquired-by-atta-elevators/"> %>
-                            link_to image_tag("https://elevatorworld.com/wp-content/uploads/2022/05/TKE-Publishes-First-Sustainability-Report.jpg"), "https://elevatorworld.com/news/daily-news/modern-elevator-innovations-acquired-by-atta-elevators/"
-								<%# <%= image_tag "https://elevatorworld.com/wp-content/uploads/2022/05/TKE-Publishes-First-Sustainability-Report.jpg", class:"img-fluid", style:"width: 300 px ;height:200px" %> %>
-							<%# </a> %>
+							<a href="https://elevatorworld.com/news/daily-news/modern-elevator-innovations-acquired-by-atta-elevators/"> 
+								 <%= image_tag "https://elevatorworld.com/wp-content/uploads/2022/05/TKE-Publishes-First-Sustainability-Report.jpg", class:"img-fluid", style:"width: 300 px ;height:200px" %> 
+							</a> 
 
 							<h4 class="text-left mt-20"><a href="https://elevatorworld.com/news/daily-news/modern-elevator-innovations-acquired-by-atta-elevators/">Modern Elevator Innovations Acquired by ATTA Elevators</a></h4>
 							<p class="text-left">Modern Elevator Innovations, with locations in Burlington, Canada, and NYC, has been acquired by ATTA Elevators Corp., a full-service elevator</p>
@@ -910,10 +861,9 @@ git add
 
 						<!--item 2-->
 						<div class="img-hover">
-							<%# <a href="https://elevatorworld.com/news/daily-news/registration-open-for-naec-2022-convention-and-expo-in-louisville/"> %>
-                            link_to image_tag("https://elevatorworld.com/wp-content/uploads/2022/05/Registration-Open-for-NAEC-2022-Convention-and-Expo-in-Louisville.jpg"), "https://elevatorworld.com/news/daily-news/registration-open-for-naec-2022-convention-and-expo-in-louisville/"
-								<%# <%= image_tag "https://elevatorworld.com/wp-content/uploads/2022/05/Registration-Open-for-NAEC-2022-Convention-and-Expo-in-Louisville.jpg", class:"img-fluid", style:"width: 300 px ;height:200px" %> %>
-							<%# </a> %>
+							<a href="https://elevatorworld.com/news/daily-news/registration-open-for-naec-2022-convention-and-expo-in-louisville/"> 
+								 <%= image_tag "https://elevatorworld.com/wp-content/uploads/2022/05/Registration-Open-for-NAEC-2022-Convention-and-Expo-in-Louisville.jpg", class:"img-fluid", style:"width: 300 px ;height:200px" %>
+							 </a> 
 
 							<h4 class="text-left mt-20"><a href="https://elevatorworld.com/news/daily-news/toapanta-tapped-to-lead-urban-elevators-l-a-operation/">NAEC 2022 Convention</a></h4>
 							<p class="text-left">Registration and room blocks are now open for the National Association of Elevator Contractors (NAEC) 2022 Convention</p>
@@ -922,39 +872,35 @@ git add
 
 						<!--item 3-->
 						<div class="img-hover">
-							<%# <a href="https://elevatorworld.com/news/daily-news/tower-with-design-style-proposed-for-brisbane-australia/"> %>
-                            link_to image_tag("https://elevatorworld.com/wp-content/uploads/2022/05/Tower-With-Design-Style-Proposed-for-Brisbane-Australia.jpg"), "https://elevatorworld.com/news/daily-news/tower-with-design-style-proposed-for-brisbane-australia/"
-								<%# <%= image_tag "https://elevatorworld.com/wp-content/uploads/2022/05/Tower-With-Design-Style-Proposed-for-Brisbane-Australia.jpg", class:"img-fluid", style:"width: 300 px ;height:200px" %> %>
-							<%# </a> %>
+							 <a href="https://elevatorworld.com/news/daily-news/tower-with-design-style-proposed-for-brisbane-australia/">
+								<%= image_tag "https://elevatorworld.com/wp-content/uploads/2022/05/Tower-With-Design-Style-Proposed-for-Brisbane-Australia.jpg", class:"img-fluid", style:"width: 300 px ;height:200px" %> 
+							</a> 
 
 							<h4 class="text-left mt-20"><a href="https://elevatorworld.com/news/daily-news/tower-with-design-style-proposed-for-brisbane-australia/">Tower With Design Style Proposed for Brisbane, Australia</a></h4>
 							<p class="text-left">The designer Rothelowman, working with developer Aris, has come up with a 20-story tower in the Kangaroo</p>
 
 						</div>
 						<div class="img-hover">
-							<%# <a href="https://elevatorworld.com/news/daily-news/20-story-luxury-apartment-tower-planned-in-houston/"> %>
-                            link_to image_tag("https://elevatorworld.com/wp-content/uploads/2022/05/20-Story-Luxury-Apartment-Tower-Planned-in-Houston.jpg"), "https://elevatorworld.com/news/daily-news/20-story-luxury-apartment-tower-planned-in-houston/"
-								<%# <%= image_tag "https://elevatorworld.com/wp-content/uploads/2022/05/20-Story-Luxury-Apartment-Tower-Planned-in-Houston.jpg", class:"img-fluid", style:"width: 300 px ;height:200px" %> %>
-							<%# </a> %>
+							 <a href="https://elevatorworld.com/news/daily-news/20-story-luxury-apartment-tower-planned-in-houston/"> 
+								 <%= image_tag "https://elevatorworld.com/wp-content/uploads/2022/05/20-Story-Luxury-Apartment-Tower-Planned-in-Houston.jpg", class:"img-fluid", style:"width: 300 px ;height:200px" %> 
+							 </a> 
 
 							<h4 class="text-left mt-20"><a href="https://elevatorworld.com/news/daily-news/20-story-luxury-apartment-tower-planned-in-houston/">20-Story Luxury Apartment Tower Planned in Houston</a></h4>
 							<p class="text-left">El Paso, Texas-based Hunt Cos. and Dallas-based StreetLights Residential announced plans on May 2 for a 20-story luxury apartment building</p>
 							
 						</div>
 						<div class="img-hover">
-							<%# <a href="https://elevatorworld.com/news/daily-news/kone-elevator-india-showcases-solutions-at-bengaluru-event/"> %>
-                            link_to image_tag("https://elevatorworld.com/wp-content/uploads/2022/05/KONE-Elevator-India-Showcases-Solutions-at-Bengaluru-Event.jpg"), "https://elevatorworld.com/news/daily-news/kone-elevator-india-showcases-solutions-at-bengaluru-event/"
-								<%# <img class="img-fluid" style="width: 300 px ;height:200px" src="https://elevatorworld.com/wp-content/uploads/2022/05/KONE-Elevator-India-Showcases-Solutions-at-Bengaluru-Event.jpg" alt=""> %>
-							<%# </a> %>
+							 <a href="https://elevatorworld.com/news/daily-news/kone-elevator-india-showcases-solutions-at-bengaluru-event/"> 
+								 <img class="img-fluid" style="width: 300 px ;height:200px" src="https://elevatorworld.com/wp-content/uploads/2022/05/KONE-Elevator-India-Showcases-Solutions-at-Bengaluru-Event.jpg" alt=""> 
+							 </a> 
 							<h4 class="text-left mt-20"><a href="https://elevatorworld.com/news/daily-news/kone-elevator-india-showcases-solutions-at-bengaluru-event/">KONE Elevator</a></h4>
 							<p class="text-left">KONE Elevator India Pvt. Ltd. showcased its digital, futuristic elevator and escalator solutions</p>
 							
 						</div>
 						<div class="img-hover">
-							<%# <a href="https://elevatorworld.com/news/daily-news/elevator-by-mid-american-for-new-times-square-subway-entrance/"> %>
-                            link_to image_tag("https://elevatorworld.com/wp-content/uploads/2022/05/Elevator-by-Mid-American-for-New-Times-Square-Subway-Entrance.jpg"), "https://elevatorworld.com/news/daily-news/elevator-by-mid-american-for-new-times-square-subway-entrance/"
-								<%# <img class="img-fluid" style="width: 300 px ;height:200px" src="https://elevatorworld.com/wp-content/uploads/2022/05/Elevator-by-Mid-American-for-New-Times-Square-Subway-Entrance.jpg" alt=""> %>
-							<%# </a> %>
+							 <a href="https://elevatorworld.com/news/daily-news/elevator-by-mid-american-for-new-times-square-subway-entrance/">
+								 <img class="img-fluid" style="width: 300 px ;height:200px" src="https://elevatorworld.com/wp-content/uploads/2022/05/Elevator-by-Mid-American-for-New-Times-Square-Subway-Entrance.jpg" alt=""> 
+							 </a> 
 							<h4 class="text-left mt-20"><a href="https://elevatorworld.com/news/daily-news/elevator-by-mid-american-for-new-times-square-subway-entrance/">Elevator by Mid-American for New Times Square Subway Entrance</a></h4>
 							<p class="text-left">Developer Jamestown LP contributed US$10 million and the NYC Metropolitan Transportation Authority (MTA) added US$40 million for a new entrance</p>
 						</div>
@@ -974,8 +920,7 @@ git add
 
 
 
-			<!-- Clients -->
-			<section id="clients-nav" class="alternate ">
+<section id="clients-nav" class="alternate ">
 				<div class="container">
 
 					<div class="heading-title heading-dotted text-center">
@@ -985,62 +930,62 @@ git add
 					<ul class="row clients-dotted list-inline" style="opacity: 65%  ;">
 						<li class="col-md-3 col-sm-3 col-6">
 							<a href="https://www.intel.ca/content/www/ca/en/homepage.html">
-								<img class="img-fluid" style="max-width: 150 px ; max-height: 150px;"  src="https://www.freepnglogos.com/uploads/intel-png-logo/brand-intel-logo-png-4.png" alt="client" />
+								<img class="img-fluid"  src="https://www.freepnglogos.com/uploads/intel-png-logo/brand-intel-logo-png-4.png" alt="client" />
 							</a>
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							<a href="https://www.amazon.ca/ref=nav_logo">
-								<img class="img-fluid" style="max-width: 150 px ; max-height: 150px;"  src="https://www.freepnglogos.com/uploads/amazon-png-logo-vector/amazon-icon-symbol-png-logo-21.png" alt="client" />
+								<img class="img-fluid"   src="https://www.freepnglogos.com/uploads/amazon-png-logo-vector/amazon-icon-symbol-png-logo-21.png" alt="client" />
 							</a>
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							<a href="https://discord.com/">
-								<img class="img-fluid" style="max-width: 150 px ; max-height: 150px;"  src="https://www.freepnglogos.com/uploads/discord-logo-png/papirus-apps-iconset-papirus-development-team-discord-icon-14.png" alt="client" />
+								<img class="img-fluid"   src="https://www.freepnglogos.com/uploads/discord-logo-png/papirus-apps-iconset-papirus-development-team-discord-icon-14.png" alt="client" />
 							</a>
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							<a href="https://www.paypal.com/ca/home">
-								<img class="img-fluid" style="max-width: 150 px ; max-height: 150px;"  src="https://islandsunjewelers.com/rebuild/wp-content/uploads/2018/05/card-paypal.png" alt="client" />
+								<img class="img-fluid"   src="https://islandsunjewelers.com/rebuild/wp-content/uploads/2018/05/card-paypal.png" alt="client" />
 							</a>
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							<a href="https://www.instagram.com/">
-								<img class="img-fluid" style="max-width: 150 px ; max-height: 150px;"  src="https://www.designbust.com/download/171/png/instagram_logo_color_icon256.png" alt="client" />
+								<img class="img-fluid"  src="https://www.designbust.com/download/171/png/instagram_logo_color_icon256.png" alt="client" />
 							</a>
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							<a href="https://www.interactivebrokers.ca/en/home.php">
-								<img class="img-fluid" style="max-width: 150 px ; max-height: 150px;"  src="https://companiesmarketcap.com/img/company-logos/256/IBKR.png" alt="client" />
+								<img class="img-fluid"   src="https://companiesmarketcap.com/img/company-logos/256/IBKR.png" alt="client" />
 							</a>
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							<a href="https://shipping.dhl.ca/landing-page-116184U-570688S.html?">
-								<img class="img-fluid" style="max-width: 150 px ; max-height: 150px;"  src="https://cdn.shopify.com/s/files/1/1109/3312/t/140/assets/dhl.png?v=105982943249339478081649131433" alt="client" />
+								<img class="img-fluid"   src="https://cdn.shopify.com/s/files/1/1109/3312/t/140/assets/dhl.png?v=105982943249339478081649131433" alt="client" />
 							</a>
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							<a href="https://www.ibm.com/ca-en?lnk=m">
-								<img class="img-fluid" style="max-width: 150 px ; max-height: 150px;"  src="https://nubela.co/proxycurl/media/dwarf/img/Misc/ibm.png" alt="client" />
+								<img class="img-fluid"   src="https://nubela.co/proxycurl/media/dwarf/img/Misc/ibm.png" alt="client" />
 							</a>
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							<a href="https://www.verizon.com/">
-								<img class="img-fluid" style="max-width: 150 px ; max-height: 150px;"  src="https://bridgingapps.org/wp-content/uploads/2021/01/small-verizon-logo.png" alt="client" />
+								<img class="img-fluid"   src="https://bridgingapps.org/wp-content/uploads/2021/01/small-verizon-logo.png" alt="client" />
 							</a>
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							<a href="https://www.att.com/">
-								<img class="img-fluid" style="max-width: 150 px ; max-height: 150px;"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5m8KJqyjZnw5n_3yZxznmW0sIvNYNBtwcEA&usqp=CAU" alt="client" />
+								<img class="img-fluid"   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5m8KJqyjZnw5n_3yZxznmW0sIvNYNBtwcEA&usqp=CAU" alt="client" />
 							</a>
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							<a href="https://www.snapchat.com/">
-								<img class="img-fluid" style="max-width: 150 px ; max-height: 150px;"  src="https://hellowoofy.com/wp-content/uploads/2021/12/snapchat-hellowoofy-social-media-management-arjun-rai-blog-management-smart-speaker-marketing.png" alt="client" />
+								<img class="img-fluid"  src="https://hellowoofy.com/wp-content/uploads/2021/12/snapchat-hellowoofy-social-media-management-arjun-rai-blog-management-smart-speaker-marketing.png" alt="client" />
 							</a>
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							<a href="https://www.nytimes.com/">
-								<img class="img-fluid" style="max-width: 150 px ; max-height: 150px;"  src="https://www.eltana.com/eltimg/eltny.png" alt="client" />
+								<img class="img-fluid"  src="https://www.eltana.com/eltimg/eltny.png" alt="client" />
 							</a>
 						</li>
 					</ul>
@@ -1207,7 +1152,5 @@ git add
 					</div>
 
 				</div>
-			<%# </section> %>
+			</section>
 			<!-- /CONTACT -->
-
-			
