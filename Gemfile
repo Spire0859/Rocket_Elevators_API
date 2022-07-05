@@ -6,6 +6,8 @@ ruby '2.7.6'
 # Bootstrap
 gem 'bootstrap', '~> 4.0.0'
 
+gem 'faker', '~> 2.21'
+
 
 gem 'owlcarousel-rails'
 
@@ -84,4 +86,4 @@ gem 'jquery-rails'
 
 gem 'jquery-ui-rails'
 
-gem 'webpacker', '~> 3.0'
+#gem 'webpacker', '~> 3.0'
