@@ -10,11 +10,94 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_05_092441) do
+ActiveRecord::Schema.define(version: 2022_07_05_182222) do
+
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.string "address_type"
+    t.string "status"
+    t.string "entity"
+    t.string "Number_street"
+    t.string "apartment"
+    t.string "city"
+    t.integer "postal_code"
+    t.text "country"
+    t.text "notes"
+    t.bigint "customer_id"
+    t.bigint "building_id"
+    t.index ["building_id"], name: "index_addresses_on_building_id"
+    t.index ["customer_id"], name: "index_addresses_on_customer_id"
+  end
+
+  create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.integer "buildingId"
+    t.string "type"
+    t.string "status"
+    t.integer "EmployeeId"
+    t.date "date_commissioning"
+    t.date "date_last_inspection"
+    t.string "certificate_of_operations"
+    t.string "information"
+    t.text "notes"
+    t.bigint "building_id"
+    t.bigint "employee_id"
+    t.index ["building_id"], name: "index_batteries_on_building_id"
+    t.index ["employee_id"], name: "index_batteries_on_employee_id"
+  end
 
   create_table "building_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.integer "CustomerId"
+    t.string "address"
+    t.string "full_name_building_admin"
+    t.string "email_building_admin"
+    t.bigint "phone_building_admin"
+    t.string "full_name_technical_authority"
+    t.bigint "phone_technical_authority"
+    t.string "email_technical_authority"
+    t.bigint "customer_id"
+    t.index ["customer_id"], name: "index_buildings_on_customer_id"
+  end
+
+  create_table "columns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.integer "columnId"
+    t.bigint "serial_number"
+    t.string "model"
+    t.string "type"
+    t.string "information"
+    t.text "notes"
+    t.bigint "battery_id"
+    t.index ["battery_id"], name: "index_columns_on_battery_id"
+  end
+
+  create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.integer "userId"
+    t.date "created_at"
+    t.string "company_name"
+    t.string "address"
+    t.string "full_name"
+    t.bigint "phone"
+    t.string "email"
+    t.text "company_description"
+    t.text "full_name_technical_authority"
+    t.bigint "phone_technical_authority"
+    t.text "email_technical_authority_manager"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_customers_on_user_id"
+  end
+
+  create_table "elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.integer "columnId"
+    t.bigint "serial_number"
+    t.string "model"
+    t.string "type"
+    t.string "information"
+    t.text "notes"
+    t.bigint "column_id"
+    t.index ["column_id"], name: "index_elevators_on_column_id"
   end
 
   create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -60,5 +143,4 @@ ActiveRecord::Schema.define(version: 2022_07_05_092441) do
   end
 
   add_foreign_key "employees", "users"
-  
 end
