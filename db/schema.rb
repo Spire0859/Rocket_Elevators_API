@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_01_053759) do
+ActiveRecord::Schema.define(version: 2022_07_05_092441) do
 
   create_table "building_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -23,6 +23,21 @@ ActiveRecord::Schema.define(version: 2022_07_01_053759) do
     t.string "firstNname"
     t.string "title"
     t.index ["user_id"], name: "index_employees_on_user_id"
+  end
+
+  create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.string "full_name"
+    t.string "company_name"
+    t.string "email"
+    t.bigint "phone"
+    t.string "porject_name"
+    t.string "project_description"
+    t.string "department"
+    t.text "message"
+    t.text "attached_file"
+    t.date "date"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_leads_on_user_id"
   end
 
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -44,4 +59,6 @@ ActiveRecord::Schema.define(version: 2022_07_01_053759) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "employees", "users"
+  
 end
