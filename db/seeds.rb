@@ -61,17 +61,3 @@ users.each do |user|
     this_user.save
 end
 
-
-    
-employees.each do |employee|
-    this_employee = Employee.where(
-        user_id: employee[:user_id], 
-    ).first_or_initialize
-
-    this_employee.update!(
-        lastName: employee[:lastName],
-        firstNname: employee[:firstNname],
-        title: employee[:title]
-    )
-    this_employee.save
-end

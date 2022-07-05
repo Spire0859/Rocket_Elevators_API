@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_01_053759) do
+ActiveRecord::Schema.define(version: 2022_07_05_143117) do
 
   create_table "building_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -18,17 +18,26 @@ ActiveRecord::Schema.define(version: 2022_07_01_053759) do
   end
 
   create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.bigint "user_id"
+    t.bigint "users_id"
     t.string "lastName"
     t.string "firstNname"
     t.string "title"
-    t.index ["user_id"], name: "index_employees_on_user_id"
+    t.index ["users_id"], name: "index_employees_on_users_id"
   end
 
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "building_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "no_app"
+    t.integer "no_floor"
+    t.integer "no_basements"
+    t.integer "no_businesses"
+    t.integer "no_parking"
+    t.integer "no_elevators"
+    t.integer "no_companies"
+    t.integer "no_occupants"
+    t.integer "no_hours"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
