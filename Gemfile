@@ -6,6 +6,8 @@ ruby '2.7.6'
 # Bootstrap
 gem 'bootstrap', '~> 4.0.0'
 
+gem 'faker', '~> 2.21'
+
 
 gem 'owlcarousel-rails'
 
