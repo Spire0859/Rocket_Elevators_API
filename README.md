@@ -1,5 +1,7 @@
 # README
 
+You will need ruby version 2.7.6 and rails version 5.2.7
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 

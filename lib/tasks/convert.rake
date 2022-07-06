@@ -60,7 +60,9 @@
 # PAGE_SIZE is the number of rows updated in a single transaction.
 # This facilitates tables where the number of rows exceeds the systems
 # memory
-PAGE_SIZE=10000
+# PAGE_SIZE=10000
+
+require 'pg'
 
 namespace :db do
   namespace :convert do
