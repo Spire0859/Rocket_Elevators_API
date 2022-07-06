@@ -12,11 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2022_07_05_214734) do
 
-  create_table "building_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.bigint "users_id"
     t.string "lastName"
@@ -45,11 +40,6 @@ ActiveRecord::Schema.define(version: 2022_07_05_214734) do
     t.integer "no_companies"
     t.integer "no_occupants"
     t.integer "no_hours"
-  end
-
-  create_table "testqs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
