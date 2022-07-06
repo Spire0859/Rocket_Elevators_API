@@ -9,13 +9,9 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-<<<<<<< HEAD
 
 ActiveRecord::Schema.define(version: 2022_07_05_183140) do
 
-=======
-ActiveRecord::Schema.define(version: 2022_07_05_182222) do
->>>>>>> 4d6a87e7870aa01c6fd4ac30115b1ee37eb40e79
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "typeAddress", null: false
     t.string "status", null: false
@@ -108,7 +104,6 @@ ActiveRecord::Schema.define(version: 2022_07_05_182222) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-<<<<<<< HEAD
 
   create_table "employees", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "first_name", null: false
@@ -118,14 +113,6 @@ ActiveRecord::Schema.define(version: 2022_07_05_182222) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-=======
-  create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "lastName"
-    t.string "firstNname"
-    t.string "title"
-    t.index ["user_id"], name: "index_employees_on_user_id"
->>>>>>> 4d6a87e7870aa01c6fd4ac30115b1ee37eb40e79
   end
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "fullNameContact", null: false
@@ -141,7 +128,6 @@ ActiveRecord::Schema.define(version: 2022_07_05_182222) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-<<<<<<< HEAD
 
   create_table "quotes", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "type_building", null: false
@@ -151,10 +137,6 @@ ActiveRecord::Schema.define(version: 2022_07_05_182222) do
     t.integer "numOccupant"
     t.string "companyName"
     t.string "email"
-=======
-  create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.string "building_type"
->>>>>>> 4d6a87e7870aa01c6fd4ac30115b1ee37eb40e79
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -170,10 +152,5 @@ ActiveRecord::Schema.define(version: 2022_07_05_182222) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-<<<<<<< HEAD
 
 end
-=======
-  add_foreign_key "employees", "users"
-end
->>>>>>> 4d6a87e7870aa01c6fd4ac30115b1ee37eb40e79
