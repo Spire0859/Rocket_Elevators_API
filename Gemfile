@@ -84,4 +84,5 @@ gem 'jquery-rails'
 
 gem 'jquery-ui-rails'
 
-#gem 'webpacker', '~> 3.0'
+gem 'faker'
+

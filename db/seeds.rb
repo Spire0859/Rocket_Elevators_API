@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require "faker"
+
 
 # User.create(email: 'mathieu.houde@codeboxx.biz',)
 # User.create(email: 'patrick.thibault@codeboxx.biz',)
@@ -87,3 +89,5 @@ Employee.create(lastName: 'Houde' ,firstNname: 'Mathieu' ,title: 'Gopher', user_
 #     )
 #     this_employee.save
 # end
+
+
