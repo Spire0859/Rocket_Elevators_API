@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 //global const which points to which section to load
 
 
