@@ -90,4 +90,69 @@ Employee.create(lastName: 'Houde' ,firstNname: 'Mathieu' ,title: 'Gopher', user_
 #     this_employee.save
 # end
 
+<<<<<<< HEAD
 
+=======
+require 'faker'
+
+1.times do
+    Buildings.create!(
+        
+        CustomerId: Faker::Number.number(digits: 5),
+        # address: ..,
+        full_name_building_admin: Faker::Name.name,
+        email_building_admin: Faker::Internet.email,
+        phone_building_admin: Faker::Config.locale = 'en-CA',
+        full_name_technical_authority: Faker::Name.name,
+        phone_technical_authority: Faker::Config.locale = 'en-CA',
+        email_technical_authority: Faker::Internet.email
+        )
+end
+
+1.times do 
+    BuildingDetails.create!(
+        
+        BuildingID: Faker::Number.number(digits: 5),
+        InformationKey: Faker::Lorem.sentence,
+        Value: Faker::Lorem.sentence
+        )
+end
+
+1.times do
+    Batteries.create!(
+        building_id: Faker::Number.number(digits: 5),
+        type: Faker::Types.rb_string(Residential, Commercial, Corporate, Hybrid).
+        status: Faker::Lorem.word,,
+        EmployeeId: Faker::Number.number(digits: 5),
+        date_commissioning: Faker::Date.between(from: '2014-09-23', to: '2014-09-25'),
+        date_last_inspection: Faker::Date.between(from: '2014-09-23', to: '2014-09-25'),
+        certificate_of_operations: Faker::Lorem.sentence,
+        information: Faker::Lorem.sentence,
+        notes: Faker::Lorem.sentence
+        )
+end
+
+1.times do
+
+    Columns.create!(
+        columnId: Faker::Number.number(digits: 5),
+        serial_number: Faker::Number.number(digits: 10),  
+        model: Faker::Lorem.word,
+        type: Faker::Types.rb_string(Residential, Commercial, Corporate),
+        information: Faker::Lorem.sentence.,
+        notes: Faker::Lorem.sentence
+        )
+end
+
+1.times do
+
+    Elevators.create!(
+        columnId: Faker::Number.number(digits: 5),
+        serial_number: Faker::Number.number(digits: 10),
+        model:Faker::Lorem.word
+        type: Faker::Types.rb_string(Residential, Commercial, Corporate),
+        information: Faker::Lorem.sentence, 
+        notes: Faker::Lorem.sentence
+        )
+end
+>>>>>>> 4d6a87e7870aa01c6fd4ac30115b1ee37eb40e79
