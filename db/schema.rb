@@ -60,11 +60,13 @@ ActiveRecord::Schema.define(version: 2022_07_05_183140) do
     t.string "information_key"
     t.text "value"
   end
+  
   create_table "building_details" options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.integer "buildingId"
     t.string "information_key"
     t.text "value"
   end
+
   create_table "columns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.bigint "batteryId", null: false
     t.string "types", null: false
@@ -75,6 +77,7 @@ ActiveRecord::Schema.define(version: 2022_07_05_183140) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.integer "userId", null: false
     t.datetime "dateCreation", null: false
@@ -90,6 +93,7 @@ ActiveRecord::Schema.define(version: 2022_07_05_183140) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
   create_table "elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.bigint "columnId", null: false
     t.string "serialNumber", null: false
@@ -116,7 +120,7 @@ ActiveRecord::Schema.define(version: 2022_07_05_183140) do
   end
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "fullNameContact", null: false
-    t.string "companyName", null: false
+    t.string "compagnyName", null: false
     t.string "email", null: false
     t.string "phoneNumber", null: false
     t.string "nameProject", null: false
@@ -135,11 +139,12 @@ ActiveRecord::Schema.define(version: 2022_07_05_183140) do
     t.integer "numFloor"
     t.integer "numElevator"
     t.integer "numOccupant"
-    t.string "companyName"
+    t.string "compagnyName"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

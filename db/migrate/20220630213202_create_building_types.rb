@@ -5,7 +5,7 @@ class CreateBuildingTypes < ActiveRecord::Migration[5.2]
       t.integer :number_floors
       t.integer :number_elevators
       t.integer :number_occupants
-      t.string :company_name
+      t.string :compagny_name
       t.string :email
       t.timestamps
     end
