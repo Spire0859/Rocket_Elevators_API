@@ -5,8 +5,22 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-
+id = 1
+type = ['residential', 'commercial', 'corporate', 'hybrid']
+100.times do
+    Quotes.create([{
+        id: id,
+        type_building: 'hybrid',
+        numApartment: Faker::Number.between(from: 10, to: 500),
+        numFloor: Faker::Number.between(from: 1, to: 80),
+        numOccupant: Faker::Number.between(from: 1, to: 80),
+        numElevator: Faker::Number.between(from: 1, to: 30),
+        companyName: Faker::Company.name,
+        email: Faker::Internet.email,
+        created_at: Faker::Date.between(from: '2019-01-01', to: '2022-10-01')
+        }])
+    id = id + 1
+end 
 # User.create(email: 'mathieu.houde@codeboxx.biz',)
 # User.create(email: 'patrick.thibault@codeboxx.biz',)
 # User.create(email: 'francis.patry-jessop@codeboxx.biz',)
@@ -66,10 +80,10 @@
 # c = User.find(1)
 
 # p User.find(1)
-User.create(email: 'mathieu.houde@codeboxx.biz' ,password: '123456' ,employee: true)
+# User.create(email: 'mathieu.houde@codeboxx.biz' ,password: '123456' ,employee: true)
 
 
-Employee.create(lastName: 'Houde' ,firstNname: 'Mathieu' ,title: 'Gopher', user_id: 1)
+# Employee.create(lastName: 'Houde' ,firstNname: 'Mathieu' ,title: 'Gopher', user_id: 1)
 
 
 
@@ -87,87 +101,87 @@ Employee.create(lastName: 'Houde' ,firstNname: 'Mathieu' ,title: 'Gopher', user_
 #     )
 #     this_employee.save
 # end
-require 'json'
+# require 'json'
 
-file = File.read('address.json')
-data_hash=JSON.parse(file)
-data_hash.keys
-data_hash['Addresses']
+# file = File.read('address.json')
+# data_hash=JSON.parse(file)
+# data_hash.keys
+# data_hash['Addresses']
 
 require 'faker'
 
-1.times do
-    Customers.create!(
-        user_id: Faker::Number.number(digits: 5),
-        created_at: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
-        company_name: Faker::Company.name,
-        full_name: Faker::Name.name,
-        phone: Faker::Config.locale = 'en-CA',
-        email: Faker::Internet.email,
-        company_description: Faker::Lorem.sentence,
-        full_name_technical_authority: Faker::Name.name,
-        phone_technical_authority: Faker::Config.locale = 'en-CA',
-        email_technical_authority_manager: Faker::Internet.email
-        )
-end
+# 1.times do
+#     Customers.create!(
+#         user_id: Faker::Number.number(digits: 5),
+#         created_at: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
+#         companyName: Faker::company.name,
+#         full_name: Faker::Name.name,
+#         phone: Faker::Config.locale = 'en-CA',
+#         email: Faker::Internet.email,
+#         company_description: Faker::Lorem.sentence,
+#         full_name_technical_authority: Faker::Name.name,
+#         phone_technical_authority: Faker::Config.locale = 'en-CA',
+#         email_technical_authority_manager: Faker::Internet.email
+#         )
+# end
 
-1.times do
-    Buildings.create!(
+# 1.times do
+#     Buildings.create!(
         
-        CustomerId: Faker::Number.number(digits: 5),
-        # address: ..,
-        full_name_building_admin: Faker::Name.name,
-        email_building_admin: Faker::Internet.email,
-        phone_building_admin: Faker::Config.locale = 'en-CA',
-        full_name_technical_authority: Faker::Name.name,
-        phone_technical_authority: Faker::Config.locale = 'en-CA',
-        email_technical_authority: Faker::Internet.email
-        )
-end
+#         CustomerId: Faker::Number.number(digits: 5),
+#         # address: ..,
+#         full_name_building_admin: Faker::Name.name,
+#         email_building_admin: Faker::Internet.email,
+#         phone_building_admin: Faker::Config.locale = 'en-CA',
+#         full_name_technical_authority: Faker::Name.name,
+#         phone_technical_authority: Faker::Config.locale = 'en-CA',
+#         email_technical_authority: Faker::Internet.email
+#         )
+# end
 
-1.times do 
-    BuildingDetails.create!(
+# 1.times do 
+#     BuildingDetails.create!(
         
-        BuildingID: Faker::Number.number(digits: 5),
-        InformationKey: Faker::Lorem.sentence,
-        Value: Faker::Lorem.sentence
-        )
-end
+#         BuildingID: Faker::Number.number(digits: 5),
+#         InformationKey: Faker::Lorem.sentence,
+#         Value: Faker::Lorem.sentence
+#         )
+# end
 
-1.times do
-    Batteries.create!(
-        building_id: Faker::Number.number(digits: 5),
-        type: Faker::Types.rb_string(Residential, Commercial, Corporate, Hybrid),
-        status: Faker::Lorem.word,
-        EmployeeId: Faker::Number.number(digits: 5),
-        date_commissioning: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
-        date_last_inspection: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
-        certificate_of_operations: Faker::Lorem.sentence,
-        information: Faker::Lorem.sentence,
-        notes: Faker::Lorem.sentence
-        )
-end
+# 1.times do
+#     Batteries.create!(
+#         building_id: Faker::Number.number(digits: 5),
+#         type: Faker::Types.rb_string(Residential, Commercial, Corporate, Hybrid),
+#         status: Faker::Lorem.word,
+#         EmployeeId: Faker::Number.number(digits: 5),
+#         date_commissioning: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
+#         date_last_inspection: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
+#         certificate_of_operations: Faker::Lorem.sentence,
+#         information: Faker::Lorem.sentence,
+#         notes: Faker::Lorem.sentence
+#         )
+# end
 
-1.times do
+# 1.times do
 
-    Columns.create!(
-        columnId: Faker::Number.number(digits: 5),
-        serial_number: Faker::Number.number(digits: 10),  
-        model: Faker::Lorem.word,
-        type: Faker::Types.rb_string(Residential, Commercial, Corporate),
-        information: Faker::Lorem.sentence.,
-        notes: Faker::Lorem.sentence
-        )
-end
+#     Columns.create!(
+#         columnId: Faker::Number.number(digits: 5),
+#         serial_number: Faker::Number.number(digits: 10),  
+#         model: Faker::Lorem.word,
+#         type: Faker::Types.rb_string(Residential, Commercial, Corporate),
+#         information: Faker::Lorem.sentence.,
+#         notes: Faker::Lorem.sentence
+#         )
+# end
 
-1.times do
+# 1.times do
 
-    Elevators.create!(
-        columnId: Faker::Number.number(digits: 5),
-        serial_number: Faker::Number.number(digits: 10),
-        model:Faker::Lorem.word
-        type: Faker::Types.rb_string(Residential, Commercial, Corporate),
-        information: Faker::Lorem.sentence, 
-        notes: Faker::Lorem.sentence
-        )
-end
+#     Elevators.create!(
+#         columnId: Faker::Number.number(digits: 5),
+#         serial_number: Faker::Number.number(digits: 10),
+#         model:Faker::Lorem.word
+#         type: Faker::Types.rb_string(Residential, Commercial, Corporate),
+#         information: Faker::Lorem.sentence, 
+#         notes: Faker::Lorem.sentence
+#         )
+# end

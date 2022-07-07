@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2022_07_05_183140) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
   create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.bigint "buildingId", null: false
     t.string "types", null: false
@@ -38,10 +39,18 @@ ActiveRecord::Schema.define(version: 2022_07_05_183140) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
   create_table "building_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.integer "number_apartments"
+    t.integer "number_floors"
+    t.integer "number_elevators"
+    t.integer "number_occupants"
+    t.string "companyName"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
   create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.bigint "customerId", null: false
     t.bigint "addressId", null: false
@@ -56,12 +65,6 @@ ActiveRecord::Schema.define(version: 2022_07_05_183140) do
   end
 
   create_table "buildings_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.integer "buildingId"
-    t.string "information_key"
-    t.text "value"
-  end
-  
-  create_table "building_details" options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.integer "buildingId"
     t.string "information_key"
     t.text "value"
@@ -81,7 +84,7 @@ ActiveRecord::Schema.define(version: 2022_07_05_183140) do
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.integer "userId", null: false
     t.datetime "dateCreation", null: false
-    t.string "compagnyName", null: false
+    t.string "companyName", null: false
     t.bigint "addressId", null: false
     t.string "fullName", null: false
     t.string "contactPhone", null: false
@@ -118,9 +121,10 @@ ActiveRecord::Schema.define(version: 2022_07_05_183140) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "fullNameContact", null: false
-    t.string "compagnyName", null: false
+    t.string "companyName", null: false
     t.string "email", null: false
     t.string "phoneNumber", null: false
     t.string "nameProject", null: false
@@ -139,7 +143,7 @@ ActiveRecord::Schema.define(version: 2022_07_05_183140) do
     t.integer "numFloor"
     t.integer "numElevator"
     t.integer "numOccupant"
-    t.string "compagnyName"
+    t.string "companyName"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

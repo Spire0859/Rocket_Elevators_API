@@ -29,7 +29,7 @@ $(".type-answer").change(function () {
         $("#numApartments").show();
         $("#numFloorsRes").show();
         $("#numOccupants").show();
-        $("#compagnyName").show();
+        $("#companyName").show();
         $("#email").show();
         $(".form-group-2").show();
         $(".type-building").val("Residential");
@@ -42,7 +42,7 @@ $(".type-answer").change(function () {
         $("#numOccupants").show();
         $("#numCages").show();
         $("#numFloorsRes").show();
-        $("#compagnyName").show();
+        $("#companyName").show();
         $("#email").show();
         $(".form-group-2").show();
         $(".type-building").val("Commercial");
@@ -55,7 +55,7 @@ $(".type-answer").change(function () {
         $("#numBusinesses").show();
         $("#numOccupants").show();
         $("#numFloorsHyb").show();
-        $("#compagnyName").show();
+        $("#companyName").show();
         $("#email").show();
         $(".form-group-2").show();
         $(".type-building").val("Corporate");
@@ -68,7 +68,7 @@ $(".type-answer").change(function () {
         $("#numOccupants").show();
         $("#numHours").show();
         $("#numFloorsHyb").show();
-        $("#compagnyName").show();
+        $("#companyName").show();
         $("#email").show();
         $(".form-group-2").show();
         $(".type-building").val("Hybrid");
