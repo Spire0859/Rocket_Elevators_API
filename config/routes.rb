@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'pages#home'
-  resources :quotes
+  resources :quotes, only: [:new, :create]
   get 'pages/back'
   get 'pages/residential'
   get 'pages/commercial'
