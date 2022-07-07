@@ -1,6 +1,6 @@
 require "pg"
 
-conn = PG.connect( dbname: 'rocket_elevators_db', :user => 'matias', :password => 'riotgames514' )
+conn = PG.connect( dbname: 'rocket_elevators_db', :user => 'spire', :password => 'yes' )
     
     conn.exec "DROP TABLE IF EXISTS FactQuotes"
     conn.exec "CREATE TABLE FactQuotes(quoteId INTEGER PRIMARY KEY, created_at DATE, compagnyName TEXT, email TEXT, nbElevator INTEGER)"
