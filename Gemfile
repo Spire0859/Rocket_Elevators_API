@@ -90,4 +90,8 @@ gem 'jquery-ui-rails'
 
 gem 'pg'
 
+source 'https://rubygems.org'
+
+gem 'rake'
+
 #gem 'webpacker', '~> 3.0'
