@@ -8,6 +8,8 @@ gem 'bootstrap', '~> 4.0.0'
 
 gem 'faker', '~> 2.21'
 
+gem 'json', '~> 1.8', '>= 1.8.3'
+
 
 gem 'owlcarousel-rails'
 
