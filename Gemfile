@@ -6,11 +6,14 @@ ruby '2.7.6'
 # Bootstrap
 gem 'bootstrap', '~> 4.0.0'
 
+<<<<<<< HEAD
 gem 'faker', '~> 2.21'
 
 gem 'json', '~> 1.8', '>= 1.8.3'
 
 
+=======
+>>>>>>> f07c02f4d0423d4eb43fd9a98ef86545b9eae448
 gem 'owlcarousel-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -88,10 +91,12 @@ gem 'jquery-rails'
 
 gem 'jquery-ui-rails'
 
-gem 'pg'
+gem 'faker', '~> 2.21'
 
 source 'https://rubygems.org'
 
 gem 'rake'
 
 #gem 'webpacker', '~> 3.0'
+
+gem "pg", "~> 1.4"
