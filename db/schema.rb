@@ -70,15 +70,12 @@ ActiveRecord::Schema.define(version: 2022_07_07_223146) do
     t.text "value"
   end
 
-<<<<<<< HEAD
-=======
   create_table "buildings_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.integer "buildingId"
     t.string "information_key"
     t.text "value"
   end
 
->>>>>>> f07c02f4d0423d4eb43fd9a98ef86545b9eae448
   create_table "columns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.bigint "batteryId", null: false
     t.string "types", null: false
