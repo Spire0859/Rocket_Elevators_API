@@ -87,8 +87,29 @@ Employee.create(lastName: 'Houde' ,firstNname: 'Mathieu' ,title: 'Gopher', user_
 #     )
 #     this_employee.save
 # end
+require 'json'
+
+file = File.read('address.json')
+data_hash=JSON.parse(file)
+data_hash.keys
+data_hash['Addresses']
 
 require 'faker'
+
+1.times do
+    Customers.create!(
+        user_id: Faker::Number.number(digits: 5),
+        created_at: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
+        company_name: Faker::Company.name,
+        full_name: Faker::Name.name,
+        phone: Faker::Config.locale = 'en-CA',
+        email: Faker::Internet.email,
+        company_description: Faker::Lorem.sentence,
+        full_name_technical_authority: Faker::Name.name,
+        phone_technical_authority: Faker::Config.locale = 'en-CA',
+        email_technical_authority_manager: Faker::Internet.email
+        )
+end
 
 1.times do
     Buildings.create!(
@@ -116,11 +137,11 @@ end
 1.times do
     Batteries.create!(
         building_id: Faker::Number.number(digits: 5),
-        type: Faker::Types.rb_string(Residential, Commercial, Corporate, Hybrid).
-        status: Faker::Lorem.word,,
+        type: Faker::Types.rb_string(Residential, Commercial, Corporate, Hybrid),
+        status: Faker::Lorem.word,
         EmployeeId: Faker::Number.number(digits: 5),
-        date_commissioning: Faker::Date.between(from: '2014-09-23', to: '2014-09-25'),
-        date_last_inspection: Faker::Date.between(from: '2014-09-23', to: '2014-09-25'),
+        date_commissioning: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
+        date_last_inspection: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
         certificate_of_operations: Faker::Lorem.sentence,
         information: Faker::Lorem.sentence,
         notes: Faker::Lorem.sentence
