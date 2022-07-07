@@ -22,7 +22,11 @@ default: &default
 
 development:
   <<: *default
+<<<<<<< HEAD
   database: rocket_elevators_db_development
+=======
+  database: rocket_elevator_db_development
+>>>>>>> f07c02f4d0423d4eb43fd9a98ef86545b9eae448
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

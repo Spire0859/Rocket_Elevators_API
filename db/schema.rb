@@ -70,6 +70,15 @@ ActiveRecord::Schema.define(version: 2022_07_07_223146) do
     t.text "value"
   end
 
+<<<<<<< HEAD
+=======
+  create_table "buildings_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.integer "buildingId"
+    t.string "information_key"
+    t.text "value"
+  end
+
+>>>>>>> f07c02f4d0423d4eb43fd9a98ef86545b9eae448
   create_table "columns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.bigint "batteryId", null: false
     t.string "types", null: false
@@ -147,6 +156,19 @@ ActiveRecord::Schema.define(version: 2022_07_07_223146) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.boolean "employee", default: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

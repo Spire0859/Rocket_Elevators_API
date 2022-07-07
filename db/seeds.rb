@@ -6,7 +6,12 @@
 # # #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 # # #   Character.create(name: 'Luke', movie: movies.first)
 
+<<<<<<< HEAD
 # # require "faker"
+=======
+require "faker"
+
+>>>>>>> f07c02f4d0423d4eb43fd9a98ef86545b9eae448
 
 
 # # # User.create(email: 'mathieu.houde@codeboxx.biz',)
@@ -107,8 +112,18 @@
 #         )
 # end
 
+<<<<<<< HEAD
 # 1.times do
 #     Buildings.create!(
+=======
+<<<<<<< HEAD
+
+=======
+require 'faker'
+
+1.times do
+    Buildings.create!(
+>>>>>>> f07c02f4d0423d4eb43fd9a98ef86545b9eae448
         
 # #         CustomerId: Faker::Number.number(digits: 5),
 # #         # address: ..,
@@ -124,6 +139,7 @@
 # # 1.times do 
 # #     BuildingDetails.create!(
         
+<<<<<<< HEAD
 #         BuildingID: Faker::Number.number(digits: 5),
 #         InformationKey: Faker::Lorem.sentence,
 #         Value: Faker::Lorem.sentence
@@ -187,3 +203,49 @@
 #     id = id + 1
 
 # end
+=======
+        BuildingID: Faker::Number.number(digits: 5),
+        InformationKey: Faker::Lorem.sentence,
+        Value: Faker::Lorem.sentence
+        )
+end
+
+1.times do
+    Batteries.create!(
+        building_id: Faker::Number.number(digits: 5),
+        type: Faker::Types.rb_string(Residential, Commercial, Corporate, Hybrid).
+        status: Faker::Lorem.word,,
+        EmployeeId: Faker::Number.number(digits: 5),
+        date_commissioning: Faker::Date.between(from: '2014-09-23', to: '2014-09-25'),
+        date_last_inspection: Faker::Date.between(from: '2014-09-23', to: '2014-09-25'),
+        certificate_of_operations: Faker::Lorem.sentence,
+        information: Faker::Lorem.sentence,
+        notes: Faker::Lorem.sentence
+        )
+end
+
+1.times do
+
+    Columns.create!(
+        columnId: Faker::Number.number(digits: 5),
+        serial_number: Faker::Number.number(digits: 10),  
+        model: Faker::Lorem.word,
+        type: Faker::Types.rb_string(Residential, Commercial, Corporate),
+        information: Faker::Lorem.sentence.,
+        notes: Faker::Lorem.sentence
+        )
+end
+
+1.times do
+
+    Elevators.create!(
+        columnId: Faker::Number.number(digits: 5),
+        serial_number: Faker::Number.number(digits: 10),
+        model:Faker::Lorem.word
+        type: Faker::Types.rb_string(Residential, Commercial, Corporate),
+        information: Faker::Lorem.sentence, 
+        notes: Faker::Lorem.sentence
+        )
+end
+>>>>>>> 4d6a87e7870aa01c6fd4ac30115b1ee37eb40e79
+>>>>>>> f07c02f4d0423d4eb43fd9a98ef86545b9eae448
