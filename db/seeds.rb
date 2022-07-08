@@ -305,7 +305,7 @@ end
 10.times do
     Batteries.create!(
         buildingId: Faker::Number.number(digits: 5),
-        type: ['Residential', 'Commercial', 'Corporate', 'Hybrid'].sample,
+        types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
         status: Faker::Lorem.word,
         employeeId: Faker::Number.number(digits: 5),
         dateCommissioning: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
@@ -353,8 +353,3 @@ end
     )
 end
 
-1.times do
-    Users.create(
-
-    )
-end

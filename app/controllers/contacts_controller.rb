@@ -3,6 +3,7 @@ class ContactsController < ApplicationController
       @contacts = Lead.new(contact_params)
       @contacts.date = DateTime.now
 
+      puts @contacts
       if @contacts.save
         flash[:notice] = 'Quote created successfully'
         redirect_to pages_quote_url   

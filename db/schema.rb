@@ -30,12 +30,12 @@ ActiveRecord::Schema.define(version: 2022_07_07_223146) do
 
   create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.integer "buildingId"
-    t.string "type"
+    t.string "types"
     t.string "status"
-    t.integer "EmployeeId"
-    t.date "date_commissioning"
-    t.date "date_last_inspection"
-    t.string "certificate_of_operations"
+    t.integer "employeeId"
+    t.date "dateCommissioning"
+    t.date "dateLastInspection"
+    t.string "certificateOperations"
     t.string "information"
     t.text "notes"
     t.bigint "building_id"
