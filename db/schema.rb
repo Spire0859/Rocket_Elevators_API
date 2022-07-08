@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_07_223146) do
+ActiveRecord::Schema.define(version: 2022_07_08_222140) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "address_type"
@@ -68,6 +68,12 @@ ActiveRecord::Schema.define(version: 2022_07_07_223146) do
     t.index ["customer_id"], name: "index_buildings_on_customer_id"
   end
 
+  create_table "buildings_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.integer "BuildingID"
+    t.string "InformationKey"
+    t.string "Value"
+  end
+
   create_table "columns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.integer "columnId"
     t.bigint "serial_number"
@@ -123,8 +129,10 @@ ActiveRecord::Schema.define(version: 2022_07_07_223146) do
     t.string "descriptionProject", null: false
     t.string "department", null: false
     t.string "message", null: false
-    t.binary "file"
-    t.datetime "date"
+    t.binary "file", null: false
+    t.datetime "date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "quotes", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -150,12 +158,6 @@ ActiveRecord::Schema.define(version: 2022_07_07_223146) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "buildings_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.integer "BuildingID"
-    t.string "InformationKey"
-    t.string "Value"
   end
 
 end
