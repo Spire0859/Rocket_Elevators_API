@@ -1,2 +1,2 @@
-class BuildingType < ApplicationRecord
+class Buildings_Types < ApplicationRecord
 end

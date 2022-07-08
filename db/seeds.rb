@@ -89,7 +89,6 @@ require "faker"
 # p User.find(1)
 # User.create(email: 'mathieu.houde@codeboxx.biz' ,password: '123456' ,employee: true)
 
-<<<<<<< HEAD
 # # # users.each do |user|
 # # #     this_user = User.where(
 # # #         email: user[:email], 
@@ -102,12 +101,6 @@ require "faker"
 # # #     )
 # # #     this_user.save
 # # # end
-=======
-# users.each do |user|
-#     this_user = User.where(
-#         email: user[:email], 
-#     ).first_or_initialize
->>>>>>> b7362727ff5e55d9afb630f911339964d33fe57d
 
 #     this_user.update!(
 #         password: user[:password],
@@ -259,13 +252,13 @@ for i in 0..199 do
     end
 
     Addresses.create!(
-        typeAddress: "Business",
+        address_type: "Business",
         status: true,
         entity: "Building",
-        :numberAndStreet => address["address1"],
-        suiteOrApartment: "",
+        :Number_street => address["address1"],
+        apartment: "",
         :city => city,
-        :postalCode => address["postalCode"],
+        :postal_code => address["postalCode"],
         country: "United States",
         notes: ""
         )
@@ -290,14 +283,14 @@ end
 
 10.times do |i|
     Buildings.create!(
-        customerId: Faker::Number.number(digits: 4),
-        :addressId => i + 1,
-        fullNameAdministrator: Faker::Name.name,
-        emailAdministrator: Faker::Internet.email,
-        phoneNumberAdministrator: Faker::Config.locale = 'en-CA',
-        fullNameTechnicalContact: Faker::Name.name,
-        emailTechnicalContact: Faker::Internet.email,
-        phoneTechnicalContact: Faker::Config.locale = 'en-CA'
+        CustomerId: Faker::Number.number(digits: 4),
+        :address => i + 1,
+        full_name_building_admin: Faker::Name.name,
+        email_building_admin: Faker::Internet.email,
+        phone_building_admin: Faker::Config.locale = 'en-CA',
+        full_name_technical_authority: Faker::Name.name,
+        email_technical_authority: Faker::Internet.email,
+        phone_technical_authority: Faker::Config.locale = 'en-CA'
         )
 end
 
@@ -312,7 +305,7 @@ end
 10.times do
     Batteries.create!(
         buildingId: Faker::Number.number(digits: 5),
-        types: Faker::Types.rb_string(Residential, Commercial, Corporate, Hybrid),
+        type: ['Residential', 'Commercial', 'Corporate', 'Hybrid'].sample,
         status: Faker::Lorem.word,
         employeeId: Faker::Number.number(digits: 5),
         dateCommissioning: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
@@ -328,7 +321,7 @@ end
         columnId: Faker::Number.number(digits: 5),
         serial_number: Faker::Number.number(digits: 10),
         model: Faker::Lorem.word,
-        type: Faker::Types.rb_string(Residential, Commercial, Corporate),
+        type: ['Residential', 'Commercial', 'Corporate', 'Hybrid'].sample,
         information: Faker::Lorem.sentence,
         notes: Faker::Lorem.sentence
         )
@@ -339,7 +332,7 @@ end
         columnId: Faker::Number.number(digits: 5),
         serial_number: Faker::Number.number(digits: 10),
         model:Faker::Lorem.word,
-        type: Faker::Types.rb_string(Residential, Commercial, Corporate),
+        type: ['Residential', 'Commercial', 'Corporate', 'Hybrid'].sample,
         information: Faker::Lorem.sentence,
         notes: Faker::Lorem.sentence
         )
@@ -357,5 +350,11 @@ end
         message: Faker::Lorem.sentence,
         file: Faker::Lorem.word,
         date: Faker::Date.between(from: '2022-01-01', to: '2022-12-31')
+    )
+end
+
+1.times do
+    Users.create(
+
     )
 end
