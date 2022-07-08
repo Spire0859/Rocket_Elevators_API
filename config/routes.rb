@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  resources :leads
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'pages#home'
   resources :quotes
-  resources :contacts
   get 'pages/back'
   get 'pages/residential'
   get 'pages/commercial'
