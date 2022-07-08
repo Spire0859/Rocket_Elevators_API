@@ -32,27 +32,16 @@ ActiveRecord::Schema.define(version: 2022_07_07_223146) do
     t.integer "buildingId"
     t.string "types"
     t.string "status"
-    t.integer "employeeId"
-    t.date "dateCommissioning"
-    t.date "dateLastInspection"
-    t.string "certificateOperations"
+    t.integer "EmployeeId"
+    t.date "date_commissioning"
+    t.date "date_last_inspection"
+    t.string "certificate_of_operations"
     t.string "information"
     t.text "notes"
     t.bigint "building_id"
     t.bigint "employee_id"
     t.index ["building_id"], name: "index_batteries_on_building_id"
     t.index ["employee_id"], name: "index_batteries_on_employee_id"
-  end
-
-  create_table "building_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.integer "number_apartments"
-    t.integer "number_floors"
-    t.integer "number_elevators"
-    t.integer "number_occupants"
-    t.string "companyName"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -66,6 +55,12 @@ ActiveRecord::Schema.define(version: 2022_07_07_223146) do
     t.string "email_technical_authority"
     t.bigint "customer_id"
     t.index ["customer_id"], name: "index_buildings_on_customer_id"
+  end
+
+  create_table "buildings_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.integer "BuildingID"
+    t.string "InformationKey"
+    t.string "Value"
   end
 
   create_table "columns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -99,9 +94,13 @@ ActiveRecord::Schema.define(version: 2022_07_07_223146) do
     t.integer "columnId"
     t.bigint "serial_number"
     t.string "model"
+    t.string "email", null: false
+    t.string "fullName", null: false
+    t.string "companyName", null: false
     t.string "types"
     t.string "information"
     t.text "notes"
+    t.datetime "dateCommissioning"
     t.bigint "column_id"
     t.index ["column_id"], name: "index_elevators_on_column_id"
   end
@@ -123,6 +122,7 @@ ActiveRecord::Schema.define(version: 2022_07_07_223146) do
     t.string "descriptionProject", null: false
     t.string "department", null: false
     t.string "message", null: false
+    t.datetime "created_at", null: false
     t.binary "file"
     t.datetime "date"
   end
@@ -150,12 +150,6 @@ ActiveRecord::Schema.define(version: 2022_07_07_223146) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "buildings_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.integer "BuildingID"
-    t.string "InformationKey"
-    t.string "Value"
   end
 
 end

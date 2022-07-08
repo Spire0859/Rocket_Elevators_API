@@ -238,8 +238,25 @@
 require 'json'
 file = File.read('lib/assets/addresses-us-250.min.json')
 data_hash = JSON.parse(file)
+
+Leads.delete_all
+Leads.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
+
+Elevators.delete_all
+Elevators.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
+
+Columns.delete_all
+Columns.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
+
+Batteries.delete_all
+Batteries.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
+
+Addresses.delete_all
+Addresses.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
+
 Buildings.delete_all
 Buildings.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
+
 Customers.delete_all
 Customers.connection.execute('ALTER TABLE customers AUTO_INCREMENT = 1')
 
@@ -252,9 +269,9 @@ for i in 0..199 do
     end
 
     Addresses.create!(
-        address_type: "Business",
-        status: true,
-        entity: "Building",
+        address_type: ['buisness', 'billing', 'home', 'shipping'].sample,
+        status: ['active', 'inactive'].sample,
+        entity: ['building', 'customer'].sample,
         :Number_street => address["address1"],
         apartment: "",
         :city => city,
@@ -294,7 +311,7 @@ end
         )
 end
 
-1.times do
+10.times do
     Buildings_Details.create!(
         BuildingID: Faker::Number.number(digits: 5),
         InformationKey: Faker::Lorem.sentence,
@@ -316,7 +333,7 @@ end
         )
 end
 
-1.times do
+10.times do
     Columns.create!(
         columnId: Faker::Number.number(digits: 5),
         serial_number: Faker::Number.number(digits: 10),
@@ -327,18 +344,22 @@ end
         )
 end
 
-1.times do
+10.times do
     Elevators.create!(
         columnId: Faker::Number.number(digits: 5),
         serial_number: Faker::Number.number(digits: 10),
+        companyName: Faker::Company.name,
         model:Faker::Lorem.word,
+        fullName: Faker::Name.name,
+        email: Faker::Internet.email,
+        dateCommissioning: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
         types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
         information: Faker::Lorem.sentence,
         notes: Faker::Lorem.sentence
         )
 end
 
-1.times do
+10.times do
     Leads.create!(
         fullNameContact: Faker::Name.name,
         companyName: Faker::Company.name,
