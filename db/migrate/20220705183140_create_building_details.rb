@@ -7,5 +7,5 @@ class CreateBuildingDetails < ActiveRecord::Migration[5.2]
       # t.date :information_key   not sure wtf this should me
     end
   end
-end
 
+end

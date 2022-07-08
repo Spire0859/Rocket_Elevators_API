@@ -3,7 +3,7 @@ class CreateCustomers < ActiveRecord::Migration[5.2]
     create_table :customers do |t|
       t.integer :userId, null: false
       t.datetime :dateCreation, null: false
-      t.string :compagnyName, null: false
+      t.string :companyName, null: false
       t.bigint  :addressId, null: false
       t.string :fullName, null: false
       t.string :contactPhone, null: false

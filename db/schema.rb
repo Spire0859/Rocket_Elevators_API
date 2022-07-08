@@ -45,6 +45,12 @@ ActiveRecord::Schema.define(version: 2022_07_07_223146) do
   end
 
   create_table "building_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.integer "number_apartments"
+    t.integer "number_floors"
+    t.integer "number_elevators"
+    t.integer "number_occupants"
+    t.string "companyName"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -62,12 +68,6 @@ ActiveRecord::Schema.define(version: 2022_07_07_223146) do
     t.index ["customer_id"], name: "index_buildings_on_customer_id"
   end
 
-  create_table "buildings_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.integer "buildingId"
-    t.string "information_key"
-    t.text "value"
-  end
-
   create_table "columns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.integer "columnId"
     t.bigint "serial_number"
@@ -80,19 +80,19 @@ ActiveRecord::Schema.define(version: 2022_07_07_223146) do
   end
 
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.integer "userId"
-    t.date "created_at"
-    t.string "company_name"
-    t.string "address"
-    t.string "full_name"
-    t.bigint "phone"
-    t.string "email"
-    t.text "company_description"
-    t.text "full_name_technical_authority"
-    t.bigint "phone_technical_authority"
-    t.text "email_technical_authority_manager"
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_customers_on_user_id"
+    t.integer "userId", null: false
+    t.datetime "dateCreation", null: false
+    t.string "companyName", null: false
+    t.bigint "addressId", null: false
+    t.string "fullName", null: false
+    t.string "contactPhone", null: false
+    t.string "email", null: false
+    t.string "description", null: false
+    t.string "fullNameTechnicalAuthority", null: false
+    t.string "technicalAuthorityPhone", null: false
+    t.string "technicalAuthorityEmail", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(version: 2022_07_07_223146) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.boolean "employee", default: false
@@ -150,6 +150,12 @@ ActiveRecord::Schema.define(version: 2022_07_07_223146) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "buildings_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.integer "BuildingID"
+    t.string "InformationKey"
+    t.string "Value"
   end
 
 end
