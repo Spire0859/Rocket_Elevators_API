@@ -1,17 +1,18 @@
 class CreateLeads < ActiveRecord::Migration[5.2]
   def change
     create_table :leads do |t|
-      t.string :full_name
-      t.string :company_name
-      t.string :email
-      t.bigint :phone
-      t.string :porject_name
-      t.string :project_description
-      t.string :department
-      t.text :message
-      t.text :attached_file
-      t.date :date
-      t.belongs_to :user
+      t.string :fullNameContact, null: false
+      t.string :companyName, null: false
+      t.string :email, null: false
+      t.string :phoneNumber, null: false
+      t.string :nameProject, null: false
+      t.string :descriptionProject, null: false
+      t.string :department, null: false
+      t.string :message, null: false
+      t.binary :file, null: false
+      t.datetime :date, null: false
+      t.datetime :created_at, null: false
+      t.timestamps
     end
   end
 end
