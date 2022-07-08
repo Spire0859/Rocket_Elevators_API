@@ -56,19 +56,19 @@
 
 
 
-# users = [
+users = [
     
-#     {email: 'mathieu.houde@codeboxx.biz' ,password: '123456' ,employee: true},
-#     {email: 'patrick.thibault@codeboxx.biz',password: '123456',employee: true},
-#     {email: 'francis.patry-jessop@codeboxx.biz',password: '123456',employee: true},
-#     {email: 'david.amyot@codeboxx.biz',password: '123456',employee: true},
-#     {email: 'marie-eve.goupil@codeboxx.biz',password: '123456',employee: true},
-#     {email: 'francois.boivin@codeboxx.biz',password: '123456',employee: true},
-#     {email: 'timothy.wever@codeboxx.biz',password: '123456',employee: true},
-#     {email: 'kiril.kleinerman@codeboxx.biz',password: '123456',employee: true},
-#     {email: 'felicia.hartono@codeboxx.biz',password: '123456',employee: true},
-#     {email: 'eileen.ai@codeboxx.biz',password: '123456',employee: true},
-# ]
+    {email: 'mathieu.houde@codeboxx.biz' ,password: '123456' ,employee: true},
+    {email: 'patrick.thibault@codeboxx.biz',password: '123456',employee: true},
+    {email: 'francis.patry-jessop@codeboxx.biz',password: '123456',employee: true},
+    {email: 'david.amyot@codeboxx.biz',password: '123456',employee: true},
+    {email: 'marie-eve.goupil@codeboxx.biz',password: '123456',employee: true},
+    {email: 'francois.boivin@codeboxx.biz',password: '123456',employee: true},
+    {email: 'timothy.wever@codeboxx.biz',password: '123456',employee: true},
+    {email: 'kiril.kleinerman@codeboxx.biz',password: '123456',employee: true},
+    {email: 'felicia.hartono@codeboxx.biz',password: '123456',employee: true},
+    {email: 'eileen.ai@codeboxx.biz',password: '123456',employee: true},
+]
 
 
 # # # employees = [
@@ -89,18 +89,17 @@
 # p User.find(1)
 # User.create(email: 'mathieu.houde@codeboxx.biz' ,password: '123456' ,employee: true)
 
-# # # users.each do |user|
-# # #     this_user = User.where(
-# # #         email: user[:email], 
-# # #     ).first_or_initialize
+users.each do |user|
+    this_user = User.where(
+        email: user[:email], 
+    ).first_or_initialize
 
-# Employee.create(lastName: 'Houde' ,firstNname: 'Mathieu' ,title: 'Gopher', user_id: 1)
-# # #     this_user.update!(
-# # #         password: user[:password],
-# # #         employee: user[:employee],
-# # #     )
-# # #     this_user.save
-# # # end
+    this_user.update!(
+        password: user[:password],
+        employee: user[:employee],
+    )
+    this_user.save
+end
 
 #     this_user.update!(
 #         password: user[:password],
@@ -235,121 +234,121 @@
 #         )
 # end
 
-require 'json'
-file = File.read('lib/assets/addresses-us-250.min.json')
-data_hash = JSON.parse(file)
-Buildings.delete_all
-Buildings.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
-Customers.delete_all
-Customers.connection.execute('ALTER TABLE customers AUTO_INCREMENT = 1')
+# require 'json'
+# file = File.read('lib/assets/addresses-us-250.min.json')
+# data_hash = JSON.parse(file)
+# Buildings.delete_all
+# Buildings.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
+# Customers.delete_all
+# Customers.connection.execute('ALTER TABLE customers AUTO_INCREMENT = 1')
 
-for i in 0..199 do
-    address = data_hash["addresses"][i]
-    if address["city"].nil?
-        city = "N/A"
-    else
-        city = address["city"]
-    end
+# for i in 0..199 do
+#     address = data_hash["addresses"][i]
+#     if address["city"].nil?
+#         city = "N/A"
+#     else
+#         city = address["city"]
+#     end
 
-    Addresses.create!(
-        address_type: "Business",
-        status: true,
-        entity: "Building",
-        :Number_street => address["address1"],
-        apartment: "",
-        :city => city,
-        :postal_code => address["postalCode"],
-        country: "United States",
-        notes: ""
-        )
-end
+#     Addresses.create!(
+#         address_type: "Business",
+#         status: true,
+#         entity: "Building",
+#         :Number_street => address["address1"],
+#         apartment: "",
+#         :city => city,
+#         :postal_code => address["postalCode"],
+#         country: "United States",
+#         notes: ""
+#         )
+# end
 
-require 'faker'
-10.times do |i|
-    Customers.create!(
-        userId: Faker::Number.number(digits: 4),
-        dateCreation: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
-        companyName: Faker::Company.name,
-        :addressId => i + 1,
-        fullName: Faker::Name.name,
-        contactPhone: Faker::Config.locale = 'en-CA',
-        email: Faker::Internet.email,
-        description: Faker::Lorem.sentence,
-        fullNameTechnicalAuthority: Faker::Name.name,
-        technicalAuthorityPhone: Faker::Config.locale = 'en-CA',
-        technicalAuthorityEmail: Faker::Internet.email
-        )
-end
+# require 'faker'
+# 10.times do |i|
+#     Customers.create!(
+#         userId: Faker::Number.number(digits: 4),
+#         dateCreation: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
+#         companyName: Faker::Company.name,
+#         :addressId => i + 1,
+#         fullName: Faker::Name.name,
+#         contactPhone: Faker::Config.locale = 'en-CA',
+#         email: Faker::Internet.email,
+#         description: Faker::Lorem.sentence,
+#         fullNameTechnicalAuthority: Faker::Name.name,
+#         technicalAuthorityPhone: Faker::Config.locale = 'en-CA',
+#         technicalAuthorityEmail: Faker::Internet.email
+#         )
+# end
 
-10.times do |i|
-    Buildings.create!(
-        CustomerId: Faker::Number.number(digits: 4),
-        :address => i + 1,
-        full_name_building_admin: Faker::Name.name,
-        email_building_admin: Faker::Internet.email,
-        phone_building_admin: Faker::Config.locale = 'en-CA',
-        full_name_technical_authority: Faker::Name.name,
-        email_technical_authority: Faker::Internet.email,
-        phone_technical_authority: Faker::Config.locale = 'en-CA'
-        )
-end
+# 10.times do |i|
+#     Buildings.create!(
+#         CustomerId: Faker::Number.number(digits: 4),
+#         :address => i + 1,
+#         full_name_building_admin: Faker::Name.name,
+#         email_building_admin: Faker::Internet.email,
+#         phone_building_admin: Faker::Config.locale = 'en-CA',
+#         full_name_technical_authority: Faker::Name.name,
+#         email_technical_authority: Faker::Internet.email,
+#         phone_technical_authority: Faker::Config.locale = 'en-CA'
+#         )
+# end
 
-1.times do
-    Buildings_Details.create!(
-        BuildingID: Faker::Number.number(digits: 5),
-        InformationKey: Faker::Lorem.sentence,
-        Value: Faker::Lorem.sentence
-        )
-end
+# 1.times do
+#     Buildings_Details.create!(
+#         BuildingID: Faker::Number.number(digits: 5),
+#         InformationKey: Faker::Lorem.sentence,
+#         Value: Faker::Lorem.sentence
+#         )
+# end
 
-10.times do
-    Batteries.create!(
-        buildingId: Faker::Number.number(digits: 5),
-        types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
-        status: Faker::Lorem.word,
-        EmployeeId: Faker::Number.number(digits: 5),
-        date_commissioning: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
-        date_last_inspection: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
-        certificate_of_operations: Faker::Lorem.sentence,
-        information: Faker::Lorem.sentence,
-        notes: Faker::Lorem.sentence
-        )
-end
+# 10.times do
+#     Batteries.create!(
+#         buildingId: Faker::Number.number(digits: 5),
+#         types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
+#         status: Faker::Lorem.word,
+#         EmployeeId: Faker::Number.number(digits: 5),
+#         date_commissioning: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
+#         date_last_inspection: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
+#         certificate_of_operations: Faker::Lorem.sentence,
+#         information: Faker::Lorem.sentence,
+#         notes: Faker::Lorem.sentence
+#         )
+# end
 
-1.times do
-    Columns.create!(
-        columnId: Faker::Number.number(digits: 5),
-        serial_number: Faker::Number.number(digits: 10),
-        model: Faker::Lorem.word,
-        types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
-        information: Faker::Lorem.sentence,
-        notes: Faker::Lorem.sentence
-        )
-end
+# 1.times do
+#     Columns.create!(
+#         columnId: Faker::Number.number(digits: 5),
+#         serial_number: Faker::Number.number(digits: 10),
+#         model: Faker::Lorem.word,
+#         types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
+#         information: Faker::Lorem.sentence,
+#         notes: Faker::Lorem.sentence
+#         )
+# end
 
-1.times do
-    Elevators.create!(
-        columnId: Faker::Number.number(digits: 5),
-        serial_number: Faker::Number.number(digits: 10),
-        model:Faker::Lorem.word,
-        types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
-        information: Faker::Lorem.sentence,
-        notes: Faker::Lorem.sentence
-        )
-end
+# 1.times do
+#     Elevators.create!(
+#         columnId: Faker::Number.number(digits: 5),
+#         serial_number: Faker::Number.number(digits: 10),
+#         model:Faker::Lorem.word,
+#         types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
+#         information: Faker::Lorem.sentence,
+#         notes: Faker::Lorem.sentence
+#         )
+# end
 
-1.times do
-    Leads.create!(
-        fullNameContact: Faker::Name.name,
-        companyName: Faker::Company.name,
-        email: Faker::Internet.email,
-        phoneNumber: Faker::Config.locale = 'en-CA',
-        nameProject: Faker::Lorem.word,
-        descriptionProject: Faker::Lorem.sentence,
-        department: Faker::Lorem.word,
-        message: Faker::Lorem.sentence,
-        file: Faker::Lorem.word,
-        date: Faker::Date.between(from: '2022-01-01', to: '2022-12-31')
-    )
-end
+# 1.times do
+#     Leads.create!(
+#         fullNameContact: Faker::Name.name,
+#         companyName: Faker::Company.name,
+#         email: Faker::Internet.email,
+#         phoneNumber: Faker::Config.locale = 'en-CA',
+#         nameProject: Faker::Lorem.word,
+#         descriptionProject: Faker::Lorem.sentence,
+#         department: Faker::Lorem.word,
+#         message: Faker::Lorem.sentence,
+#         file: Faker::Lorem.word,
+#         date: Faker::Date.between(from: '2022-01-01', to: '2022-12-31')
+#     )
+# end
 

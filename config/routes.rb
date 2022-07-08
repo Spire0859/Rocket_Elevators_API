@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'quote', to: 'pages#quote'
   get 'admin', to: 'pages#admin'
   post '/contacts', to: 'home#create'
-  # devise_for :users
+  devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #Route for Homepage
 
