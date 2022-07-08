@@ -12,6 +12,8 @@ class CreateCustomers < ActiveRecord::Migration[5.2]
       t.string :fullNameTechnicalAuthority, null: false
       t.string :technicalAuthorityPhone, null: false
       t.string :technicalAuthorityEmail, null: false
+      t.datetime :created_at, null: false
+      t.datetime :updated_at, null: false
       t.timestamps
     end
   end

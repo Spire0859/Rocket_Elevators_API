@@ -1,3 +1,3 @@
 class Leads < ApplicationRecord
-    belongs_to :users
+    has_one :users
 end

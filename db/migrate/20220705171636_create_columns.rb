@@ -1,8 +1,9 @@
 class CreateColumns < ActiveRecord::Migration[5.2]
   def change
     create_table :columns do |t|
-      t.bigint :batteryId, null: false
+      t.bigint :battery_id, null: false
       t.string :types, null: false
+      t.string :model
       t.string :numberFloorServed, null: false
       t.string :status, null: false
       t.string :information, null: false
