@@ -13,8 +13,8 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: "riotgames514"
+  username: spire
+  password: "yes"
   host: 127.0.0.1
   socket: /var/run/mysqld/mysqld.sock
   database: rocket_elevators_db
@@ -22,7 +22,11 @@ default: &default
 
 development:
   <<: *default
-  database: rocket_elevators_db
+<<<<<<< HEAD
+  database: rocket_elevators_db_development
+=======
+  database: rocket_elevator_db_development
+>>>>>>> f07c02f4d0423d4eb43fd9a98ef86545b9eae448
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -53,5 +57,5 @@ test:
 production:
   <<: *default
   database: rocket_elevators_db_production
-  username: root
-  password: "riotgames514"
+  username: spire
+  password: "yes"

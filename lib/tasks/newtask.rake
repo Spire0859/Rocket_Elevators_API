@@ -4,7 +4,7 @@ conn = PG.connect( dbname: 'rocket_elevators_db', :user => 'matias', :password =
 
 
 # Quotes.all
-# Leads.all
+# Leads.allgit
 # Customer.all
 # Elevator.all
 # Addresses.all

@@ -12,22 +12,28 @@
 			</select>
 			
 		</div>
+  <%# t.integer :id, primary_key: true, null: false
+      t.string :type_building, null: false
+      t.integer :numApartment
+      t.integer :numFloor
+      t.integer :numElevator
+      t.integer :numOccupant
+      t.string :companyName
+      t.string :email %>
 
-
-			
-
+			<div onchange="residentialMath()">
 												<!--input section -->
-					<form name="Rform" style="margin-top: 5% ; margin-left:2% ; margin-right:2%" onchange="residentialMath()" id="resSection" >							
+								<%= form_with url:quotes_path, class:"type-answer col-sm-12 m-4", local:true, method: :post do %>
 						
 							<div class="row">
 								<div class="col-md-4 res reset"  style="display: none" id="number-of-apartments">
 									<label >Nº Apparments In the building</label>
-									<input type="number" class="form-control resetv" id="Rnumber-of-apartments" min="0">
+									<input type="number" name="quotes[numApartment]" class="form-control resetv" id="Rnumber-of-apartments" min="0">
 								</div>
 								
 								<div class="col-md-4 res cor com hyb reset"  style="display: none" id="number-of-floors">
 									<label >Nº floors Contained In The Building</label>
-									<input type="number" class="form-control resetv" id="Rnumber-of-floors" min="0">
+									<input type="number" name="quotes[numFloor]" class="form-control resetv" id="Rnumber-of-floors" min="0">
 								</div>
 
 								<div class="col-md-4 res cor com hyb reset"  style="display: none" id="number-of-basements">
@@ -53,19 +59,33 @@
 						    </div>
 
 							<div class="row">
-									<div class="col-md-4 cor reset"  style="display: none" id="number-of-corporations">
-										<label for="contact:name">Nº Of Separate Tenant Companies</label>
-										<input required type="text"  class="form-control resetv" id="COnumber-of-corporations" min="0">
+									<div class="col-md-4 res cor com hyb reset"  style="display: none" id="number-of-corporations">
+										<label for="contact:name">Email</label>
+										<input required type="text" name="quotes[email]" class="form-control resetv" id="COnumber-of-corporations">
 									</div>
 
-									<div class="col-md-4 com reset"  style="display: none" id="number-of-elevators"min="0">
+									<div class="col-md-4 res cor com hyb reset"  style="display: none" id="number-of-elevators">
+										<label >Company Name</label>
+										<input  type="text" value="" name="quotes[companyName]" class="form-control resetv" id="Cnumber-of-elevators" >
+									</div>
+
+							</div>
+
+							
+							<div class="row">
+									<div class="col-md-4  res cor com hyb reset"  style="display: none" id="number-of-corporations">
+										<label for="contact:name">Nº Of Separate Tenant Companies</label>
+										<input required type="text"  class="form-control resetv" >
+									</div>
+
+									<div class="col-md-4  res cor com hyb reset"  style="display: none" >
 										<label >Nº Of Cage Elevetors To Deploy</label>
 										<input  type="number" value="" class="form-control resetv" id="Cnumber-of-elevators" min="0">
 									</div>
 
 									<div class="col-md-4 cor hyb reset"  style="display: none" id="maximum-occupancy">
 										<label for="contact:email">Max Nº Of Occupants Per Floor</label>
-										<input type="number" value="" class="form-control resetv" id="COmaximum-occupancy"min="0"	 >
+										<input type="number" name="quotes[numOccupant]"  value="" class="form-control resetv" id="COmaximum-occupancy"min="0"	 >
 									</div>
 
 							</div>
@@ -100,7 +120,7 @@
 
 							<div class="col-md-2 res cor com hyb reset " id="elevator-amount" style="display: none">
 								<label > Amount Of Elevators Needed: </label>
-								<input value="" readonly class="resetv">  </input>
+								<input value="" name="quotes[numElevator]" readonly class="resetv">  </input>
 							</div>		
 							<div class="row col-md-2 res cor com hyb reset " id="elevator-unit-price" style="display: none">
 								<label >Unit Price Of Each Elevator: </label>
@@ -120,7 +140,15 @@
 							</div>	
 
 						</div>
-			</form>
+
+
+						              <%= submit_tag "Submit", id:"submit", class:"btn btn-primary" %>
+									<input type="hidden" id="secret" name="quotes[type_building]" class="type-building">
+
+									<% end %>
+</div>
+
+
 
 
 						
