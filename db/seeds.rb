@@ -23,19 +23,19 @@ require "faker"
 
 
 
-# # # users = [
+# users = [
     
-# # #     {email: 'mathieu.houde@codeboxx.biz' ,password: '123456' ,employee: true},
-# # #     {email: 'patrick.thibault@codeboxx.biz',password: '123456',employee: true},
-# # #     {email: 'francis.patry-jessop@codeboxx.biz',password: '123456',employee: true},
-# # #     {email: 'david.amyot@codeboxx.biz',password: '123456',employee: true},
-# # #     {email: 'marie-eve.goupil@codeboxx.biz',password: '123456',employee: true},
-# # #     {email: 'francois.boivin@codeboxx.biz',password: '123456',employee: true},
-# # #     {email: 'timothy.wever@codeboxx.biz',password: '123456',employee: true},
-# # #     {email: 'kiril.kleinerman@codeboxx.biz',password: '123456',employee: true},
-# # #     {email: 'felicia.hartono@codeboxx.biz',password: '123456',employee: true},
-# # #     {email: 'eileen.ai@codeboxx.biz',password: '123456',employee: true},
-# # # ]
+#     {email: 'mathieu.houde@codeboxx.biz' ,password: '123456' ,employee: true},
+#     {email: 'patrick.thibault@codeboxx.biz',password: '123456',employee: true},
+#     {email: 'francis.patry-jessop@codeboxx.biz',password: '123456',employee: true},
+#     {email: 'david.amyot@codeboxx.biz',password: '123456',employee: true},
+#     {email: 'marie-eve.goupil@codeboxx.biz',password: '123456',employee: true},
+#     {email: 'francois.boivin@codeboxx.biz',password: '123456',employee: true},
+#     {email: 'timothy.wever@codeboxx.biz',password: '123456',employee: true},
+#     {email: 'kiril.kleinerman@codeboxx.biz',password: '123456',employee: true},
+#     {email: 'felicia.hartono@codeboxx.biz',password: '123456',employee: true},
+#     {email: 'eileen.ai@codeboxx.biz',password: '123456',employee: true},
+# ]
 
 
 # # # employees = [
@@ -54,19 +54,19 @@ require "faker"
 
 
 
-# # # users.each do |user|
-# # #     this_user = User.where(
-# # #         email: user[:email], 
-# # #     ).first_or_initialize
+# users.each do |user|
+#     this_user = User.where(
+#         email: user[:email], 
+#     ).first_or_initialize
 
-# # #     this_user.update!(
-# # #         password: user[:password],
-# # #         employee: user[:employee],
-# # #     )
-# # #     this_user.save
-# # # end
-
-# # # c = User.find(1)
+#     this_user.update!(
+#         password: user[:password],
+#         employee: user[:employee],
+#     )
+#     this_user.save
+# end
+# User.create!(email: 'mathieu.houde@codeboxx.biz' ,password: '123456' ,employee: true)
+# # # # c = User.find(1)
 
 # # # p User.find(1)
 # # User.create(email: 'mathieu.houde@codeboxx.biz' ,password: '123456' ,employee: true)
