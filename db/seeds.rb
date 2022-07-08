@@ -39,7 +39,7 @@
 # # #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 # # #   Character.create(name: 'Luke', movie: movies.first)
 
-require "faker"
+# require "faker"
 
 
 
@@ -305,12 +305,12 @@ end
 10.times do
     Batteries.create!(
         buildingId: Faker::Number.number(digits: 5),
-        type: ['Residential', 'Commercial', 'Corporate', 'Hybrid'].sample,
+        types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
         status: Faker::Lorem.word,
-        employeeId: Faker::Number.number(digits: 5),
-        dateCommissioning: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
-        dateLastInspection: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
-        certificateOperations: Faker::Lorem.sentence,
+        EmployeeId: Faker::Number.number(digits: 5),
+        date_commissioning: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
+        date_last_inspection: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
+        certificate_of_operations: Faker::Lorem.sentence,
         information: Faker::Lorem.sentence,
         notes: Faker::Lorem.sentence
         )
@@ -321,7 +321,7 @@ end
         columnId: Faker::Number.number(digits: 5),
         serial_number: Faker::Number.number(digits: 10),
         model: Faker::Lorem.word,
-        type: ['Residential', 'Commercial', 'Corporate', 'Hybrid'].sample,
+        types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
         information: Faker::Lorem.sentence,
         notes: Faker::Lorem.sentence
         )
@@ -332,7 +332,7 @@ end
         columnId: Faker::Number.number(digits: 5),
         serial_number: Faker::Number.number(digits: 10),
         model:Faker::Lorem.word,
-        type: ['Residential', 'Commercial', 'Corporate', 'Hybrid'].sample,
+        types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
         information: Faker::Lorem.sentence,
         notes: Faker::Lorem.sentence
         )

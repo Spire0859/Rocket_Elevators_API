@@ -45,7 +45,7 @@ namespace :dwh do
             # FactElevator
             Elevators.find_each do |e|
                 #puts "serialNumber is #{e.serialNumber}, dateOfCom is #{e.dateCommissioning}, buildingId is #{{e.columnId}, email is #{customerId}, projectName is #{buildingCity}"
-                conn.exec ("INSERT INTO FactElevator (serialNumber, dateOfCom, buildingId, customerId, buildingCity) VALUES ('#{e.serialNumber}', '#{e.dateCommissioning}', '#{e.columnId}', '#{c.id}', '#{a.city}')")
+                conn.exec ("INSERT INTO FactElevator (serialNumber, dateOfCom, buildingId, customerId, buildingCity) VALUES ('#{e.serial_number}', '#{e.dateCommissioning}', '#{e.columnId}', '#{c.id}', '#{a.city}')")
             end
         # DimCustomers
             Customers.find_each do |c|
