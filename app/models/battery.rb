@@ -1,4 +1,4 @@
 class Battery < ApplicationRecord
-    belongs_to :building
+    belongs_to :buildings
     has_many :columns
 end

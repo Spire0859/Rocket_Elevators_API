@@ -5,22 +5,22 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-id = 1
-type = ['residential', 'commercial', 'corporate', 'hybrid']
-100.times do
-    Quotes.create([{
-        id: id,
-        type_building: 'hybrid',
-        numApartment: Faker::Number.between(from: 10, to: 500),
-        numFloor: Faker::Number.between(from: 1, to: 80),
-        numOccupant: Faker::Number.between(from: 1, to: 80),
-        numElevator: Faker::Number.between(from: 1, to: 30),
-        companyName: Faker::Company.name,
-        email: Faker::Internet.email,
-        created_at: Faker::Date.between(from: '2019-01-01', to: '2022-10-01')
-        }])
-    id = id + 1
-end 
+# id = 1
+# type = ['residential', 'commercial', 'corporate', 'hybrid']
+# 100.times do
+#     Quotes.create([{
+#         id: id,
+#         type_building: 'hybrid',
+#         numApartment: Faker::Number.between(from: 10, to: 500),
+#         numFloor: Faker::Number.between(from: 1, to: 80),
+#         numOccupant: Faker::Number.between(from: 1, to: 80),
+#         numElevator: Faker::Number.between(from: 1, to: 30),
+#         companyName: Faker::Company.name,
+#         email: Faker::Internet.email,
+#         created_at: Faker::Date.between(from: '2019-01-01', to: '2022-10-01')
+#         }])
+#     id = id + 1
+# end 
 # User.create(email: 'mathieu.houde@codeboxx.biz',)
 # User.create(email: 'patrick.thibault@codeboxx.biz',)
 # User.create(email: 'francis.patry-jessop@codeboxx.biz',)
@@ -108,7 +108,7 @@ end
 # data_hash.keys
 # data_hash['Addresses']
 
-require 'faker'
+# require 'faker'
 
 # 1.times do
 #     Customers.create!(
@@ -185,3 +185,119 @@ require 'faker'
 #         notes: Faker::Lorem.sentence
 #         )
 # end
+
+require 'json'
+file = File.read('lib/assets/addresses-us-250.min.json')
+data_hash = JSON.parse(file)
+Buildings.delete_all
+Buildings.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
+Customers.delete_all
+Customers.connection.execute('ALTER TABLE customers AUTO_INCREMENT = 1')
+for i in 0..199 do
+    address = data_hash["addresses"][i]
+    if address["city"].nil?
+        city = "N/A"
+    else
+        city = address["city"]
+    end
+    Addresses.create!(
+        typeAddress: "Business",
+        status: true,
+        entity: "Building",
+        :numberAndStreet => address["address1"],
+        suiteOrApartment: "",
+        :city => city,
+        :postalCode => address["postalCode"],
+        country: "United States",
+        notes: ""
+        )
+end
+
+require 'faker'
+10.times do |i|
+    Customers.create!(
+        userId: Faker::Number.number(digits: 4),
+        dateCreation: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
+        compagnyName: Faker::Company.name,
+        :addressId => i + 1,
+        fullName: Faker::Name.name,
+        contactPhone: Faker::Config.locale = 'en-CA',
+        email: Faker::Internet.email,
+        description: Faker::Lorem.sentence,
+        fullNameTechnicalAuthority: Faker::Name.name,
+        technicalAuthorityPhone: Faker::Config.locale = 'en-CA',
+        technicalAuthorityEmail: Faker::Internet.email
+        )
+end
+
+10.times do |i|
+    Buildings.create!(
+        customerId: Faker::Number.number(digits: 4),
+        :addressId => i + 1,
+        fullNameAdministrator: Faker::Name.name,
+        emailAdministrator: Faker::Internet.email,
+        phoneNumberAdministrator: Faker::Config.locale = 'en-CA',
+        fullNameTechnicalContact: Faker::Name.name,
+        emailTechnicalContact: Faker::Internet.email,
+        phoneTechnicalContact: Faker::Config.locale = 'en-CA'
+        )
+end
+
+1.times do
+    Buildings_Details.create!(
+        BuildingID: Faker::Number.number(digits: 5),
+        InformationKey: Faker::Lorem.sentence,
+        Value: Faker::Lorem.sentence
+        )
+end
+
+10.times do
+    Batteries.create!(
+        buildingId: Faker::Number.number(digits: 5),
+        types: Faker::Types.rb_string(Residential, Commercial, Corporate, Hybrid),
+        status: Faker::Lorem.word,
+        employeeId: Faker::Number.number(digits: 5),
+        dateCommissioning: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
+        dateLastInspection: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
+        certificateOperations: Faker::Lorem.sentence,
+        information: Faker::Lorem.sentence,
+        notes: Faker::Lorem.sentence
+        )
+end
+
+1.times do
+    Columns.create!(
+        columnId: Faker::Number.number(digits: 5),
+        serial_number: Faker::Number.number(digits: 10),
+        model: Faker::Lorem.word,
+        type: Faker::Types.rb_string(Residential, Commercial, Corporate),
+        information: Faker::Lorem.sentence,
+        notes: Faker::Lorem.sentence
+        )
+end
+
+1.times do
+    Elevators.create!(
+        columnId: Faker::Number.number(digits: 5),
+        serial_number: Faker::Number.number(digits: 10),
+        model:Faker::Lorem.word,
+        type: Faker::Types.rb_string(Residential, Commercial, Corporate),
+        information: Faker::Lorem.sentence,
+        notes: Faker::Lorem.sentence
+        )
+end
+
+1.times do
+    Leads.create!(
+        fullNameContact: Faker::Name.name,
+        companyName: Faker::Company.name,
+        email: Faker::Internet.email,
+        phoneNumber: Faker::Config.locale = 'en-CA',
+        nameProject: Faker::Lorem.word,
+        descriptionProject: Faker::Lorem.sentence,
+        department: Faker::Lorem.word,
+        message: Faker::Lorem.sentence,
+        file: Faker::Lorem.word,
+        date: Faker::Date.between(from: '2022-01-01', to: '2022-12-31')
+    )
+end
