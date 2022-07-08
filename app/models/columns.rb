@@ -1,4 +1,4 @@
 class Column < ApplicationRecord
-    belongs_to :battery
+    belongs_to :batteries
     has_many :elevators
 end

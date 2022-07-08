@@ -193,6 +193,7 @@ Buildings.delete_all
 Buildings.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
 Customers.delete_all
 Customers.connection.execute('ALTER TABLE customers AUTO_INCREMENT = 1')
+
 for i in 0..199 do
     address = data_hash["addresses"][i]
     if address["city"].nil?
@@ -200,6 +201,7 @@ for i in 0..199 do
     else
         city = address["city"]
     end
+
     Addresses.create!(
         typeAddress: "Business",
         status: true,
@@ -218,7 +220,7 @@ require 'faker'
     Customers.create!(
         userId: Faker::Number.number(digits: 4),
         dateCreation: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
-        compagnyName: Faker::Company.name,
+        companyName: Faker::Company.name,
         :addressId => i + 1,
         fullName: Faker::Name.name,
         contactPhone: Faker::Config.locale = 'en-CA',
