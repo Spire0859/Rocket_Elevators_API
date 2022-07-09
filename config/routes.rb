@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-  resources :testqs
-=======
   resources :leads
->>>>>>> 6ef3a599e46c3368c2a3b67eb17f29b047823e48
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'pages#home'
   resources :quotes

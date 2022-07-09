@@ -117,36 +117,12 @@ ActiveRecord::Schema.define(version: 2022_07_08_222140) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
   create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-<<<<<<< HEAD
     t.bigint "users_id"
     t.string "lastName"
     t.string "firstNname"
     t.string "title"
     t.index ["users_id"], name: "index_employees_on_users_id"
-  end
-
-  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.string "name"
-    t.integer "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-=======
-    t.string "lastName"
-    t.string "firstNname"
-    t.string "title"
-=======
-  create_table "employees", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.string "firstNname", null: false
-    t.string "lastName", null: false
-    t.string "title", null: false
->>>>>>> 12ac81ee0cfe81a2638375f2e7707fc9f7072e74
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_employees_on_user_id"
->>>>>>> 7e508226ba2fcf68d9e48860353ef33fa2dd0f99
   end
 
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -164,6 +140,13 @@ ActiveRecord::Schema.define(version: 2022_07_08_222140) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "quotes", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "type_building", null: false
     t.integer "numApartment"
@@ -174,15 +157,6 @@ ActiveRecord::Schema.define(version: 2022_07_08_222140) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "no_app"
-    t.integer "no_floor"
-    t.integer "no_basements"
-    t.integer "no_businesses"
-    t.integer "no_parking"
-    t.integer "no_elevators"
-    t.integer "no_companies"
-    t.integer "no_occupants"
-    t.integer "no_hours"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
