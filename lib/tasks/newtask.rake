@@ -2,13 +2,6 @@ require "pg"
 
 conn = PG.connect( dbname: 'rocket_elevators_db', :user => 'matias', :password => 'riotgames514' )
 
-
-# Quotes.all
-# Leads.allgit
-# Customer.all
-# Elevator.all
-# Addresses.all
-
 namespace :dwh do
 
     task reset: :environment do
@@ -16,12 +9,12 @@ namespace :dwh do
         Rake::Task["dwh:FactQuotes"].invoke
         Rake::Task["dwh:FactContact"].invoke
         Rake::Task["dwh:FactElevator"].invoke
-        # Rake::Task["dwh:DimCustomers"].invoke
+        Rake::Task["dwh:DimCustomers"].invoke
     end
 
     task init: :environment do
         conn.exec "DROP TABLE IF EXISTS FactQuotes"
-        conn.exec "CREATE TABLE FactQuotes(quoteId INTEGER, created_at DATE, companyName TEXT, email TEXT, nbElevator INTEGER)"
+        conn.exec "CREATE TABLE FactQuotes(quoteId INTEGER, created_at DATE, companyName TEXT, email TEXT)"
     
         conn.exec "DROP TABLE IF EXISTS FactContact"
         conn.exec "CREATE TABLE FactContact(contactId INTEGER, created_at TEXT, companyName TEXT, email TEXT, projectName TEXT)"
@@ -35,7 +28,7 @@ namespace :dwh do
 
     task FactQuotes: :environment do
         Quotes.find_each do |q|
-            conn.exec ("INSERT INTO FactQuotes (quoteId, created_at, companyName, email, nbElevator) VALUES ('#{q.id}', '#{q.created_at}', '#{q.companyName.gsub("'", " ")}', '#{q.email}','#{q.numElevator}')")
+            conn.exec ("INSERT INTO FactQuotes (quoteId, created_at, companyName, email) VALUES ('#{q.id}', '#{q.created_at}', '#{q.companyName.gsub("'", " ")}', '#{q.email}')")
         end
     end
 
@@ -47,22 +40,23 @@ namespace :dwh do
 
     task FactElevator: :environment do
         Addresses.find_each do |a|
-            Customers.find_each do |c|
-                Elevators.find_each do |e|
-                    conn.exec ("INSERT INTO FactElevator (serialNumber, dateOfCom, buildingId, customerId, buildingCity) VALUES ('#{e.serial_number}', '#{e.dateCommissioning}', '#{e.columnId}', '#{c.id}', '#{a.city.gsub("'", " ")}')")
-                end
-            end
+            conn.exec ("INSERT INTO FactElevator (buildingCity) VALUES ('#{a.city.gsub("'", " ")}')")
         end
+                Customers.find_each do |c|
+                    conn.exec ("INSERT INTO FactElevator (customerId) VALUES ('#{c.id}")
+                end
+                    Elevators.find_each do |e|
+                        conn.exec ("INSERT INTO FactElevator (serialNumber, dateOfCom, buildingId) VALUES ('#{e.serial_number}', '#{e.dateCommissioning}', '#{e.column_id}')")
+                    end
     end
 
     task DimCustomers: :environment do
-        Elevators.find_each do |e|
-            Addresses.find_each do |a|
-                Quotes.find_each do |q|
-                    conn.exec ("INSERT INTO DimCustomers (created_at, companyName, fullNameCC, emailCC, nbElevator, customerCity) VALUES ('#{c.dateCreation}', '#{e.companyName.gsub("'", " ")}', '#{e.fullName}', '#{e.email}', '#{q.numElevator}', '#{a.city.gsub("'", " ")}}')")
-                end
+        Addresses.find_each do |e|
+            conn.exec ("INSERT INTO DimCustomers (customerCity) VALUES ('#{a.city.gsub("'", " ")}')")
+        end
+            Customers.find_each do |a|
+                conn.exec ("INSERT INTO DimCustomers (created_at, companyName, fullNameCC, emailCC, customerCity) VALUES ('#{c.dateCreation}', '#{c.companyName.gsub("'", " ")}', '#{c.fullName}', '#{c.email}')")
             end
-        end            
     end
 
 end
