@@ -117,14 +117,12 @@ ActiveRecord::Schema.define(version: 2022_07_08_222140) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "employees", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.string "firstNname", null: false
-    t.string "lastName", null: false
-    t.string "title", null: false
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_employees_on_user_id"
+  create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.bigint "users_id"
+    t.string "lastName"
+    t.string "firstNname"
+    t.string "title"
+    t.index ["users_id"], name: "index_employees_on_users_id"
   end
 
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -138,6 +136,13 @@ ActiveRecord::Schema.define(version: 2022_07_08_222140) do
     t.string "message", null: false
     t.binary "file", null: false
     t.datetime "date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

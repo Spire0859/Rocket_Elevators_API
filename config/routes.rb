@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'pages/quote'
   get 'residential', to: 'pages#residential'
   get 'commercial', to: 'pages#commercial'
-  get 'quote', to: 'pages#quote'
+  get 'quote', to: 'quotes#new'
   get 'admin', to: 'pages#admin'
   post '/contacts', to: 'home#create'
   devise_for :users
