@@ -13,7 +13,6 @@ class CreateCustomers < ActiveRecord::Migration[5.2]
       t.datetime :created_at
       t.datetime :updated_at
       t.belongs_to :user
-      t.belongs_to :addresse
       t.timestamps
     end
   end
