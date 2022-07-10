@@ -26,16 +26,16 @@ data_hash = JSON.parse(file)
 
 users = [
     
-    {email: 'mathieu.houde@codeboxx.biz' ,password: '123456' ,employee: true},
-    {email: 'patrick.thibault@codeboxx.biz',password: '123456',employee: true},
-    {email: 'francis.patry-jessop@codeboxx.biz',password: '123456',employee: true},
-    {email: 'david.amyot@codeboxx.biz',password: '123456',employee: true},
-    {email: 'marie-eve.goupil@codeboxx.biz',password: '123456',employee: true},
-    {email: 'francois.boivin@codeboxx.biz',password: '123456',employee: true},
-    {email: 'timothy.wever@codeboxx.biz',password: '123456',employee: true},
-    {email: 'kiril.kleinerman@codeboxx.biz',password: '123456',employee: true},
-    {email: 'felicia.hartono@codeboxx.biz',password: '123456',employee: true},
-    {email: 'eileen.ai@codeboxx.biz',password: '123456',employee: true},
+    {email: 'mathieu.houde@codeboxx.biz' ,password: '123456' ,admin: 1},
+    {email: 'patrick.thibault@codeboxx.biz',password: '123456',admin: true},
+    {email: 'francis.patry-jessop@codeboxx.biz',password: '123456',admin: true},
+    {email: 'david.amyot@codeboxx.biz',password: '123456',admin: true},
+    {email: 'marie-eve.goupil@codeboxx.biz',password: '123456',admin: true},
+    {email: 'francois.boivin@codeboxx.biz',password: '123456',admin: true},
+    {email: 'timothy.wever@codeboxx.biz',password: '123456',admin: true},
+    {email: 'kiril.kleinerman@codeboxx.biz',password: '123456',admin: true},
+    {email: 'felicia.hartono@codeboxx.biz',password: '123456',admin: true},
+    {email: 'eileen.ai@codeboxx.biz',password: '123456',admin: true},
 ]
 
 
@@ -44,8 +44,8 @@ employees = [
     {user_id: '1' ,lastName: 'Houde' ,firstNname: 'Mathieu' ,title: 'Gopher' },
     {user_id: '2' ,lastName: 'Thibault' ,firstNname: 'Patrick ' ,title: 'Maximalist' },
     {user_id: '3' ,lastName: 'Patry-Jessop' ,firstNname: 'Francis ' ,title: 'Captain' },
-    {user_id: '4' ,lastName: 'Amyot' ,firstNname: 'Davuser_id' ,title: 'The Man' },
-    {user_id: '5' ,lastName: 'Goupil' ,firstNname: 'Marie-Ève ' ,title: 'AI Master' },
+    {user_id: '4' ,lastName: 'Amyot' ,firstNname: 'David' ,title: 'The Man' },
+    {user_id: '5' ,lastName: 'Goupil' ,firstNname: 'Marie-Ève' ,title: 'AI Master' },
     {user_id: '6' ,lastName: 'Boivin' ,firstNname: 'François' ,title: 'The Tank' },
     {user_id: '7' ,lastName: 'Wever' ,firstNname: 'Timothy' ,title: 'Beard whisperer' },
     {user_id: '8' ,lastName: 'Kleinerman' ,firstNname: 'Kiril' ,title: 'I <3 Winnipeg' },
@@ -62,37 +62,39 @@ users.each do |user|
 
     this_user.update!(
         password: user[:password],
-        employee: user[:employee],
+        admin: user[:admin],
     )
     this_user.save
 end
 
-x2thez = User.create!(email: 'mathieu.houde@codeboxx.biz' ,password: '123456')
+Employee.create!(firstNname: 'Mathieu', lastName: 'Houde',title: 'Gopher', user_id: 1 )
+Employee.create!(firstNname: 'Patrick', lastName: 'Thibault',title: 'Maximalist', user_id: 2 )
+Employee.create!(firstNname: 'Francis', lastName: 'Patry-Jessop',title: 'Captain', user_id: 3 )
+Employee.create!(firstNname: 'David', lastName: 'Amyot',title: 'The Man', user_id: 4 )
+Employee.create!(firstNname: 'Marie-Ève', lastName: 'Goupil',title: 'AI Master', user_id: 5 )
+Employee.create!(firstNname: 'François', lastName: 'Boivin',title: 'The Tank', user_id: 6 )
+Employee.create!(firstNname: 'Timothy', lastName: 'Wever',title: 'Beard whisperer', user_id: 7 )
+Employee.create!(firstNname: 'Kiril', lastName: 'Kleinerman',title: 'I <3 Winnipeg', user_id: 8 )
+Employee.create!(firstNname: 'Felicia', lastName: 'Hartono',title: 'Scrums are too early', user_id: 9 )
+Employee.create!(firstNname: 'Eileen', lastName: 'Ai',title: 'They really are.', user_id: 10 )
 
-Employee.create!(
-    firstNname: 'tanim', 
-    lastName: 'bengali',
-    title: 'leagueIsGreat', 
-    user_id: x2thez.id
-    )
 
-y = Customer.create!(
-        user_id: x2thez.id,
-        dateCreation: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
-        created_at: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
-        companyName: Faker::Company.name,
-        fullName: Faker::Name.name,
-        contactPhone: Faker::Config.locale = 'en-CA',
-        email: Faker::Internet.email,
-        description: Faker::Lorem.sentence,
-        fullNameTechnicalAuthority: Faker::Name.name,
-        technicalAuthorityPhone: Faker::Config.locale = 'en-CA',
-        technicalAuthorityEmail: Faker::Internet.email
-        )
+# y = Customer.create!(
+#         user_id: 1,
+#         dateCreation: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
+#         created_at: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
+#         companyName: Faker::Company.name,
+#         fullName: Faker::Name.name,
+#         contactPhone: Faker::Config.locale = 'en-CA',
+#         email: Faker::Internet.email,
+#         description: Faker::Lorem.sentence,
+#         fullNameTechnicalAuthority: Faker::Name.name,
+#         technicalAuthorityPhone: Faker::Config.locale = 'en-CA',
+#         technicalAuthorityEmail: Faker::Internet.email
+#         )
 
 b = Building.create!(
-        customer_id: y.id,
-        addressOfBuilding: Faker::Address.street_name,
+        customer_id: 1,
         full_name_building_admin: Faker::Name.name,
         email_building_admin: Faker::Internet.email,
         phone_building_admin: Faker::Config.locale = 'en-CA',
@@ -101,29 +103,30 @@ b = Building.create!(
         email_technical_authority: Faker::Internet.email
             ) 
 
+            for p in 0..1 do
+                addresse = data_hash["addresses"][p]
+                if addresse["city"].nil?
+                    city = "N/A"
+                else
+                    city = addresse["city"]
+                end
+            
+               i = Addresse.create!(
+                    customer_id: y.id,
+                    building_id: b.id,
+                    address_type: ['buisness', 'billing', 'home', 'shipping'].sample,
+                    status: ['active', 'inactive'].sample,
+                    entity: ['building', 'customer'].sample,
+                    :numberAndStreet => addresse["address1"],
+                    suiteOrApartment: "",
+                    :city => city,
+                    :postal_code => addresse["postalCode"],
+                    country: "United States",
+                    notes: ""
+                    )
+             end
 
 
-
-# for i in 0..199 do
-#     address = data_hash["addresses"][i]
-#     if address["city"].nil?
-#         city = "N/A"
-#     else
-#         city = address["city"]
-#     end
-
-#     Address.create!(
-#         address_type: ['buisness', 'billing', 'home', 'shipping'].sample,
-#         status: ['active', 'inactive'].sample,
-#         entity: ['building', 'customer'].sample,
-#         :numberAndStreet => address["address1"],
-#         suiteOrApartment: "",
-#         :city => city,
-#         :postal_code => address["postalCode"],
-#         country: "United States",
-#         notes: ""
-#         )
-# end
 
 # 10.times do |i|
 #     Customer.create!(

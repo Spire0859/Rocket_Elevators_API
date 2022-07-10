@@ -9,6 +9,7 @@ class CreateBuildings < ActiveRecord::Migration[5.2]
       t.string :email_technical_authority, null: false
       t.string :phone_technical_authority, null: false
       t.belongs_to :customer
+      t.belongs_to :addresse
       t.timestamps
     end
   end
