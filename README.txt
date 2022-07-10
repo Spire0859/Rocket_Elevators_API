@@ -6,8 +6,8 @@ https://chilisincarne.xyz/
 The application uses
 	- Ruby 2.7.6
 	- Rails 5.2.8
-	- pg gem
-	- ??? gems
+	- pg gem (for the rake tasks)
+	- faker gem (for the seeds file)
 
 
 1. The website is improving and can now take quotes into account and save it to our MySQL database.
@@ -24,9 +24,10 @@ database is filled with data, it is then sent to the Postgresql DWH in different
 you can ask 3 questions via rake tasks.
 
 	Those rake task commands are:
-	1.
-	2.
-	3.
+	1. rake qs:q_one
+	2. rake qs:q_two
+	3. rake qs:q_three
+	(You may find the code at the bottom of the newtask.rake file)
 
 In case this does not function properly. It is possible to answer those questions with the 
 queries entered in DBeaver. These lines answers the the respective question numbers:
