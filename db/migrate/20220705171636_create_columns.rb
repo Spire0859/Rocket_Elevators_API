@@ -8,6 +8,7 @@ class CreateColumns < ActiveRecord::Migration[5.2]
       t.string :status, null: false
       t.string :information, null: false
       t.string :notes, null: false
+      t.belongs_to :batterie
       t.timestamps
     end
   end

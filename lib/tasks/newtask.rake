@@ -1,6 +1,6 @@
 require "pg"
 
-conn = PG.connect( host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", dbname: 'MarcosLopezDWH', :user => 'codeboxx', :password => 'Codeboxx1!' )
+conn = PG.connect(dbname: 'rocket_elevators_db', :user => 'matias', :password => 'riotgames514')
 
 namespace :dwh do
 
@@ -20,43 +20,63 @@ namespace :dwh do
         conn.exec "CREATE TABLE FactContact(contactId INTEGER, created_at TEXT, companyName TEXT, email TEXT, projectName TEXT)"
     
         conn.exec "DROP TABLE IF EXISTS FactElevator"
-        conn.exec "CREATE TABLE FactElevator(serialNumber TEXT, dateOfCom TEXT, buildingId INTEGER, customerId INTEGER, buildingCity TEXT)"
+        conn.exec "CREATE TABLE FactElevator(serialNumber TEXT, dateOfCom TEXT, buildingId INTEGER, customerId TEXT, buildingCity TEXT)"
     
         conn.exec "DROP TABLE IF EXISTS DimCustomers"
         conn.exec "CREATE TABLE DimCustomers(created_at TEXT, companyName TEXT, fullNameCC TEXT, emailCC TEXT, nbElevator INTEGER, customerCity TEXT)"    
     end
 
     task FactQuotes: :environment do
-        Quotes.find_each do |q|
+        Quote.find_each do |q|
             conn.exec ("INSERT INTO FactQuotes (quoteId, created_at, companyName, email) VALUES ('#{q.id}', '#{q.created_at}', '#{q.companyName.gsub("'", " ")}', '#{q.email}')")
         end
     end
-
+    
     task FactContact: :environment do
-        Leads.find_each do |l|
+        Lead.find_each do |l|
             conn.exec ("INSERT INTO FactContact (contactId, created_at, companyName, email, projectName) VALUES ('#{l.id}', '#{l.created_at}', '#{l.companyName.gsub("'", " ")}', '#{l.email}', '#{l.nameProject.gsub("'", " ")}')")
         end
     end
 
     task FactElevator: :environment do
-        Addresses.find_each do |a|
+        Address.find_each do |a|
             conn.exec ("INSERT INTO FactElevator (buildingCity) VALUES ('#{a.city.gsub("'", " ")}')")
         end
-                Customers.find_each do |c|
-                    conn.exec ("INSERT INTO FactElevator (customerId) VALUES ('#{c.id}")
+                Customer.find_each do |c|
+                    conn.exec ("INSERT INTO FactElevator (customerId) VALUES ('#{c.id}')")
                 end
-                    Elevators.find_each do |e|
+                    Elevator.find_each do |e|
                         conn.exec ("INSERT INTO FactElevator (serialNumber, dateOfCom, buildingId) VALUES ('#{e.serial_number}', '#{e.dateCommissioning}', '#{e.column_id}')")
                     end
     end
 
     task DimCustomers: :environment do
-        Addresses.find_each do |e|
+        Address.find_each do |e|
             conn.exec ("INSERT INTO DimCustomers (customerCity) VALUES ('#{a.city.gsub("'", " ")}')")
         end
-            Customers.find_each do |a|
-                conn.exec ("INSERT INTO DimCustomers (created_at, companyName, fullNameCC, emailCC, customerCity) VALUES ('#{c.dateCreation}', '#{c.companyName.gsub("'", " ")}', '#{c.fullName}', '#{c.email}')")
+            Customer.find_each do |c|
+                conn.exec ("INSERT INTO DimCustomers (created_at, companyName, fullNameCC, emailCC) VALUES ('#{c.dateCreation}', '#{c.companyName.gsub("'", " ")}', '#{c.fullName}', '#{c.email}')")
             end
+    end
+
+end
+
+namespace :qs do
+    
+    q_one = "SELECT COUNT(contactId), created_at FROM FactContact GROUP BY MONTH(created_at);"
+    q_two = "SELECT COUNT(quoteId), created_at FROM FactQuotes GROUP BY MONTH(created_at);"
+    q_three = "SELECT id, nbElevator FROM DimCustomers;"
+    
+    task q_one: :environment do
+        ActiveRecord::Base.connection.execute(q_one)
+    end
+
+    task q_two: :environment do
+        ActiveRecord::Base.connection.execute(q_two)
+    end
+
+    task q_three: :environment do
+        ActiveRecord::Base.connection.execute(q_three)
     end
 
 end
