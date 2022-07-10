@@ -2,7 +2,7 @@ namespace :qOne do
     desc "Gives the result of Question 1"
     q_one = "SELECT COUNT(contactId), created_at FROM FactContact GROUP BY MONTH(created_at);"
     q_two = "SELECT COUNT(quoteId), created_at FROM FactQuotes GROUP BY MONTH(created_at);"
-    q_three = "SELECT DimCustomersID, Nb_of_elevator FROM DimCustomers;"
+    q_three = "SELECT id, nbElevator FROM DimCustomers;"
     
     task q_one: :environment do
         ActiveRecord::Base.connection.execute(q_one)
