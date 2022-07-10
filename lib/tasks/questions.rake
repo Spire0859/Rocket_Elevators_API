@@ -1,4 +1,4 @@
-namespace :qOne do
+namespace :questions do
     desc "Gives the result of Question 1"
     q_one = "SELECT COUNT(contactId), created_at FROM FactContact GROUP BY MONTH(created_at);"
     q_two = "SELECT COUNT(quoteId), created_at FROM FactQuotes GROUP BY MONTH(created_at);"
