@@ -1,6 +1,6 @@
 class CreateBuildingDetails < ActiveRecord::Migration[5.2]
   def change
-    create_table :buildings_details do |t|
+    create_table :building_details do |t|
       t.integer :BuildingID
       t.string :InformationKey
       t.text :Value

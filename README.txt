@@ -1,0 +1,72 @@
+Project Title : The Rocket Elevators Database
+https://chilisincarne.xyz/
+
+	Project Description
+*WHAT THE APPLICATION DOES:
+The application uses
+	- Ruby 2.7.6
+	- Rails 5.2.8
+	- pg gem
+	- ??? gems
+
+
+1. The website is improving and can now take quotes into account and save it to our MySQL database.
+	To get there, just click on "Get a Quote" from the banners at the top of the main page.
+2. It can also takes messages via the CONTACT US form at the bottom of the main page.
+3. You can create an account or log in in the "LOG IN" section at the top right of any page.
+4. If you have an admin account, you can just use your admin email address (from
+the employee list) and enter the password : 123456 	// (Very safe!)
+
+WHY THIS TECHNOLOGY?
+MySQL is used as an operative database were most of the data get treated. But we also used a
+Postgresql database that act as a Database Warehouse in the background. When the MySQL
+database is filled with data, it is then sent to the Postgresql DWH in different tables and
+you can ask 3 questions via rake tasks.
+
+	Those rake task commands are:
+	1.
+	2.
+	3.
+
+In case this does not function properly. It is possible to answer those questions with the 
+queries entered in DBeaver. These lines answers the the respective question numbers:
+
+	1. SELECT COUNT(contactId), created_at
+	   FROM FactContact
+	   GROUP BY MONTH(created_at);
+	
+	2. SELECT COUNT(quoteId), created_at
+	   FROM FactQuotes
+	   GROUP BY MONTH(created_at);
+	
+	3. SELECT id, nbElevator
+	   FROM DimCustomers;
+
+*CHALLENGES WE FACED
+We faced some difficulties while developing these new features. The Rails structure feels
+quite complete, but overwhelming at first. Understanding that most files are related and
+have dependencies confused us a lot. It was also the first time that our crew had to deal
+with databases. Setting everything as a whole was a great learning experience that did
+traumatized the crew a little bit. We are now more comfortable with the technology than before
+while only sacrificing our souls during the process... fair exchange I say.
+
+
+*HOW TO USE THE PROJECT
+------------------------------------------------------------------
+	LOG IN
+You can create an account following the usual steps.
+
+	ADMIN
+To enter as an Admin, you need to seed it first to make it work.
+username: [employee email]
+password: 123456
+
+	CONTACT US
+Just fill the input fields and send it via the "Submit" button at
+the bottom. It will be saved in the database.
+------------------------------------------------------------------
+	-- Crew members of this project --
+Captain Pan - Marcos Salvador III López
+First Mate - Matias Mansilla
+Naked Mate - Tanim Khondaker
+Carlos - Carlos Alexis Almanzar

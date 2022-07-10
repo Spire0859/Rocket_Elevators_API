@@ -1,19 +1,18 @@
 class CreateCustomers < ActiveRecord::Migration[5.2]
   def change
     create_table :customers do |t|
-      t.integer :userId, null: false
-      t.datetime :dateCreation, null: false
+      t.datetime :dateCreation
       t.string :companyName, null: false
-      t.bigint  :addressId, null: false
       t.string :fullName, null: false
       t.string :contactPhone, null: false
-      t.string  :email, null: false
+      t.string :email, null: false
       t.string :description, null: false
-      t.string :fullNameTechnicalAuthority, null: false
-      t.string :technicalAuthorityPhone, null: false
-      t.string :technicalAuthorityEmail, null: false
-      t.datetime :created_at, null: false
-      t.datetime :updated_at, null: false
+      t.string :fullNameTechnicalAuthority
+      t.string :technicalAuthorityPhone
+      t.string :technicalAuthorityEmail
+      t.datetime :created_at
+      t.datetime :updated_at
+      t.belongs_to :user
       t.timestamps
     end
   end

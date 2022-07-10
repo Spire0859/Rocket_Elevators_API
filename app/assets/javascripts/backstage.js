@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 //global const which points to which section to load
 
 
@@ -27,7 +19,7 @@ function reset(){
 
 
 function section(){
-    var pageSlect = document.getElementById("building-type").value;
+    var pageSlect = document.getElementById("building_type").value;
 
     if (pageSlect == "residential") {
         reset();
@@ -90,7 +82,7 @@ function residentialMath(){
    var instalationFee = 0;
 
                     // math for res section
-if (document.getElementById("building-type").value == "residential") {
+if (document.getElementById("building_type").value == "residential") {
 
     if( document.getElementById("Rstandard").checked == true ) {
         tierPercentage = 10;
@@ -133,7 +125,7 @@ if (document.getElementById("building-type").value == "residential") {
 
                     //math for commercial sections
 
-    if (document.getElementById("building-type").value == "commercial"){
+    if (document.getElementById("building_type").value == "commercial"){
 
         if( document.getElementById("Rstandard").checked == true ) {
             tierPercentage = 10;
@@ -164,7 +156,7 @@ if (document.getElementById("building-type").value == "residential") {
             document.getElementById("final-price").children[1].value = FinalP.toLocaleString("en-US", {style:"currency", currency:"USD"});
     }
 
-    if (document.getElementById("building-type").value == "hybrid" || document.getElementById("building-type").value == "corporate"){
+    if (document.getElementById("building_type").value == "hybrid" || document.getElementById("building_type").value == "corporate"){
 
         
 
@@ -209,11 +201,7 @@ if (document.getElementById("building-type").value == "residential") {
                 document.getElementById("elevator-total-price").children[1].value = EleCost.toLocaleString("en-US", {style:"currency", currency:"USD"});
                 document.getElementById("installation-fees").children[1].value = instalationFee.toLocaleString("en-US", {style:"currency", currency:"USD"});
                 document.getElementById("final-price").children[1].value = FinalP.toLocaleString("en-US", {style:"currency", currency:"USD"});
-
-
-
-
-        
+   
 
     }
 

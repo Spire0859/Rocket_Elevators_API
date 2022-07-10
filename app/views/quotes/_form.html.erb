@@ -1,0 +1,134 @@
+<%= form_with model: @quote do |form| %>
+<%# <%= form_with(model: quote, local: true) do |form| %>
+<%#asd %>
+
+	<div class="field" style="text-align: center; margin-top: 4%;">
+		<%= form.label :building_type %>
+		<%= form.select(:building_type, ['Residential', 'Commercial', 'Corporate', 'Hybrid']) %>
+	</div>
+			
+
+								<!--input section -->
+	<form name="Rform" style="margin-top: 5% ; margin-left:2% ; margin-right:2%" onchange="residentialMath()" id="resSection" >							
+		
+		<div class="row">
+			<div class="col-md-4 res reset"  style="display: none" id="number-of-apartments">
+				<%# <label >Nº Apparments In the building</label>
+				<input type="number" class="form-control resetv" id="Rnumber-of-apartments" min="0"> %>
+				<%= form.label :no_app %>
+    			<%= form.number_field :no_app %>
+			</div>
+			
+			<div class="col-md-4 res cor com hyb reset"  style="display: none" id="number-of-floors">
+				<%# <label >Nº floors Contained In The Building</label>
+				<input type="number" class="form-control resetv" id="Rnumber-of-floors" min="0"> %>
+				<%= form.label :no_floor %>
+    			<%= form.number_field :no_floor %>
+			</div>
+
+			<div class="col-md-4 res cor com hyb reset"  style="display: none" id="number-of-basements">
+				<%# <label>Nº Basements</label>
+				<input  type="number"  class="form-control resetv" id="Rnumber-of-basements" min="0"> %>
+				<%= form.label :no_basements %>
+    			<%= form.number_field :no_basements %>
+			</div>
+		</div>		
+		
+		<div class="row">
+			<div class="col-md-4 com hyb reset"  style="display: none" id="number-of-companies">
+				<%# <label >Nº Of Distinct business</label>
+				<input rtype="number" value="" class="form-control resetv" id="Cnumber-of-companies" min="0"> %>
+				<%= form.label :no_companies %>
+    			<%= form.number_field :no_companies %>
+			</div>
+
+			<div class="col-md-4 hyb reset "  style="display: none" id="business-hours" >
+				<%# <label >Hours Of Activity</label>
+				<input type="number" value="" class="form-control resetv"  id="hbusiness-hours" min="0"> %>
+				<%= form.label :no_hours %>
+    			<%= form.number_field :no_hours %>
+			</div>	
+
+			<div class="col-md-4 com cor hyb reset"  style="display: none" id="number-of-parking-spots">
+				<%# <label >Nº Of Parking Spaces</label>
+				<input type="number" value="" class="form-control resetv"  id="Cnumber-of-parking-spots" min="0"> %>
+				<%= form.label :no_parking %>
+    			<%= form.number_field :no_parking %>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4 cor reset"  style="display: none" id="number-of-corporations">
+				<%# <label for="contact:name">Nº Of Separate Tenant Companies</label>
+				<input required type="text"  class="form-control resetv" id="COnumber-of-corporations" min="0"> %>
+				<%= form.label :no_occupants %>
+    			<%= form.number_field :no_occupants %>
+			</div>
+
+			<div class="col-md-4 com reset"  style="display: none" id="number-of-elevators"min="0">
+				<%# <label >Nº Of Cage Elevetors To Deploy</label>
+				<input  typeS="number" value="" class="form-control resetv" id="Cnumber-of-elevators" min="0"> %>
+				<%= form.label :no_elevators %>
+    			<%= form.number_field :no_elevators %>
+			</div>
+
+			<div class="col-md-4 cor hyb reset"  style="display: none" id="maximum-occupancy">
+				<%# <label for="contact:email">Max Nº Of Occupants Per Floor</label>
+				<input type="number" value="" class="form-control resetv" id="COmaximum-occupancy"min="0"> %>
+				<%= form.label :no_elevators %>
+    			<%= form.number_field :no_elevators %>
+			</div>
+		</div>
+		
+						<!--tier secletion-->
+		<div class="row" >
+			<div class="col-md-4 res cor com hyb reset " style="display: none">
+				<label for="contact:name">Standard</label>
+				<input type="radio" name="Rtier" value="Standard" id="Rstandard" checked>
+				
+			</div>
+			<div class="col-md-4 res cor com hyb reset " style="display: none">
+				<label for="contact:name">Premium</label>
+				<input type="radio" name="Rtier" value="Premium" id="Rpremium">
+				
+			</div>
+			<div class="col-md-4 res cor com hyb reset " style="display: none">
+				<label for="contact:name">Excelium</label>
+				<input type="radio" name="Rtier" value="Excelium" id="Rexcelium">
+				
+			</div>
+		</div>		
+				
+	
+		
+		<div class="row ">
+
+			<div class="col-md-2 res cor com hyb reset " id="elevator-amount" style="display: none">
+				<label > Amount Of Elevators Needed: </label>
+				<input value="" readonly class="resetv">  </input>
+			</div>		
+			<div class="row col-md-2 res cor com hyb reset " id="elevator-unit-price" style="display: none">
+				<label >Unit Price Of Each Elevator: </label>
+				<input value="" readonly class="resetv"> </input>
+			</div>
+			<div class="row col-md-2 res cor com hyb reset " id="elevator-total-price" style="display: none">
+				<label for="contact:name"> Total price Of The Elevators: </label>
+				<input value="" readonly class="resetv"> </input>
+			</div>			
+			<div class="row col-md-2 res cor com hyb reset " id="installation-fees" style="display: none">
+				<label >Installation Fees: </label>
+				<input value="" readonly class="resetv"> </input>
+			</div>	
+			<div class="row col-md-2 res cor com hyb reset " id="final-price" style="display: none">
+				<label >Final price: </label>
+				<input value="" readonly class="resetv"> </input>
+			</div>	
+
+		</div>
+
+		<div class="form-control">
+			<%= form.submit 'Submit' %>
+		</div>
+						
+	</form>
+<% end %>
