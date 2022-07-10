@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 2022_07_08_222140) do
   end
 
   create_table "columns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.bigint "battery_id", null: false
     t.string "types", null: false
     t.string "model"
     t.string "numberFloorServed", null: false
@@ -103,7 +102,6 @@ ActiveRecord::Schema.define(version: 2022_07_08_222140) do
   end
 
   create_table "elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.bigint "columnId", null: false
     t.string "serial_number", null: false
     t.string "companyName", null: false
     t.string "model", null: false
@@ -118,6 +116,8 @@ ActiveRecord::Schema.define(version: 2022_07_08_222140) do
     t.string "notes", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "column_id"
+    t.index ["column_id"], name: "index_elevators_on_column_id"
   end
 
   create_table "employees", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|

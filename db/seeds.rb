@@ -24,6 +24,49 @@ data_hash = JSON.parse(file)
 # Customers.delete_all
 # Customers.connection.execute('ALTER TABLE customers AUTO_INCREMENT = 1')
 
+users = [
+    
+    {email: 'mathieu.houde@codeboxx.biz' ,password: '123456' ,employee: true},
+    {email: 'patrick.thibault@codeboxx.biz',password: '123456',employee: true},
+    {email: 'francis.patry-jessop@codeboxx.biz',password: '123456',employee: true},
+    {email: 'david.amyot@codeboxx.biz',password: '123456',employee: true},
+    {email: 'marie-eve.goupil@codeboxx.biz',password: '123456',employee: true},
+    {email: 'francois.boivin@codeboxx.biz',password: '123456',employee: true},
+    {email: 'timothy.wever@codeboxx.biz',password: '123456',employee: true},
+    {email: 'kiril.kleinerman@codeboxx.biz',password: '123456',employee: true},
+    {email: 'felicia.hartono@codeboxx.biz',password: '123456',employee: true},
+    {email: 'eileen.ai@codeboxx.biz',password: '123456',employee: true},
+]
+
+
+employees = [
+    
+    {user_id: '1' ,lastName: 'Houde' ,firstNname: 'Mathieu' ,title: 'Gopher' },
+    {user_id: '2' ,lastName: 'Thibault' ,firstNname: 'Patrick ' ,title: 'Maximalist' },
+    {user_id: '3' ,lastName: 'Patry-Jessop' ,firstNname: 'Francis ' ,title: 'Captain' },
+    {user_id: '4' ,lastName: 'Amyot' ,firstNname: 'Davuser_id' ,title: 'The Man' },
+    {user_id: '5' ,lastName: 'Goupil' ,firstNname: 'Marie-Ève ' ,title: 'AI Master' },
+    {user_id: '6' ,lastName: 'Boivin' ,firstNname: 'François' ,title: 'The Tank' },
+    {user_id: '7' ,lastName: 'Wever' ,firstNname: 'Timothy' ,title: 'Beard whisperer' },
+    {user_id: '8' ,lastName: 'Kleinerman' ,firstNname: 'Kiril' ,title: 'I <3 Winnipeg' },
+    {user_id: '9' ,lastName: 'Hartono' ,firstNname: 'Felicia' ,title: 'Scrums are too early' },
+    {user_id: '10' ,lastName: 'Ai' ,firstNname: 'Eileen' ,title: 'They really are.' },
+]
+
+
+
+users.each do |user|
+    this_user = User.where(
+        email: user[:email], 
+    ).first_or_initialize
+
+    this_user.update!(
+        password: user[:password],
+        employee: user[:employee],
+    )
+    this_user.save
+end
+
 x2thez = User.create!(email: 'mathieu.houde@codeboxx.biz' ,password: '123456')
 
 Employee.create!(
@@ -111,13 +154,13 @@ b = Building.create!(
 #         )
 # end
 
-10.times do
+# 10.times do
     Building_Detail.create!(
         BuildingID: Faker::Number.number(digits: 5),
         InformationKey: Faker::Lorem.sentence,
         Value: Faker::Lorem.sentence
         )
-end
+# # end
 
 # 10.times do
 o = Batterie.create!(
@@ -134,9 +177,10 @@ o = Batterie.create!(
 # end
 
 # 10.times do
-    Column.create!(
-        battery_id: o.id,
+   c = Column.create!(
+        batterie_id: o.id,
         numberFloorServed: Faker::Number.number(digits: 10),
+        status: Faker::Lorem.word,
         model: Faker::Lorem.word,
         types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
         information: Faker::Lorem.sentence,
@@ -144,20 +188,23 @@ o = Batterie.create!(
         )
 # end
 
-10.times do
+# 10.times do
     Elevator.create!(
-        columnId: "",
+        column_id: c.id,
         serial_number: Faker::Number.number(digits: 10),
         companyName: Faker::Company.name,
         model:Faker::Lorem.word,
+        status: Faker::Lorem.word,
         fullName: Faker::Name.name,
         email: Faker::Internet.email,
+        certificateOperations: Faker::Name.name,
         dateCommissioning: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
+        dateLastInspection: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
         types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
         information: Faker::Lorem.sentence,
         notes: Faker::Lorem.sentence
         )
-end
+# end
 
 10.times do
     Lead.create!(

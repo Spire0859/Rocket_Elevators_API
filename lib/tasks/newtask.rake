@@ -1,6 +1,6 @@
 require "pg"
 
-conn = PG.connect(dbname: 'rocket_elevators_db', :user => 'matias', :password => 'riotgames514')
+conn = PG.connect(dbname: 'rocket_elevators_db', :user => 'spire', :password => 'yes')
 
 namespace :dwh do
 
