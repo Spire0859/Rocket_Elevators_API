@@ -53,6 +53,27 @@ employees = [
     {user_id: '10' ,lastName: 'Ai' ,firstNname: 'Eileen' ,title: 'They really are.' },
 ]
 
+for p in 0..1 do
+    addresse = data_hash["addresses"][p]
+    if addresse["city"].nil?
+        city = "N/A"
+    else
+        city = addresse["city"]
+    end
+
+   i = Addresse.create!(
+        address_type: ['buisness', 'billing', 'home', 'shipping'].sample,
+        status: ['active', 'inactive'].sample,
+        entity: ['building', 'customer'].sample,
+        :numberAndStreet => addresse["address1"],
+        suiteOrApartment: "",
+        :city => city,
+        :postal_code => addresse["postalCode"],
+        country: "United States",
+        notes: ""
+        )
+ end
+
 
 
 users.each do |user|
@@ -79,22 +100,24 @@ Employee.create!(firstNname: 'Felicia', lastName: 'Hartono',title: 'Scrums are t
 Employee.create!(firstNname: 'Eileen', lastName: 'Ai',title: 'They really are.', user_id: 10 )
 
 
-# y = Customer.create!(
-#         user_id: 1,
-#         dateCreation: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
-#         created_at: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
-#         companyName: Faker::Company.name,
-#         fullName: Faker::Name.name,
-#         contactPhone: Faker::Config.locale = 'en-CA',
-#         email: Faker::Internet.email,
-#         description: Faker::Lorem.sentence,
-#         fullNameTechnicalAuthority: Faker::Name.name,
-#         technicalAuthorityPhone: Faker::Config.locale = 'en-CA',
-#         technicalAuthorityEmail: Faker::Internet.email
-#         )
+y = Customer.create!(
+        user_id: 1,
+        addresse_id: i.id,
+        dateCreation: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
+        created_at: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
+        companyName: Faker::Company.name,
+        fullName: Faker::Name.name,
+        contactPhone: Faker::Config.locale = 'en-CA',
+        email: Faker::Internet.email,
+        description: Faker::Lorem.sentence,
+        fullNameTechnicalAuthority: Faker::Name.name,
+        technicalAuthorityPhone: Faker::Config.locale = 'en-CA',
+        technicalAuthorityEmail: Faker::Internet.email
+        )
 
 b = Building.create!(
         customer_id: 1,
+        addresse_id: i.id,
         full_name_building_admin: Faker::Name.name,
         email_building_admin: Faker::Internet.email,
         phone_building_admin: Faker::Config.locale = 'en-CA',
@@ -102,29 +125,6 @@ b = Building.create!(
         phone_technical_authority: Faker::Config.locale = 'en-CA',
         email_technical_authority: Faker::Internet.email
             ) 
-
-            for p in 0..1 do
-                addresse = data_hash["addresses"][p]
-                if addresse["city"].nil?
-                    city = "N/A"
-                else
-                    city = addresse["city"]
-                end
-            
-               i = Addresse.create!(
-                    customer_id: y.id,
-                    building_id: b.id,
-                    address_type: ['buisness', 'billing', 'home', 'shipping'].sample,
-                    status: ['active', 'inactive'].sample,
-                    entity: ['building', 'customer'].sample,
-                    :numberAndStreet => addresse["address1"],
-                    suiteOrApartment: "",
-                    :city => city,
-                    :postal_code => addresse["postalCode"],
-                    country: "United States",
-                    notes: ""
-                    )
-             end
 
 
 
