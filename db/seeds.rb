@@ -3,30 +3,30 @@ require 'json'
 file = File.read('lib/assets/addresses-us-250.min.json')
 data_hash = JSON.parse(file)
 
-# Leads.delete_all
-# Leads.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
+# Lead.delete_all
+# Lead.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
 
-# Elevators.delete_all
-# Elevators.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
+# Elevator.delete_all
+# Elevator.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
 
-# Columns.delete_all
-# Columns.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
+# Column.delete_all
+# Column.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
 
-# Batteries.delete_all
-# Batteries.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
+# Batterie.delete_all
+# Batterie.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
 
-# Addresses.delete_all
-# Addresses.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
+# Addresse.delete_all
+# Addresse.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
 
-# Buildings.delete_all
-# Buildings.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
+# Building.delete_all
+# Building.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
 
-# Customers.delete_all
-# Customers.connection.execute('ALTER TABLE customers AUTO_INCREMENT = 1')
+# Customer.delete_all
+# Customer.connection.execute('ALTER TABLE customers AUTO_INCREMENT = 1')
 
 users = [
     
-    {email: 'mathieu.houde@codeboxx.biz' ,password: '123456' ,admin: 1},
+    {email: 'mathieu.houde@codeboxx.biz' ,password: '123456' ,admin: true},
     {email: 'patrick.thibault@codeboxx.biz',password: '123456',admin: true},
     {email: 'francis.patry-jessop@codeboxx.biz',password: '123456',admin: true},
     {email: 'david.amyot@codeboxx.biz',password: '123456',admin: true},
@@ -53,29 +53,6 @@ employees = [
     {user_id: '10' ,lastName: 'Ai' ,firstNname: 'Eileen' ,title: 'They really are.' },
 ]
 
-for p in 0..1 do
-    addresse = data_hash["addresses"][p]
-    if addresse["city"].nil?
-        city = "N/A"
-    else
-        city = addresse["city"]
-    end
-
-   i = Addresse.create!(
-        address_type: ['buisness', 'billing', 'home', 'shipping'].sample,
-        status: ['active', 'inactive'].sample,
-        entity: ['building', 'customer'].sample,
-        :numberAndStreet => addresse["address1"],
-        suiteOrApartment: "",
-        :city => city,
-        :postal_code => addresse["postalCode"],
-        country: "United States",
-        notes: ""
-        )
- end
-
-
-
 users.each do |user|
     this_user = User.where(
         email: user[:email], 
@@ -99,10 +76,34 @@ Employee.create!(firstNname: 'Kiril', lastName: 'Kleinerman',title: 'I <3 Winnip
 Employee.create!(firstNname: 'Felicia', lastName: 'Hartono',title: 'Scrums are too early', user_id: 9 )
 Employee.create!(firstNname: 'Eileen', lastName: 'Ai',title: 'They really are.', user_id: 10 )
 
+10.times do
+
+for p in 0..10 do
+    addresse = data_hash["addresses"][p]
+    if addresse["city"].nil?
+        city = "N/A"
+    else
+        city = addresse["city"]
+    end
+
+   i = Addresse.create!(
+        address_type: ['buisness', 'billing', 'home', 'shipping'].sample,
+        status: ['active', 'inactive'].sample,
+        entity: ['building', 'customer'].sample,
+        :numberAndStreet => addresse["address1"],
+        suiteOrApartment: "",
+        :city => city,
+        :postal_code => addresse["postalCode"],
+        country: "United States",
+        notes: ""
+        )
+ end
+
+usertmp = User.create!(email: Faker::Internet.email ,password: '123456')
 
 y = Customer.create!(
-        user_id: 1,
-        addresse_id: i.id,
+        user_id: usertmp,
+        companyHqAddresse: addresse['address1'] + " " + addresse['city'],
         dateCreation: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
         created_at: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
         companyName: Faker::Company.name,
@@ -116,8 +117,8 @@ y = Customer.create!(
         )
 
 b = Building.create!(
-        customer_id: 1,
-        addresse_id: i.id,
+        customer_id: y.id,
+        addressOfBuilding: i.numberAndStreet + " " + i.city,
         full_name_building_admin: Faker::Name.name,
         email_building_admin: Faker::Internet.email,
         phone_building_admin: Faker::Config.locale = 'en-CA',
@@ -126,46 +127,12 @@ b = Building.create!(
         email_technical_authority: Faker::Internet.email
             ) 
 
-
-
-# 10.times do |i|
-#     Customer.create!(
-#         userId: "",
-#         dateCreation: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
-#         companyName: Faker::Company.name,
-#         :addressId => i + 1,
-#         fullName: Faker::Name.name,
-#         contactPhone: Faker::Config.locale = 'en-CA',
-#         email: Faker::Internet.email,
-#         description: Faker::Lorem.sentence,
-#         fullNameTechnicalAuthority: Faker::Name.name,
-#         technicalAuthorityPhone: Faker::Config.locale = 'en-CA',
-#         technicalAuthorityEmail: Faker::Internet.email
-#         )
-# end
-
-# 10.times do |i|
-#     Building.create!(
-#         customer_id:"" ,
-#         :addressOfBuilding => i + 1,
-#         full_name_building_admin: Faker::Name.name,
-#         email_building_admin: Faker::Internet.email,
-#         phone_building_admin: Faker::Config.locale = 'en-CA',
-#         full_name_technical_authority: Faker::Name.name,
-#         email_technical_authority: Faker::Internet.email,
-#         phone_technical_authority: Faker::Config.locale = 'en-CA'
-#         )
-# end
-
-# 10.times do
     Building_Detail.create!(
         BuildingID: Faker::Number.number(digits: 5),
         InformationKey: Faker::Lorem.sentence,
         Value: Faker::Lorem.sentence
         )
-# # end
 
-# 10.times do
 o = Batterie.create!(
         building_id: b.id,
         types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
@@ -177,9 +144,7 @@ o = Batterie.create!(
         information: Faker::Lorem.sentence,
         notes: Faker::Lorem.sentence
         )
-# end
 
-# 10.times do
    c = Column.create!(
         batterie_id: o.id,
         numberFloorServed: Faker::Number.number(digits: 10),
@@ -189,9 +154,7 @@ o = Batterie.create!(
         information: Faker::Lorem.sentence,
         notes: Faker::Lorem.sentence
         )
-# end
 
-# 10.times do
     Elevator.create!(
         column_id: c.id,
         serial_number: Faker::Number.number(digits: 10),
@@ -207,9 +170,7 @@ o = Batterie.create!(
         information: Faker::Lorem.sentence,
         notes: Faker::Lorem.sentence
         )
-# end
 
-10.times do
     Lead.create!(
         fullNameContact: Faker::Name.name,
         companyName: Faker::Company.name,

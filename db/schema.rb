@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2022_07_08_222140) do
   end
 
   create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.string "addressOfBuilding"
     t.string "full_name_building_admin", null: false
     t.string "email_building_admin", null: false
     t.string "phone_building_admin", null: false
@@ -66,10 +67,8 @@ ActiveRecord::Schema.define(version: 2022_07_08_222140) do
     t.string "email_technical_authority", null: false
     t.string "phone_technical_authority", null: false
     t.bigint "customer_id"
-    t.bigint "addresse_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["addresse_id"], name: "index_buildings_on_addresse_id"
     t.index ["customer_id"], name: "index_buildings_on_customer_id"
   end
 
@@ -93,14 +92,13 @@ ActiveRecord::Schema.define(version: 2022_07_08_222140) do
     t.string "contactPhone", null: false
     t.string "email", null: false
     t.string "description", null: false
+    t.string "companyHqAddresse"
     t.string "fullNameTechnicalAuthority"
     t.string "technicalAuthorityPhone"
     t.string "technicalAuthorityEmail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.bigint "addresse_id"
-    t.index ["addresse_id"], name: "index_customers_on_addresse_id"
     t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
@@ -117,13 +115,13 @@ ActiveRecord::Schema.define(version: 2022_07_08_222140) do
     t.string "certificateOperations", null: false
     t.string "information", null: false
     t.string "notes", null: false
+    t.bigint "column_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "column_id"
     t.index ["column_id"], name: "index_elevators_on_column_id"
   end
 
-  create_table "employees", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+  create_table "employees", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "firstNname", null: false
     t.string "lastName", null: false
     t.string "title", null: false
