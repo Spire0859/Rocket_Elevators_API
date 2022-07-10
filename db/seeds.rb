@@ -47,7 +47,7 @@ y = Customer.create!(
         technicalAuthorityEmail: Faker::Internet.email
         )
 
-Building.create!(
+b = Building.create!(
         customer_id: y.id,
         addressOfBuilding: Faker::Address.street_name,
         full_name_building_admin: Faker::Name.name,
@@ -56,51 +56,31 @@ Building.create!(
         full_name_technical_authority: Faker::Name.name,
         phone_technical_authority: Faker::Config.locale = 'en-CA',
         email_technical_authority: Faker::Internet.email
-            )
+            ) 
 
 
 
-Lead.delete_all
-Lead.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
 
-Elevator.delete_all
-Elevator.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
+# for i in 0..199 do
+#     address = data_hash["addresses"][i]
+#     if address["city"].nil?
+#         city = "N/A"
+#     else
+#         city = address["city"]
+#     end
 
-Column.delete_all
-Column.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
-
-Battery.delete_all
-Battery.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
-
-Address.delete_all
-Address.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
-
-Building.delete_all
-Building.connection.execute('ALTER TABLE buildings AUTO_INCREMENT = 1')
-
-Customer.delete_all
-Customer.connection.execute('ALTER TABLE customers AUTO_INCREMENT = 1')
-
-for i in 0..199 do
-    address = data_hash["addresses"][i]
-    if address["city"].nil?
-        city = "N/A"
-    else
-        city = address["city"]
-    end
-
-    Address.create!(
-        address_type: ['buisness', 'billing', 'home', 'shipping'].sample,
-        status: ['active', 'inactive'].sample,
-        entity: ['building', 'customer'].sample,
-        :numberAndStreet => address["address1"],
-        suiteOrApartment: "",
-        :city => city,
-        :postal_code => address["postalCode"],
-        country: "United States",
-        notes: ""
-        )
-end
+#     Address.create!(
+#         address_type: ['buisness', 'billing', 'home', 'shipping'].sample,
+#         status: ['active', 'inactive'].sample,
+#         entity: ['building', 'customer'].sample,
+#         :numberAndStreet => address["address1"],
+#         suiteOrApartment: "",
+#         :city => city,
+#         :postal_code => address["postalCode"],
+#         country: "United States",
+#         notes: ""
+#         )
+# end
 
 # 10.times do |i|
 #     Customer.create!(
@@ -139,9 +119,9 @@ end
         )
 end
 
-10.times do
-    Batterie.create!(
-        buildingId: "",
+# 10.times do
+o = Batterie.create!(
+        building_id: b.id,
         types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
         status: Faker::Lorem.word,
         EmployeeId: Faker::Number.number(digits: 5),
@@ -151,18 +131,18 @@ end
         information: Faker::Lorem.sentence,
         notes: Faker::Lorem.sentence
         )
-end
+# end
 
-10.times do
+# 10.times do
     Column.create!(
-        battery_id: "",
+        battery_id: o.id,
         numberFloorServed: Faker::Number.number(digits: 10),
         model: Faker::Lorem.word,
         types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
         information: Faker::Lorem.sentence,
         notes: Faker::Lorem.sentence
         )
-end
+# end
 
 10.times do
     Elevator.create!(

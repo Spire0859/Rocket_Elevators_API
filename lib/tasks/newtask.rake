@@ -1,6 +1,6 @@
 require "pg"
 
-conn = PG.connect( host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", dbname: 'MarcosLopezDWH', :user => 'codeboxx', :password => 'Codeboxx1!' )
+conn = PG.connect(dbname: 'rocket_elevators_db', :user => 'matias', :password => 'riotgames514')
 
 namespace :dwh do
 
@@ -59,4 +59,24 @@ namespace :dwh do
             end
     end
 
-endgit pull
+end
+
+namespace :qs do
+    
+    q_one = "SELECT COUNT(contactId), created_at FROM FactContact GROUP BY MONTH(created_at);"
+    q_two = "SELECT COUNT(quoteId), created_at FROM FactQuotes GROUP BY MONTH(created_at);"
+    q_three = "SELECT id, nbElevator FROM DimCustomers;"
+    
+    task q_one: :environment do
+        ActiveRecord::Base.connection.execute(q_one)
+    end
+
+    task q_two: :environment do
+        ActiveRecord::Base.connection.execute(q_two)
+    end
+
+    task q_three: :environment do
+        ActiveRecord::Base.connection.execute(q_three)
+    end
+
+end

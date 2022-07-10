@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 2022_07_08_222140) do
   end
 
   create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.bigint "buildingId", null: false
     t.string "types", null: false
     t.string "status", null: false
     t.integer "EmployeeId", null: false
@@ -36,8 +35,16 @@ ActiveRecord::Schema.define(version: 2022_07_08_222140) do
     t.string "certificate_of_operations", null: false
     t.string "information", null: false
     t.string "notes", null: false
+    t.bigint "building_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["building_id"], name: "index_batteries_on_building_id"
+  end
+
+  create_table "building_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.integer "BuildingID"
+    t.string "InformationKey"
+    t.text "Value"
   end
 
   create_table "building_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -65,12 +72,6 @@ ActiveRecord::Schema.define(version: 2022_07_08_222140) do
     t.index ["customer_id"], name: "index_buildings_on_customer_id"
   end
 
-  create_table "buildings_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.integer "BuildingID"
-    t.string "InformationKey"
-    t.text "Value"
-  end
-
   create_table "columns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.bigint "battery_id", null: false
     t.string "types", null: false
@@ -79,8 +80,10 @@ ActiveRecord::Schema.define(version: 2022_07_08_222140) do
     t.string "status", null: false
     t.string "information", null: false
     t.string "notes", null: false
+    t.bigint "batterie_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["batterie_id"], name: "index_columns_on_batterie_id"
   end
 
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -117,12 +120,14 @@ ActiveRecord::Schema.define(version: 2022_07_08_222140) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.bigint "users_id"
-    t.string "lastName"
-    t.string "firstNname"
-    t.string "title"
-    t.index ["users_id"], name: "index_employees_on_users_id"
+  create_table "employees", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.string "firstNname", null: false
+    t.string "lastName", null: false
+    t.string "title", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_employees_on_user_id"
   end
 
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
