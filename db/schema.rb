@@ -22,8 +22,14 @@ ActiveRecord::Schema.define(version: 2022_07_08_222140) do
     t.string "postal_code", null: false
     t.string "country", null: false
     t.string "notes", null: false
+    t.bigint "building_id"
+    t.bigint "customer_id"
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["building_id"], name: "index_addresses_on_building_id"
+    t.index ["customer_id"], name: "index_addresses_on_customer_id"
+
   end
 
   create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -59,7 +65,6 @@ ActiveRecord::Schema.define(version: 2022_07_08_222140) do
   end
 
   create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.string "addressOfBuilding"
     t.string "full_name_building_admin", null: false
     t.string "email_building_admin", null: false
     t.string "phone_building_admin", null: false
@@ -67,9 +72,11 @@ ActiveRecord::Schema.define(version: 2022_07_08_222140) do
     t.string "email_technical_authority", null: false
     t.string "phone_technical_authority", null: false
     t.bigint "customer_id"
+    # t.bigint "addresse_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_buildings_on_customer_id"
+    # # t.index ["addresse_id"], name: "index_buildings_on_addresse_id"
   end
 
   create_table "columns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -98,7 +105,9 @@ ActiveRecord::Schema.define(version: 2022_07_08_222140) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    # t.bigint "addresse_id"
     t.index ["user_id"], name: "index_customers_on_user_id"
+    # t.index ["addresse_id"], name: "index_customers_on_addresse_id"
   end
 
   create_table "elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -167,7 +176,7 @@ ActiveRecord::Schema.define(version: 2022_07_08_222140) do
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.boolean "employee", default: false
+    t.boolean "admin", default: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
