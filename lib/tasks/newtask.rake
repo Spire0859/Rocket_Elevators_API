@@ -1,6 +1,6 @@
 require "pg"
 
-conn = PG.connect(host: codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com, dbname: 'MarcosLopez', :user => 'codeboxx', :password => 'Codeboxx1!')
+conn = PG.connect(host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", dbname: 'MarcosLopez', :user => 'codeboxx', :password => 'Codeboxx1!')
 
 namespace :dwh do
 
