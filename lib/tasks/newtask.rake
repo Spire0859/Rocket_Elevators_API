@@ -1,6 +1,6 @@
 require "pg"
 
-conn = PG.connect(dbname: 'rocket_elevators_db', :user => 'matias', :password => 'riotgames514')
+conn = PG.connect(host: codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com, dbname: 'MarcosLopez', :user => 'codeboxx', :password => 'Codeboxx1!')
 
 namespace :dwh do
 
