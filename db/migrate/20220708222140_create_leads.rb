@@ -11,6 +11,7 @@ class CreateLeads < ActiveRecord::Migration[5.2]
       t.string :message, null: false
       t.binary :file, null: false
       t.datetime :date, null: false
+      t.datetime :created_at, null: false
       t.timestamps
     end
   end

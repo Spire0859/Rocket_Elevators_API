@@ -1,3 +1,3 @@
 class Lead < ApplicationRecord
-    belongs_to :user,
+    has_one :user, foreign_key: true
 end

@@ -10,90 +10,104 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_05_183140) do
+ActiveRecord::Schema.define(version: 2022_07_08_222140) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.string "typeAddress", null: false
+    t.string "address_type", null: false
     t.string "status", null: false
     t.string "entity", null: false
     t.string "numberAndStreet", null: false
     t.string "suiteOrApartment", null: false
     t.string "city", null: false
-    t.string "postalCode", null: false
+    t.string "postal_code", null: false
     t.string "country", null: false
     t.string "notes", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
   create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.bigint "buildingId", null: false
     t.string "types", null: false
     t.string "status", null: false
-    t.integer "employeeId", null: false
-    t.datetime "dateCommissioning", null: false
-    t.datetime "dateLastInspection", null: false
-    t.string "certificateOperations", null: false
+    t.integer "EmployeeId", null: false
+    t.datetime "date_commissioning", null: false
+    t.datetime "date_last_inspection", null: false
+    t.string "certificate_of_operations", null: false
     t.string "information", null: false
     t.string "notes", null: false
+    t.bigint "building_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["building_id"], name: "index_batteries_on_building_id"
   end
+
+  create_table "building_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.integer "BuildingID"
+    t.string "InformationKey"
+    t.text "Value"
+  end
+
   create_table "building_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-  create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.bigint "customerId", null: false
-    t.bigint "addressId", null: false
-    t.string "fullNameAdministrator", null: false
-    t.string "emailAdministrator", null: false
-    t.string "phoneNumberAdministrator", null: false
-    t.string "fullNameTechnicalContact", null: false
-    t.string "emailTechnicalContact", null: false
-    t.string "phoneTechnicalContact", null: false
+    t.integer "number_apartments"
+    t.integer "number_floors"
+    t.integer "number_elevators"
+    t.integer "number_occupants"
+    t.string "companyName"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "buildings_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.integer "buildingId"
-    t.string "information_key"
-    t.text "value"
+  create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.string "addressOfBuilding"
+    t.string "full_name_building_admin", null: false
+    t.string "email_building_admin", null: false
+    t.string "phone_building_admin", null: false
+    t.string "full_name_technical_authority", null: false
+    t.string "email_technical_authority", null: false
+    t.string "phone_technical_authority", null: false
+    t.bigint "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_buildings_on_customer_id"
   end
-  create_table "building_details" options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.integer "buildingId"
-    t.string "information_key"
-    t.text "value"
-  end
+
   create_table "columns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.bigint "batteryId", null: false
     t.string "types", null: false
+    t.string "model"
     t.string "numberFloorServed", null: false
     t.string "status", null: false
     t.string "information", null: false
     t.string "notes", null: false
+    t.bigint "batterie_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["batterie_id"], name: "index_columns_on_batterie_id"
   end
+
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.integer "userId", null: false
-    t.datetime "dateCreation", null: false
-    t.string "compagnyName", null: false
-    t.bigint "addressId", null: false
+    t.datetime "dateCreation"
+    t.string "companyName", null: false
     t.string "fullName", null: false
     t.string "contactPhone", null: false
     t.string "email", null: false
     t.string "description", null: false
-    t.string "fullNameTechnicalAuthority", null: false
-    t.string "technicalAuthorityPhone", null: false
-    t.string "technicalAuthorityEmail", null: false
+    t.string "companyHqAddresse"
+    t.string "fullNameTechnicalAuthority"
+    t.string "technicalAuthorityPhone"
+    t.string "technicalAuthorityEmail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_customers_on_user_id"
   end
+
   create_table "elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.bigint "columnId", null: false
-    t.string "serialNumber", null: false
+    t.string "serial_number", null: false
+    t.string "companyName", null: false
     t.string "model", null: false
+    t.string "fullName", null: false
+    t.string "email", null: false
     t.string "types", null: false
     t.string "status", null: false
     t.datetime "dateCommissioning", null: false
@@ -101,19 +115,22 @@ ActiveRecord::Schema.define(version: 2022_07_05_183140) do
     t.string "certificateOperations", null: false
     t.string "information", null: false
     t.string "notes", null: false
+    t.bigint "column_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["column_id"], name: "index_elevators_on_column_id"
   end
 
-  create_table "employees", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.string "first_name", null: false
-    t.string "last_name", null: false
+  create_table "employees", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.string "firstNname", null: false
+    t.string "lastName", null: false
     t.string "title", null: false
-    t.string "email", null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_employees_on_user_id"
   end
+
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "fullNameContact", null: false
     t.string "companyName", null: false
@@ -129,6 +146,13 @@ ActiveRecord::Schema.define(version: 2022_07_05_183140) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "quotes", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "type_building", null: false
     t.integer "numApartment"
@@ -140,10 +164,11 @@ ActiveRecord::Schema.define(version: 2022_07_05_183140) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.boolean "employee", default: false
+    t.boolean "admin", default: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

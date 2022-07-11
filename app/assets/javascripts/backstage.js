@@ -1,14 +1,3 @@
-
-
-
-
-
-
-
-
-//global const which points to which section to load
-
-
 function reset(){
 
     const reset =  document.querySelectorAll(".reset");
@@ -67,31 +56,15 @@ function section(){
 
 }
 
+function btype(){
 
+    document.getElementById("secret").value = document.getElementById("building-type").value;
+}
 
-//residential section and math
-function residentialSec() {
-   // const res =  document.querySelectorAll(".res");
-
-   const res =  document.querySelectorAll(".res");
-
-
-   if (res[0].style.display == "none"){
-        reset();
-        for (var i = 0 ; i < res.length ; i++){
-            res[i].style.display = "block"
-           }
-   } else{
-    for (var i = 0 ; i < res.length ; i++){
-            res[i].style.display = "none"
-            }
-   }
-
-  }
 
 function residentialMath(){
 
-
+    document.getElementById("secret").value = document.getElementById("building-type").value;
    var RnAppar = document.getElementById("number-of-apartments").children[1].valueAsNumber ;
    var RnFloors = document.getElementById("number-of-floors").children[1].valueAsNumber ;
    var EleDeploy = document.getElementById("number-of-elevators").children[1].valueAsNumber;
@@ -234,14 +207,3 @@ if (document.getElementById("building-type").value == "residential") {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-

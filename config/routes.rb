@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :leads
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'pages#home'
   resources :quotes
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   get 'commercial', to: 'pages#commercial'
   get 'quote', to: 'pages#quote'
   get 'admin', to: 'pages#admin'
+  post '/contacts', to: 'home#create'
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #Route for Homepage

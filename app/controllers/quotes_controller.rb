@@ -1,21 +1,17 @@
 class QuotesController < ApplicationController
-    def index
-        @quotes = Quote.all
+  def create 
+    @quotes = Quote.new(quote_params)
+    
+    if @quotes.save
+      flash[:notice] = 'Quote created successfully'
+      redirect_to pages_quote_url action: :new
+    else
+      render :new 
     end
-    def new
-        @quotes = Quote.new
-    end
-    def create
-        @quotes = Quote.new(my_params)
-        if @quotes.save
-            #redirect_to @quotes
-            render :new
-        else
-            render :new
-        end
-    end
-    private
-    def my_params
-        params.require(:quote).permit(:building_type)
-    end
+  end
+
+  private
+  def quote_params
+    params.require(:quotes).permit(:type_building, :numApartment, :numFloor, :numElevator, :numOccupant, :companyName, :email) 
+  end
 end
