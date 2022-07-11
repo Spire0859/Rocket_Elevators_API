@@ -29,27 +29,30 @@ you can ask 3 questions via rake tasks.
 	3. rake qs:q_three
 	(You may find the code at the bottom of the newtask.rake file)
 
-In case this does not function properly. It is possible to answer those questions with the 
-queries entered in DBeaver. These lines answers the the respective question numbers:
+In case this does not function properly. Abort the ship, destroy the evidence and pray...
+OR!
+Try those queries via the SQL editor in DBeaver. These lines answers the the respective 
+question numbers:
 
-	1. SELECT COUNT(contactId), created_at
-	   FROM FactContact
-	   GROUP BY MONTH(created_at);
+	1. select contact_id, EXTRACT(MONTH FROM creation_date)
+           FROM fact_contact;
 	
-	2. SELECT COUNT(quoteId), created_at
-	   FROM FactQuotes
-	   GROUP BY MONTH(created_at);
+	2. select quote_id, EXTRACT(MONTH FROM creation_date)
+	   FROM fact_quotes;
 	
-	3. SELECT id, nbElevator
-	   FROM DimCustomers;
+	3. SELECT company_name, nb_elevators
+	   FROM public.dim_customers;
 
 *CHALLENGES WE FACED
-We faced some difficulties while developing these new features. The Rails structure feels
+	-- Log Day 7 --
+The moral is low, but the team hold the ship to steady speed...
+We faced some difficulties while developing these new features. The Rails structure felt
 quite complete, but overwhelming at first. Understanding that most files are related and
 have dependencies confused us a lot. It was also the first time that our crew had to deal
 with databases. Setting everything as a whole was a great learning experience that did
 traumatized the crew a little bit. We are now more comfortable with the technology than before
 while only sacrificing our souls during the process... fair exchange I say.
+								-Captain Pan
 
 
 *HOW TO USE THE PROJECT
