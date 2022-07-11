@@ -39,6 +39,7 @@ namespace :dwh do
     end
 
     task FactElevator: :environment do
+
         Addresse.find_each do |a|
             conn.exec ("INSERT INTO FactElevator (buildingCity) VALUES ('#{a.city.gsub("'", " ")}')")
         end
@@ -57,6 +58,9 @@ namespace :dwh do
             Customer.find_each do |c|
                 conn.exec ("INSERT INTO DimCustomers (created_at, companyName, fullNameCC, emailCC) VALUES ('#{c.dateCreation}', '#{c.companyName.gsub("'", " ")}', '#{c.fullName}', '#{c.email}')")
             end
+                Elevator.find_each do |m|
+                    conn.exec ("INSERT INTO DimCustomers (nbElevator) VALUES ('#{m.id}')")
+                end
     end
 
 end

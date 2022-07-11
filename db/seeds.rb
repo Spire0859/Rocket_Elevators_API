@@ -78,7 +78,7 @@ Employee.create!(firstNname: 'Eileen', lastName: 'Ai',title: 'They really are.',
 
 10.times do
 
-for p in 0..10 do
+for p in 0..2 do
     addresse = data_hash["addresses"][p]
     if addresse["city"].nil?
         city = "N/A"
