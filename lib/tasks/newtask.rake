@@ -39,7 +39,8 @@ namespace :dwh do
     end
 
     task FactElevator: :environment do
-        Address.find_each do |a|
+
+        Addresse.find_each do |a|
             conn.exec ("INSERT INTO FactElevator (buildingCity) VALUES ('#{a.city.gsub("'", " ")}')")
         end
                 Customer.find_each do |c|
@@ -51,32 +52,36 @@ namespace :dwh do
     end
 
     task DimCustomers: :environment do
-        Address.find_each do |e|
+        Addresse.find_each do |a|
             conn.exec ("INSERT INTO DimCustomers (customerCity) VALUES ('#{a.city.gsub("'", " ")}')")
         end
             Customer.find_each do |c|
                 conn.exec ("INSERT INTO DimCustomers (created_at, companyName, fullNameCC, emailCC) VALUES ('#{c.dateCreation}', '#{c.companyName.gsub("'", " ")}', '#{c.fullName}', '#{c.email}')")
             end
+                Elevator.find_each do |m|
+                    conn.exec ("INSERT INTO DimCustomers (nbElevator) VALUES ('#{m.id}')")
+                end
     end
 
 end
 
 namespace :qs do
     
-    q_one = "SELECT COUNT(contactId), created_at FROM FactContact GROUP BY MONTH(created_at);"
-    q_two = "SELECT COUNT(quoteId), created_at FROM FactQuotes GROUP BY MONTH(created_at);"
-    q_three = "SELECT id, nbElevator FROM DimCustomers;"
+    q_one = "SELECT COUNT(contactId) EXTRACT(MONTH FROM t.created_at) as MonthOfDate
+    FROM FactContact t"
+    q_two = "SELECT COUNT(quoteId) created_at FROM FactQuotes GROUP BY MONTH(created_at)"
+    q_three = "SELECT id, nbElevator FROM DimCustomers"
     
     task q_one: :environment do
-        ActiveRecord::Base.connection.execute(q_one)
+        conn.exec (q_one)
     end
 
     task q_two: :environment do
-        ActiveRecord::Base.connection.execute(q_two)
+        conn.exec (q_two)
     end
 
     task q_three: :environment do
-        ActiveRecord::Base.connection.execute(q_three)
+        conn.exec (q_three)
     end
 
 end

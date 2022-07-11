@@ -7,6 +7,7 @@ class CreateCustomers < ActiveRecord::Migration[5.2]
       t.string :contactPhone, null: false
       t.string :email, null: false
       t.string :description, null: false
+      t.string :companyHqAddresse
       t.string :fullNameTechnicalAuthority
       t.string :technicalAuthorityPhone
       t.string :technicalAuthorityEmail
