@@ -92,3 +92,4 @@ gem 'rake'
 #gem 'webpacker', '~> 3.0'
 
 gem "pg", "~> 1.4"
+gem 'dropbox_api'
