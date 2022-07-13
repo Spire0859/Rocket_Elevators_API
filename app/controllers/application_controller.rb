@@ -1,19 +1,18 @@
 class ApplicationController < ActionController::Base
 
-  # def after_sign_in_path_for(resource)
-  #   if  warden.user.master == true
-  #     puts warden.user.master
-  #     rails_admin_path
-  #     puts ""
+  def after_sign_in_path_for(resource)
+    if  warden.user.emp == true
+    
+      rails_admin_path
+    
 
-  #   else
-  #     puts warden.user.master
-  #     puts "hi"
+    else
+      
 
-  #     main_app.root_path
-  #   end
+      main_app.root_path
+    end
 
-  # end
+  end
 
   
 
