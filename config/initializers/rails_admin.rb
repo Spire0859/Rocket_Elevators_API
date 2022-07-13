@@ -1,16 +1,16 @@
 RailsAdmin.config do |config|
 
   config.authorize_with do
-  redirect_to main_app.root_path unless warden.user.employee == true
+    redirect_to main_app.root_path unless warden.user.master == true
   end
-
+''
   ### Popular gems integration
-
+  
   ## == Devise ==
-  # config.authenticate_with do
-  #   warden.authenticate! scope: :user
-  # end
-  # config.current_user_method(&:current_user)
+  config.authenticate_with do
+    warden.authenticate! scope: :user
+  end
+  config.current_user_method(&:current_user)
 
   ## == CancanCan ==
   # config.authorize_with :cancancan

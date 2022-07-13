@@ -26,16 +26,15 @@ data_hash = JSON.parse(file)
 
 users = [
     
-    {email: 'mathieu.houde@codeboxx.biz' ,password: '123456' ,admin: true},
-    {email: 'patrick.thibault@codeboxx.biz',password: '123456',admin: true},
-    {email: 'francis.patry-jessop@codeboxx.biz',password: '123456',admin: true},
-    {email: 'david.amyot@codeboxx.biz',password: '123456',admin: true},
-    {email: 'marie-eve.goupil@codeboxx.biz',password: '123456',admin: true},
-    {email: 'francois.boivin@codeboxx.biz',password: '123456',admin: true},
-    {email: 'timothy.wever@codeboxx.biz',password: '123456',admin: true},
-    {email: 'kiril.kleinerman@codeboxx.biz',password: '123456',admin: true},
-    {email: 'felicia.hartono@codeboxx.biz',password: '123456',admin: true},
-    {email: 'eileen.ai@codeboxx.biz',password: '123456',admin: true},
+    {email: 'mathieu.houde@codeboxx.biz' ,password: '123456' ,master: true},
+    {email: 'patrick.thibault@codeboxx.biz',password: '123456',master: true},
+    {email: 'francis.patry-jessop@codeboxx.biz',password: '123456',master: true},
+    {email: 'david.amyot@codeboxx.biz',password: '123456',master: true},
+    {email: 'marie-eve.goupil@codeboxx.biz',password: '123456',master: true},
+    {email: 'francois.boivin@codeboxx.biz',password: '123456',master: true},
+    {email: 'timothy.wever@codeboxx.biz',password: '123456',master: true},
+    {email: 'kiril.kleinerman@codeboxx.biz',password: '123456',master: true},
+    {email: 'felicia.hartono@codeboxx.biz',password: '123456',master: true},
 ]
 
 
@@ -60,10 +59,12 @@ users.each do |user|
 
     this_user.update!(
         password: user[:password],
-        admin: user[:admin],
+        master: user[:master],
     )
     this_user.save
 end
+
+User.create!(email: 'eileen.ai@codeboxx.biz',password: '123456',master: true)
 
 Employee.create!(firstNname: 'Mathieu', lastName: 'Houde',title: 'Gopher', user_id: 1 )
 Employee.create!(firstNname: 'Patrick', lastName: 'Thibault',title: 'Maximalist', user_id: 2 )
@@ -185,3 +186,35 @@ o = Batterie.create!(
     )
 end
 
+
+
+# require 'aws-sdk-polly'
+
+# credentials = Aws::Credentials.new('AKIATAAKB5PVDHXSTCYL', 'l/jylKFbiH8DyXP5JxHjifY8nkbLFOCU8qLdz8CI')
+
+# client = Aws::Polly::Client.new(region: 'us-west-2', credentials: credentials)
+
+# x = client.synthesize_speech(output_format: 'mp3',text: 'hello',voice_id: 'Joanna')  
+
+#  Open file and get the contents as a string
+#  if File.exist?("app/assets/audio/tts.mp3")
+#     puts "meow"
+#   else
+#     puts 'No such file: '
+#   end
+
+  
+#     name = File.basename("tester")
+  
+#     Split up name so we get just the xyz part
+#     parts = name.split('.')
+#     first_part = parts[0]
+#     mp3_file = first_part + '.mp3'
+  
+#     IO.copy_stream(x.audio_stream, mp3_file)
+  
+#     puts 'Wrote MP3 content to: ' + mp3_file
+  
+  
+# x = Base64.decode64(data_from_web_service)
+# File.open('file_name', 'wb') {|f| f.write(x)}
