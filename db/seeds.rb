@@ -27,15 +27,15 @@ data_hash = JSON.parse(file)
 
 users = [
     
-    {email: 'mathieu.houde@codeboxx.biz' ,password: '123456' ,admin: true},
-    {email: 'patrick.thibault@codeboxx.biz',password: '123456',admin: true},
-    {email: 'francis.patry-jessop@codeboxx.biz',password: '123456',admin: true},
-    {email: 'david.amyot@codeboxx.biz',password: '123456',admin: true},
-    {email: 'marie-eve.goupil@codeboxx.biz',password: '123456',admin: true},
-    {email: 'francois.boivin@codeboxx.biz',password: '123456',admin: true},
-    {email: 'timothy.wever@codeboxx.biz',password: '123456',admin: true},
-    {email: 'kiril.kleinerman@codeboxx.biz',password: '123456',admin: true},
-    {email: 'felicia.hartono@codeboxx.biz',password: '123456',admin: true},
+    {email: 'mathieu.houde@codeboxx.biz' ,password: '123456' ,emp: true},
+    {email: 'patrick.thibault@codeboxx.biz',password: '123456',emp: true},
+    {email: 'francis.patry-jessop@codeboxx.biz',password: '123456',emp: true},
+    {email: 'david.amyot@codeboxx.biz',password: '123456',emp: true},
+    {email: 'marie-eve.goupil@codeboxx.biz',password: '123456',emp: true},
+    {email: 'francois.boivin@codeboxx.biz',password: '123456',emp: true},
+    {email: 'timothy.wever@codeboxx.biz',password: '123456',emp: true},
+    {email: 'kiril.kleinerman@codeboxx.biz',password: '123456',emp: true},
+    {email: 'felicia.hartono@codeboxx.biz',password: '123456',emp: true},
     {email: 'eileen.ai@codeboxx.biz',password: '123456',admin: true},
 ]
 
@@ -46,7 +46,7 @@ employees = [
     {user_id: '2' ,lastName: 'Thibault' ,firstNname: 'Patrick ' ,title: 'Maximalist' },
     {user_id: '3' ,lastName: 'Patry-Jessop' ,firstNname: 'Francis ' ,title: 'Captain' },
     {user_id: '4' ,lastName: 'Amyot' ,firstNname: 'David' ,title: 'The Man' },
-    {user_id: '5' ,lastName: 'Goupil' ,firstNname: 'Marie-Ève' ,title: 'AI Master' },
+    {user_id: '5' ,lastName: 'Goupil' ,firstNname: 'Marie-Ève' ,title: 'AI master' },
     {user_id: '6' ,lastName: 'Boivin' ,firstNname: 'François' ,title: 'The Tank' },
     {user_id: '7' ,lastName: 'Wever' ,firstNname: 'Timothy' ,title: 'Beard whisperer' },
     {user_id: '8' ,lastName: 'Kleinerman' ,firstNname: 'Kiril' ,title: 'I <3 Winnipeg' },
@@ -61,21 +61,22 @@ users.each do |user|
 
     this_user.update!(
         password: user[:password],
-        admin: user[:admin],
+        emp: user[:emp],
     )
     this_user.save
 end
 
-Employee.create!(firstNname: 'Mathieu', lastName: 'Houde',title: 'Gopher', user_id: 1 )
-Employee.create!(firstNname: 'Patrick', lastName: 'Thibault',title: 'Maximalist', user_id: 2 )
-Employee.create!(firstNname: 'Francis', lastName: 'Patry-Jessop',title: 'Captain', user_id: 3 )
-Employee.create!(firstNname: 'David', lastName: 'Amyot',title: 'The Man', user_id: 4 )
-Employee.create!(firstNname: 'Marie-Ève', lastName: 'Goupil',title: 'AI Master', user_id: 5 )
-Employee.create!(firstNname: 'François', lastName: 'Boivin',title: 'The Tank', user_id: 6 )
-Employee.create!(firstNname: 'Timothy', lastName: 'Wever',title: 'Beard whisperer', user_id: 7 )
-Employee.create!(firstNname: 'Kiril', lastName: 'Kleinerman',title: 'I <3 Winnipeg', user_id: 8 )
-Employee.create!(firstNname: 'Felicia', lastName: 'Hartono',title: 'Scrums are too early', user_id: 9 )
-Employee.create!(firstNname: 'Eileen', lastName: 'Ai',title: 'They really are.', user_id: 10 )
+
+# Employee.create!(firstNname: 'Mathieu', lastName: 'Houde',title: 'Gopher', user_id: 1 )
+# Employee.create!(firstNname: 'Patrick', lastName: 'Thibault',title: 'Maximalist', user_id: 2 )
+# Employee.create!(firstNname: 'Francis', lastName: 'Patry-Jessop',title: 'Captain', user_id: 3 )
+# Employee.create!(firstNname: 'David', lastName: 'Amyot',title: 'The Man', user_id: 4 )
+# Employee.create!(firstNname: 'Marie-Ève', lastName: 'Goupil',title: 'AI emp', user_id: 5 )
+# Employee.create!(firstNname: 'François', lastName: 'Boivin',title: 'The Tank', user_id: 6 )
+# Employee.create!(firstNname: 'Timothy', lastName: 'Wever',title: 'Beard whisperer', user_id: 7 )
+# Employee.create!(firstNname: 'Kiril', lastName: 'Kleinerman',title: 'I <3 Winnipeg', user_id: 8 )
+# Employee.create!(firstNname: 'Felicia', lastName: 'Hartono',title: 'Scrums are too early', user_id: 9 )
+# Employee.create!(firstNname: 'Eileen', lastName: 'Ai',title: 'They really are.', user_id: 10 )
 
 10.times do
 
@@ -185,42 +186,38 @@ o = Batterie.create!(
         date: Faker::Date.between(from: '2022-01-01', to: '2022-12-31')
     )
 ###########################################################################################################################################################
-#for the drop box api
-    CODE = ENV["DROPBOX_OAUTH_BEARER"]
-
-    DropboxApi::Client.new(CODE)
-   ########################################################################################### 
-#     CLIENT_ID = ENV['app_key']
-#     CLIENT_SECRET =ENV['app_secret']
-#     # 1. Get an authorization URL, requesting offline access type.
-#     authenticator = DropboxApi::Authenticator.new(CLIENT_ID, CLIENT_SECRET)
-#     authenticator.auth_code.authorize_url(token_access_type: 'offline')
-
-#     # 2. Log into Dropbox and authorize your app. You need to open the
-#     #    authorization URL in your browser.
-
-#     # 3. Exchange the authorization code for a reusable access token
-#     access_token = authenticator.auth_code.get_token(CODE) #=> #<OAuth2::AccessToken ...>`
-
-#     # You can now use the access token to initialize a DropboxApi::Client, you
-#     # should also provide a callback function to store the updated access token
-#     # whenever it's refreshed.
-#     client = DropboxApi::Client.new(
-#     access_token: access_token,
-#     on_token_refreshed: lambda { |new_token_hash|
-#     # token_hash is a serializable Hash, something like this:
-#     # {
-#     #   "uid"=>"440",
-#     #   "token_type"=>"bearer",
-#     #   "scope"=>"account_info.read account_info.write...",
-#     #   "account_id"=>"dbid:AABOLtA1rT6rRK4vajKZ...",
-#     #   :access_token=>"sl.A5Ez_CBsqJILhDawHlmXSoZEhLZ4nuLFVRs6AJ...",
-#     #   :refresh_token=>"iMg4Me_oKYUAAAAAAAAAAapQixCgwfXOxuubCuK_...",
-#     #   :expires_at=>1632948328
-#     # }
-#     SomewhereSafe.save(new_token_hash)
-#   }
-# )
 
 end
 
+
+
+# require 'aws-sdk-polly'
+
+# credentials = Aws::Credentials.new('AKIATAAKB5PVDHXSTCYL', 'l/jylKFbiH8DyXP5JxHjifY8nkbLFOCU8qLdz8CI')
+
+# client = Aws::Polly::Client.new(region: 'us-west-2', credentials: credentials)
+
+# x = client.synthesize_speech(output_format: 'mp3',text: 'hello',voice_id: 'Joanna')  
+
+#  # Open file and get the contents as a string
+#  if File.exist?("app/assets/audio/tts.mp3")
+#     puts "meow"
+#   else
+#     puts 'No such file: '
+#   end
+
+  
+#     name = File.basename("tester")
+  
+#     Split up name so we get just the xyz part
+#     parts = name.split('.')
+#     first_part = parts[0]
+#     mp3_file = first_part + '.mp3'
+  
+#     IO.copy_stream(x.audio_stream, mp3_file)
+  
+#     puts 'Wrote MP3 content to: ' + mp3_file
+  
+  
+# x = Base64.decode64(data_from_web_service)
+# File.open('file_name', 'wb') {|f| f.write(x)}

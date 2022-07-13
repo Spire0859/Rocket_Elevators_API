@@ -95,3 +95,9 @@ gem "pg", "~> 1.4"
 gem 'dropbox_api'
 gem 'dotenv-rails'
 gem 'oga'
+
+gem 'aws-sdk-s3', '~> 1'
+
+gem 'aws-sdk-ec2', '~> 1'
+
+gem 'aws-sdk-polly'
