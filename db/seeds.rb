@@ -186,39 +186,41 @@ o = Batterie.create!(
     )
 ###########################################################################################################################################################
 #for the drop box api
-    DropboxApi::Client.new('sl.BLQBCaFQvMtyCxJJ4PLCwZdJ0KnxxY6Pwb8YI5cvV7ywBhwh3MDDxIufXrWjar8zsjlHHdt57vegu4hvC4djRrmjWOvvQxstFyLs0Y7m23xJ5-eZDEI0tjjzvpyuj32ANT-q7Rw')
-    CLIENT_ID = 'az8ykn83kecoodq' #ENV['app_key']
-    CLIENT_SECRET = 'ozp1pxo8e563fc5' #ENV['app_secret']
-    # 1. Get an authorization URL, requesting offline access type.
-    authenticator = DropboxApi::Authenticator.new(CLIENT_ID, CLIENT_SECRET)
-    authenticator.auth_code.authorize_url(token_access_type: 'offline')
+    CODE = ENV["DROPBOX_OAUTH_BEARER"]
 
-    # 2. Log into Dropbox and authorize your app. You need to open the
-    #    authorization URL in your browser.
+    DropboxApi::Client.new(CODE)
+   ########################################################################################### 
+#     CLIENT_ID = ENV['app_key']
+#     CLIENT_SECRET =ENV['app_secret']
+#     # 1. Get an authorization URL, requesting offline access type.
+#     authenticator = DropboxApi::Authenticator.new(CLIENT_ID, CLIENT_SECRET)
+#     authenticator.auth_code.authorize_url(token_access_type: 'offline')
 
-    # 3. Exchange the authorization code for a reusable access token
-    CODE = 'sl.BLQBCaFQvMtyCxJJ4PLCwZdJ0KnxxY6Pwb8YI5cvV7ywBhwh3MDDxIufXrWjar8zsjlHHdt57vegu4hvC4djRrmjWOvvQxstFyLs0Y7m23xJ5-eZDEI0tjjzvpyuj32ANT-q7Rw' #ENV["DROPBOX_OAUTH_BEARER"]
-    access_token = authenticator.auth_code.get_token(CODE) #=> #<OAuth2::AccessToken ...>`
+#     # 2. Log into Dropbox and authorize your app. You need to open the
+#     #    authorization URL in your browser.
 
-    # You can now use the access token to initialize a DropboxApi::Client, you
-    # should also provide a callback function to store the updated access token
-    # whenever it's refreshed.
-    client = DropboxApi::Client.new(
-    access_token: access_token,
-    on_token_refreshed: lambda { |new_token_hash|
-    # token_hash is a serializable Hash, something like this:
-    # {
-    #   "uid"=>"440",
-    #   "token_type"=>"bearer",
-    #   "scope"=>"account_info.read account_info.write...",
-    #   "account_id"=>"dbid:AABOLtA1rT6rRK4vajKZ...",
-    #   :access_token=>"sl.A5Ez_CBsqJILhDawHlmXSoZEhLZ4nuLFVRs6AJ...",
-    #   :refresh_token=>"iMg4Me_oKYUAAAAAAAAAAapQixCgwfXOxuubCuK_...",
-    #   :expires_at=>1632948328
-    # }
-    SomewhereSafe.save(new_token_hash)
-  }
-)
+#     # 3. Exchange the authorization code for a reusable access token
+#     access_token = authenticator.auth_code.get_token(CODE) #=> #<OAuth2::AccessToken ...>`
+
+#     # You can now use the access token to initialize a DropboxApi::Client, you
+#     # should also provide a callback function to store the updated access token
+#     # whenever it's refreshed.
+#     client = DropboxApi::Client.new(
+#     access_token: access_token,
+#     on_token_refreshed: lambda { |new_token_hash|
+#     # token_hash is a serializable Hash, something like this:
+#     # {
+#     #   "uid"=>"440",
+#     #   "token_type"=>"bearer",
+#     #   "scope"=>"account_info.read account_info.write...",
+#     #   "account_id"=>"dbid:AABOLtA1rT6rRK4vajKZ...",
+#     #   :access_token=>"sl.A5Ez_CBsqJILhDawHlmXSoZEhLZ4nuLFVRs6AJ...",
+#     #   :refresh_token=>"iMg4Me_oKYUAAAAAAAAAAapQixCgwfXOxuubCuK_...",
+#     #   :expires_at=>1632948328
+#     # }
+#     SomewhereSafe.save(new_token_hash)
+#   }
+# )
 
 end
 

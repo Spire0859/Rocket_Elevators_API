@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_08_222140) do
+ActiveRecord::Schema.define(version: 2022_07_13_145517) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "address_type", null: false
@@ -143,7 +143,9 @@ ActiveRecord::Schema.define(version: 2022_07_08_222140) do
     t.binary "file", null: false
     t.datetime "date", null: false
     t.datetime "created_at", null: false
+    t.bigint "customer_id"
     t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_leads_on_customer_id"
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|

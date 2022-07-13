@@ -1,5 +1,19 @@
 class PagesController < ApplicationController
   def home
+    
+   
+   
+ 
+   
+    
+    # client.create_folder("/Apps/"+name)
+  # elsif 
+    
+  # end
+  
+  
+  
+  
   end
   def back
   end
@@ -11,4 +25,5 @@ class PagesController < ApplicationController
   end
   def admin
   end
+  
 end
