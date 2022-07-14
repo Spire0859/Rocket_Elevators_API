@@ -1,8 +1,13 @@
 RailsAdmin.config do |config|
 
-  config.authorize_with do
-    redirect_to main_app.root_path unless warden.user.emp == true
-  end
+  # config.authorize_with do
+  #   puts "a"
+  #   puts "a"
+  #   puts "a"
+  #   puts "a"
+  #   redirect_to main_app.root_path unless warden.user.emp == true
+  #   puts warden.user
+  # end
 ''
   ### Popular gems integration
   
@@ -42,4 +47,13 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model 'Team' do
+  end
+  
+  
+   
+
+  
 end
+
