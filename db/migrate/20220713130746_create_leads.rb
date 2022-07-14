@@ -9,7 +9,7 @@ class CreateLeads < ActiveRecord::Migration[5.2]
       t.string :descriptionProject, null: false
       t.string :department, null: false
       t.string :message, null: false
-      t.blob :file, null: false
+      t.blob :file
       t.datetime :date, null: false
       t.datetime :created_at, null: false
       t.belongs_to :customer

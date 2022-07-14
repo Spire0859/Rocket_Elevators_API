@@ -182,7 +182,7 @@ o = Batterie.create!(
         descriptionProject: Faker::Lorem.sentence,
         department: Faker::Lorem.word,
         message: Faker::Lorem.sentence,
-        file: Faker::Lorem.word,
+        #file: Faker::Lorem.word,
         date: Faker::Date.between(from: '2022-01-01', to: '2022-12-31')
     )
 ###########################################################################################################################################################

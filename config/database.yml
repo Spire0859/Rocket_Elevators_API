@@ -52,10 +52,5 @@ test:
 production:
   <<: *default
   database: rocket_elevators_db
-<<<<<<< HEAD
-  username: matias
-  password: "riotgames514"
-=======
   username: spire
   password: "yes"
->>>>>>> a47e5b145cc9e365c3c8d51b9cf7936cabdb7846
