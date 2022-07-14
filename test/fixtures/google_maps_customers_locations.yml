@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  location_building: MyString
+  building_floors: 1
+  client_name: MyString
+  nb_battries: 1
+  nb_columns: 1
+  nb_elevators: 1
+  tech_contact: MyString
+
+two:
+  location_building: MyString
+  building_floors: 1
+  client_name: MyString
+  nb_battries: 1
+  nb_columns: 1
+  nb_elevators: 1
+  tech_contact: MyString

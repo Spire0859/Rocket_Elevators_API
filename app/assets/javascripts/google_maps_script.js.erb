@@ -1,0 +1,36 @@
+var map;
+var service;
+var infowindow;
+mapsLoaded = function() {
+    var rocketElevatorPosition = new google.maps.LatLng(45.45964423147895, -73.56679172191883);
+    infowindow = new google.maps.InfoWindow();
+    map = new google.maps.Map(
+        document.getElementById('map'), {center: rocketElevatorPosition, zoom: 15,streetViewControl: false});
+        myArr = []
+        var service = new google.maps.places.PlacesService(map);
+        <%for i in 1..6%>
+        service.findPlaceFromQuery({
+            query: '<%= GoogleMapsCustomersLocation.where("id = #{i}").pluck(:location_building)%>',
+            fields: ['name', 'geometry']}, function(results, status){
+            if(status === google.maps.places.PlacesServiceStatus.OK){
+                for (var i = 0; i < results.length; i++) {
+                    new google.maps.Marker({
+                        position: results[i].geometry.location,
+                        map,
+                        title: "location",
+                    }).addListener("click", () => {
+                        document.getElementById("l_building").innerHTML = "Location of the Building: " + <%= GoogleMapsCustomersLocation.where("id = #{i}").pluck(:location_building)%>   
+                        document.getElementById("nb_floor").innerHTML = "Number of floors in the building: " + <%= GoogleMapsCustomersLocation.where("id = #{i}").pluck(:building_floors)%>   
+                        document.getElementById("c_name").innerHTML = "Client name: " + <%= GoogleMapsCustomersLocation.where("id = #{i}").pluck(:client_name)%>
+                        document.getElementById("nb_batteries").innerHTML = "Number of Batteries: " + <%= GoogleMapsCustomersLocation.where("id = #{i}").pluck(:nb_battries)%>
+                        document.getElementById("nb_columns").innerHTML = "Number of Columns: " + <%= GoogleMapsCustomersLocation.where("id = #{i}").pluck(:nb_columns)%>
+                        document.getElementById("nb_elevators").innerHTML = "Number of Elevators: " + <%= GoogleMapsCustomersLocation.where("id = #{i}").pluck(:nb_elevators)%>
+                        document.getElementById("tech_name").innerHTML = "Full name of technical contact: " + <%= GoogleMapsCustomersLocation.where("id = #{i}").pluck(:tech_contact)%>
+                    });
+                }
+            map.setCenter(results[0].geometry.location);
+            }
+        });
+        <%end%>
+        console.log(marker);    
+    }

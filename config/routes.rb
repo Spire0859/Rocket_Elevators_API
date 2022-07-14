@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   resources :quotes
   get 'pages/back'
+  get 'pages/customers_location'
   get 'pages/residential'
   get 'pages/commercial'
   get 'pages/quote'

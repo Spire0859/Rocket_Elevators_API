@@ -6,10 +6,10 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script>
-      var plugin_path = 'assets/plugins/'
-    </script>
+    <!--WHAT IS: async, refer -->
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpty8Aa0z6JF49Xjjxx9XWa2IiYGFja9s&callback=mapsLoaded&libraries=places" async refer></script>
 
+    <script> var plugin_path = 'assets/plugins/' </script>
   </head>
 
   <body>

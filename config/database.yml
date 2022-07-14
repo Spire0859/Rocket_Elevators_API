@@ -9,13 +9,18 @@
 # And be sure to use new-style password hashing:
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
+#
+# To use your ENV variable you need to create 
+# them first in this environment 
+#   using the command in the terminal: export ENV_VARIABLE=value
+
 default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password: root
-  host: 127.0.0.1
+  password: razakade123
+  host: localhost
   # socket: /var/run/mysqld/mysqld.sock
   database: rocket_elevators_db
 
@@ -52,5 +57,4 @@ test:
 production:
   <<: *default
   database: rocket_elevators_db
-  username: matias
-  password: "riotgames514"
+  
