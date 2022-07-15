@@ -88,7 +88,7 @@ for p in 0..2 do
 
    i = Addresse.create!(
         address_type: ['buisness', 'billing', 'home', 'shipping'].sample,
-        status: ['active', 'inactive'].sample,
+        status: ['Active', 'Inactive'].sample,
         entity: ['building', 'customer'].sample,
         :numberAndStreet => addresse["address1"],
         suiteOrApartment: "",
@@ -136,7 +136,7 @@ b = Building.create!(
 o = Batterie.create!(
         building_id: b.id,
         types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
-        status: Faker::Lorem.word,
+        status: ['Active', 'Inactive'].sample,
         EmployeeId: Faker::Number.number(digits: 5),
         date_commissioning: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
         date_last_inspection: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
@@ -148,7 +148,7 @@ o = Batterie.create!(
    c = Column.create!(
         batterie_id: o.id,
         numberFloorServed: Faker::Number.number(digits: 10),
-        status: Faker::Lorem.word,
+        status: ['Active', 'Inactive'].sample,
         model: Faker::Lorem.word,
         types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
         information: Faker::Lorem.sentence,
@@ -160,7 +160,7 @@ o = Batterie.create!(
         serial_number: Faker::Number.number(digits: 10),
         companyName: Faker::Company.name,
         model:Faker::Lorem.word,
-        status: Faker::Lorem.word,
+        status: ['Active', 'Inactive'].sample,
         fullName: Faker::Name.name,
         email: Faker::Internet.email,
         certificateOperations: Faker::Name.name,

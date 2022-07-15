@@ -17,11 +17,11 @@ default: &default
   password: root
   host: 127.0.0.1
   # socket: /var/run/mysqld/mysqld.sock
-  database: rocket_elevators_db
+  database: rocketdb
 
 development:
   <<: *default
-  database: rocket_peterpan
+  database: rocketdb
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -51,6 +51,6 @@ test:
 #
 production:
   <<: *default
-  database: rocket_elevators_db
-  username: matias
-  password: "riotgames514"
+  database: rocketdb
+  username: calex
+  password: "calex"

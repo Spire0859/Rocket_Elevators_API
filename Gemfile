@@ -92,3 +92,7 @@ gem 'rake'
 #gem 'webpacker', '~> 3.0'
 
 gem "pg", "~> 1.4"
+
+gem 'twilio-ruby', '~> 4.11', '>= 4.11.1'
+
+gem 'slack-notifier', '~> 2.4'
