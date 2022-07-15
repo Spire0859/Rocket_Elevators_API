@@ -32,3 +32,6 @@
 /node_modules
 yarn-debug.log*
 .yarn-integrity
+sendgrid.env
+db_authentification.env
+google_api.env
