@@ -1,4 +1,55 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Fullnamecontact:</strong>
+  <%= @lead.fullNameContact %>
+</p>
+
+<p>
+  <strong>Companyname:</strong>
+  <%= @lead.companyName %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @lead.email %>
+</p>
+
+<p>
+  <strong>Phonenumber:</strong>
+  <%= @lead.phoneNumber %>
+</p>
+
+<p>
+  <strong>Nameproject:</strong>
+  <%= @lead.nameProject %>
+</p>
+
+<p>
+  <strong>Descriptionproject:</strong>
+  <%= @lead.descriptionProject %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @lead.department %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @lead.message %>
+</p>
+
+<p>
+  <strong>File:</strong>
+ 
+  <%= image_tag(@lead.file.url, alt: 'file') if @lead.file? %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @lead.date %>
+</p>
+
 <%= link_to 'Edit', edit_lead_path(@lead) %> |
 <%= link_to 'Back', leads_path %>
