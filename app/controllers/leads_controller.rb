@@ -14,7 +14,7 @@ class LeadsController < ApplicationController
       priority: 1,
       subject: "#{@leads.nameProject}",
       email: "#{@leads.email}",
-      description: "#{@leads.message}"
+      description: " name: #{@leads.fullNameContact}, " + " company name: #{@leads.companyName}, " + " phone number: #{@leads.phoneNumber}, " + " project description: #{@leads.descriptionProject}, " + " message: #{@leads.message}"
     }
 
     data_json = JSON.generate(data)

@@ -1,1 +1,21 @@
+<style>
+.home_video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    object-fit: cover;
+    top: 0;
+    z-index: -2;
+   }
+</style>
+
+<%= video_tag "Waves.mp4", autoplay: :autoplay, loop: :loop, muted: :muted, class: "home_video"  %>
+<div style="margin-top: 10%; margin-bottom: 50%; margin-left: 40%" class="container">
+
+<h1 style="color: white">Play me to get todays breifing </h1>
+
 <%= audio_tag("tester.mp3", autoplay: true, controls: true) %>
+
+</div>
