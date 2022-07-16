@@ -1031,25 +1031,25 @@
 									<div class="row">
 											<div class="col-md-4">
 												<label for="contact:name">Full Name *</label>
-												<input required type="text" value="" class="form-control" name="leads[fullNameContact]" id="name">
+												<input required type="text" value="" class="form-control" name="lead[fullNameContact]" id="name">
 											</div>
 											<div class="col-md-4">
 												<label for="contact:email">E-mail Address *</label>
-												<input required type="email" value="" class="form-control" name="leads[email]" id="email">
+												<input required type="email" value="" class="form-control" name="lead[email]" id="email">
 											</div>
 											<div class="col-md-4">
 												<label for="contact:phone">Phone</label>
-												<input type="text" value="" class="form-control" name="leads[phoneNumber]" id="phone">
+												<input type="text" value="" class="form-control" name="lead[phoneNumber]" id="phone">
 											</div>
 									</div>
 									<div class="row">
 										<div class="col-md-4">
 											<label for="contact:name">Buisiness Name</label>
-											<input required type="text" value="" class="form-control" name="leads[companyName]" id="company_name">
+											<input required type="text" value="" class="form-control" name="lead[companyName]" id="company_name">
 										</div>
 										<div class="col-md-4">
 											<label for="contact:email">Project Name</label>
-											<input required type="text" value="" class="form-control" name="leads[nameProject]" id="project_name">
+											<input required type="text" value="" class="form-control" name="lead[nameProject]" id="project_name">
 										</div>
 										<div class="col-md-4">
 											<label for="contact_department">Department</label>
@@ -1065,13 +1065,13 @@
 
 											<div class="col-md-12">
 												<label for="contact:message">Project Description</label>
-												<textarea required maxlength="100" rows="4" class="form-control" name="leads[descriptionProject]" id="project_description"></textarea>
+												<textarea required maxlength="100" rows="4" class="form-control" name="lead[descriptionProject]" id="project_description"></textarea>
 											</div>
 									</div>
 									<div class="row">
 											<div class="col-md-12">
 												<label for="contact:message">Message *</label>
-												<textarea required maxlength="10000" rows="8" class="form-control" name="leads[message]" id="message"></textarea>
+												<textarea required maxlength="10000" rows="8" class="form-control" name="lead[message]" id="message"></textarea>
 											</div>
 									</div>
 									<div class="row">
@@ -1079,7 +1079,7 @@
 												<label for="contact:attachment">File Attachment</label>
 
 												<!-- custom file upload -->
-												<input class="custom-file-upload" type="file" id="file" name="leads[file]" id="attachment" data-btn-text="Select a File" />
+												<input class="custom-file-upload" type="file" id="file" name="lead[file]" id="attachment" data-btn-text="Select a File" />
 												<small class="text-muted block">Max file size: 10Mb (zip/pdf/jpg/png)</small>
 
 											</div>
@@ -1095,7 +1095,7 @@
 									</div>
 								</div>
 
-									<input type="hidden" id="secret1" name="leads[department]" >
+									<input type="hidden" id="secret1" name="lead[department]" >
 
 							<% end %>
 
