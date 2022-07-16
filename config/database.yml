@@ -26,7 +26,7 @@ default: &default
 
 development:
   <<: *default
-  database: rocket_peterpan
+  database: rocket_elevators_db_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -57,4 +57,3 @@ test:
 production:
   <<: *default
   database: rocket_elevators_db
-  

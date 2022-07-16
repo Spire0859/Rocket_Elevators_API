@@ -93,4 +93,22 @@ gem "pg", "~> 1.4"
 
 gem 'sendgrid-ruby'
 
+gem 'aws-sdk-s3', '~> 1'
 
+gem 'aws-sdk-ec2', '~> 1'
+
+gem 'aws-sdk-polly'
+
+
+gem 'carrierwave', '~> 1.0'
+gem 'dropbox_api'
+gem 'dotenv-rails'
+gem 'carrierwave-dropbox'
+	
+gem 'freshdesk-api-v2-rails'
+
+gem 'net-http'
+
+gem 'uri'
+
+gem 'rest-client'

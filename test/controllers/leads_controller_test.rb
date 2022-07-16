@@ -17,7 +17,7 @@ class LeadsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create lead" do
     assert_difference('Lead.count') do
-      post leads_url, params: { lead: {  } }
+      post leads_url, params: { lead: { companyName: @lead.companyName, date: @lead.date, department: @lead.department, descriptionProject: @lead.descriptionProject, email: @lead.email, file: @lead.file, fullNameContact: @lead.fullNameContact, message: @lead.message, nameProject: @lead.nameProject, phoneNumber: @lead.phoneNumber } }
     end
 
     assert_redirected_to lead_url(Lead.last)
@@ -34,7 +34,7 @@ class LeadsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update lead" do
-    patch lead_url(@lead), params: { lead: {  } }
+    patch lead_url(@lead), params: { lead: { companyName: @lead.companyName, date: @lead.date, department: @lead.department, descriptionProject: @lead.descriptionProject, email: @lead.email, file: @lead.file, fullNameContact: @lead.fullNameContact, message: @lead.message, nameProject: @lead.nameProject, phoneNumber: @lead.phoneNumber } }
     assert_redirected_to lead_url(@lead)
   end
 
