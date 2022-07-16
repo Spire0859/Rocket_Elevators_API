@@ -1,0 +1,2 @@
+class GoogleMapsCustomersLocation < ApplicationRecord
+end

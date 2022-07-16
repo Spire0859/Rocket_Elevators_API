@@ -187,6 +187,21 @@ o = Batterie.create!(
 end
 
 
+mtl_location = ["Édifice Alfred","Édifice Dominion Square","Canada Life Building, Montreal","Édifice Sun Life","Grand Trunk Building","Édifice New-York Life"]
+6.times {
+    |i|  
+    GoogleMapsCustomersLocation.create!(
+    location_building: mtl_location[i],
+    building_floors: rand(8) + 10,
+    client_name: Faker::Name.name.gsub(/\'/,''),
+    nb_columns: rand(3) + 1,
+    nb_elevators: rand(8) + 1,
+    nb_battries: 1,
+    tech_contact: Faker::Name.name.gsub(/\'/,''),
+    )
+} 
+
+
 
 # require 'aws-sdk-polly'
 

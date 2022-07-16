@@ -5,9 +5,7 @@ ruby '2.7.6'
 
 # Bootstrap
 gem 'bootstrap', '~> 4.0.0'
-
 gem 'owlcarousel-rails'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.8'
 # Use mysql as the database for Active Record
@@ -89,7 +87,7 @@ source 'https://rubygems.org'
 
 gem 'rake'
 
-#gem 'webpacker', '~> 3.0'
+gem 'webpacker', '~> 3.0'
 
 gem "pg", "~> 1.4"
 
@@ -112,5 +110,3 @@ gem 'net-http'
 gem 'uri'
 
 gem 'rest-client'
-
-

@@ -76,6 +76,21 @@
  
 /**	01. Resets
 *************************************************** **/
+
+#container_map{
+	margin-top:2%;
+}
+
+#map_section{
+	height: 400px;
+}
+
+#map{
+	height: 400px;
+	width: 100%;
+	padding: 0;
+}
+
 button::-moz-focus-inner, 
 input::-moz-focus-inner {
 	border: 0;
