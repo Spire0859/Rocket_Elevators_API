@@ -25,4 +25,6 @@
 //= require bootstrap
 //= require owl.carousel
 //= require_tree .
+//= require google_maps_script
+
 
