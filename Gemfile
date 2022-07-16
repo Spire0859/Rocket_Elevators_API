@@ -91,6 +91,8 @@ gem 'webpacker', '~> 3.0'
 
 gem "pg", "~> 1.4"
 
+gem 'sendgrid-ruby'
+
 gem 'aws-sdk-s3', '~> 1'
 
 gem 'aws-sdk-ec2', '~> 1'
