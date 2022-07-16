@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'pages/residential'
   get 'pages/commercial'
   get 'pages/quote'
+  get 'rails_admin/data/playbriefing', to: 'data#playbriefing'
   get 'residential', to: 'pages#residential'
   get 'commercial', to: 'pages#commercial'
   get 'quote', to: 'pages#quote'
