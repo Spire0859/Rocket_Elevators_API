@@ -22,11 +22,12 @@ default: &default
   password: <%= ENV['DB_PASSWORD'] %>
   host: localhost
   # socket: /var/run/mysqld/mysqld.sock
-  database: rocket_elevators_db
+  database: rocketdb
 
 development:
   <<: *default
   database: rocket_elevators_db_development
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
