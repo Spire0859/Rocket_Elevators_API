@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :leads
+  resources :customers
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'pages#home'
   resources :quotes
