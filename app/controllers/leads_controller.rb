@@ -1,4 +1,9 @@
 require 'sendgrid-ruby'
+require 'net/http'
+require 'uri'
+require 'json'
+require 'rest_client'
+
 include SendGrid
 
 class LeadsController < ApplicationController
@@ -15,15 +20,12 @@ class LeadsController < ApplicationController
     $leadPhone
     $leadcompany
     $leaddescription
-    
+  end
 
-  require 'net/http'
-  require 'uri'
-  require 'json'
-  require 'rest_client'
+ 
 
   def create 
-    @leads = Lead.new(contact_params)
+    @leads = Lead.new(lead_params)
     @leads.date = DateTime.now
     
     # ******************** SENDING MESSAGE WITH SENDGRID ********************
@@ -39,48 +41,37 @@ class LeadsController < ApplicationController
     sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
     response = sg.client.mail._('send').post(request_body: mail.to_json)
     # ******************** SENDING MESSAGE WITH SENDGRID ********************
+
     if @leads.save
+
+      # ******************** SENDING NEW TICKET TO FRESHDESK ********************
+      data  = {
+        status: 2, 
+        priority: 1,
+        subject: "#{@leads.nameProject}",
+        email: "#{@leads.email}",
+        description: " name: #{@leads.fullNameContact}, " + " company name: #{@leads.companyName}, " + " phone number: #{@leads.phoneNumber}, " + " project description: #{@leads.descriptionProject}, " + " message: #{@leads.message}"
+      }
+  
+      data_json = JSON.generate(data)
+    
+  
+      request = RestClient::Request.execute(
+        method: :post,
+        url: 'https://rocketelevators-support.freshdesk.com/api/v2/tickets',
+        user: "iohhGOT939hTYz9tk2",
+        password: 'X',
+        payload: data_json,
+        headers: {"Content-Type" => 'application/json'}
+      )
+      
+      flash[:notice] = 'Quote created successfully'
       redirect_to root_path
     end
   end
 
-=======
     
-  if @leads.save
-    data  = {
-      status: 2, 
-      priority: 1,
-      subject: "#{@leads.nameProject}",
-      email: "#{@leads.email}",
-      description: " name: #{@leads.fullNameContact}, " + " company name: #{@leads.companyName}, " + " phone number: #{@leads.phoneNumber}, " + " project description: #{@leads.descriptionProject}, " + " message: #{@leads.message}"
-    }
 
-    data_json = JSON.generate(data)
-  #  data = JSON.dump({
-  #       "description" => @leads.message,
-  #       "subject" => @leads.nameProject,
-  #       "email" => @leads.email,
-  #       "priority" => 1,
-  #       "status" =>2,
-  #       "cc_emails" => [
-  #         "support@rocketelevators-support.freshdesk.com",
-  #       ]})
-
-    request = RestClient::Request.execute(
-      method: :post,
-      url: 'https://rocketelevators-support.freshdesk.com/api/v2/tickets',
-      user: "iohhGOT939hTYz9tk2",
-      password: 'X',
-      payload: data_json,
-      headers: {"Content-Type" => 'application/json'}
-    )
-    
-      flash[:notice] = 'Quote created successfully'
-      redirect_to pages_quote_url action: :new
-
-          
-
-  end
 
   # GET /leads/1 or /leads/1.json
   def show
@@ -94,25 +85,6 @@ class LeadsController < ApplicationController
   # GET /leads/1/edit
   def edit
   end
-
-  # POST /leads or /leads.json
-  def create
-    @lead = Lead.new(lead_params)
-    @lead.date = DateTime.now
-
-    respond_to do |format|
-      if @lead.save
-        pp "hello"
-        checkIfLeadIsCustomerAndConnect()
-        format.html { redirect_to lead_url(@lead), notice: "Success!!" }
-        # format.json { render :show, status: :created, location: @lead }
-      # else
-      #   format.html { render :new, status: :unprocessable_entity }
-      #   format.json { render json: @lead.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # PATCH/PUT /leads/1 or /leads/1.json
   def update
     respond_to do |format|
@@ -150,46 +122,48 @@ class LeadsController < ApplicationController
     end
   end
   ######################################################################################################################################
-  def dropbox_api
+  # def dropbox_api
     
 
-    fileurl = @lead.file.current_path 
-    file = @lead.file
-    name = @lead.fullNameContact
-    company = @lead.companyName
+  #   fileurl = @lead.file.current_path 
+  #   file = @lead.file
+  #   name = @lead.fullNameContact
+  #   company = @lead.companyName
     
-    #connects with the api
-    client = DropboxApi::Client.new(ENV['DROPBOX_OAUTH_BEARER'])
-    #Searches to check if a folder exeist in the name of the companey and project name
-    searchResult = client.search("#{company}")
+  #   #connects with the api
+  #   client = DropboxApi::Client.new(ENV['DROPBOX_OAUTH_BEARER'])
+  #   #Searches to check if a folder exeist in the name of the companey and project name
+  #   searchResult = client.search("#{company}")
     
-    if searchResult.matches.length == 0
-      pp "folder doesnt exist"
-      client.create_folder("/Apps/#{company}")
-      pp "created a new folder"
-      client.upload("/Apps/#{company}/#{name}",fileurl)
-      pp "saved the file to the new foder"
-      #@leads.email = nil 
-      pp "deleted the local copy "
-    elsif
-      pp "folder exist"
-      client.upload("/Apps/#{company}/#{name}",fileurl)
-      pp "saved the file to the existing folder"
-      #@leads.email = nil 
-      pp "deleted the local copy "
-    end
-  end
+  #   if searchResult.matches.length == 0
+  #     pp "folder doesnt exist"
+  #     client.create_folder("/Apps/#{company}")
+  #     pp "created a new folder"
+  #     client.upload("/Apps/#{company}/#{name}",fileurl)
+  #     pp "saved the file to the new foder"
+  #     #@leads.email = nil 
+  #     pp "deleted the local copy "
+  #   elsif
+  #     pp "folder exist"
+  #     client.upload("/Apps/#{company}/#{name}",fileurl)
+  #     pp "saved the file to the existing folder"
+  #     #@leads.email = nil 
+  #     pp "deleted the local copy "
+  #   end
+  #   end
+  # end
+
 ##################################################################################################################
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_lead
-      @lead = Lead.find(params[:id])
+      @leads = Lead.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def lead_params
-      params.require(:lead).permit(:fullNameContact, :companyName, :email, :phoneNumber, :nameProject, :descriptionProject, :department, :message, :file)
+      params.require(:leads).permit(:fullNameContact, :companyName, :email, :phoneNumber, :nameProject, :descriptionProject, :department, :message, :file)
     end
 
     private
@@ -197,53 +171,11 @@ class LeadsController < ApplicationController
     unless current_user && current_user.emp?
       redirect_to root_path, notice: "Some message"
     end
+  
   end
-
 end
 
-end 
-
-#getting all data to send to api
-
-        
-  
-          # #making api call 
-
-          # uri = URI.parse("https://domain.freshdesk.com/api/v2/tickets/20?include=requester")
-          # request = Net::HTTP::Get.new(uri)
-          # request.basic_auth("kjMdvajsTYgWGb3T3bDt", "X")
-          
-          # req_options = {
-          #   use_ssl: uri.scheme == "https",
-          # }
-          
-          # response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
-          #   http.request(request)
-          # end
 
 
-          # uri = URI.parse("https://domain.freshdesk.com/api/v2/tickets")
-          # request = Net::HTTP::Post.new(uri)
-          # request.basic_auth("kjMdvajsTYgWGb3T3bDt", "X")
-          # request.content_type = "application/json"
-          # request.body = JSON.dump({
-          #   "description" => @leads.message,
-          #   "subject" => @leads.nameProject,
-          #   "email" => @leads.email,
-          #   "priority" => 1,
-          #   "status" => 2,
-          #   "cc_emails" => [
-          #     "support@rocketelevators-support.freshdesk.com",
-          #   ],
-          #   "custom_fields" => {
-          #     "category" => "Primary"
-          #   }
-          # })
+ 
 
-          # req_options = {
-          #   use_ssl: uri.scheme == "https",
-          # }
-
-          # response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
-          #   http.request(request)
-          # end
