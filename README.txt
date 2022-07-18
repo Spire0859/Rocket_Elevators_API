@@ -52,7 +52,7 @@ have dependencies confused us a lot. It was also the first time that our crew ha
 with databases. Setting everything as a whole was a great learning experience that did
 traumatized the crew a little bit. We are now more comfortable with the technology than before
 while only sacrificing our souls during the process... fair exchange I say.
-								-Captain Pan
+								-Tanim Khondaker
 
 
 *HOW TO USE THE PROJECT
@@ -70,7 +70,15 @@ Just fill the input fields and send it via the "Submit" button at
 the bottom. It will be saved in the database.
 ------------------------------------------------------------------
 	-- Crew members of this project --
-Captain Pan - Marcos Salvador III López
-First Mate - Matias Mansilla
+
+
+Avinash Gopalakrishnan
 Naked Mate - Tanim Khondaker
 Carlos - Carlos Alexis Almanzar
+-----------------------------------------------------------------
+Drop box Api
+-----------------------------------------------------------------
+The Dropboxx api is connected to the contact us section on the main page. 
+So when a viewer fills te section and the email id happens to match the email id of our customers the file gets sent to dropboxx automaticaly. 
+There is also a section on the header that says leads to customers that allowes the leads to get converted to customers. This also pushes the files into the Dropboxx!
+------------------------------------------------------------------------------------------------------------------ 
