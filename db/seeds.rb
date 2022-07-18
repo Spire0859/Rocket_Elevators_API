@@ -35,7 +35,7 @@ users = [
     {email: 'timothy.wever@codeboxx.biz',password: '123456',emp: true},
     {email: 'kiril.kleinerman@codeboxx.biz',password: '123456',emp: true},
     {email: 'felicia.hartono@codeboxx.biz',password: '123456',emp: true},
-    {email: 'eileen.ai@codeboxx.biz',password: '123456',admin: true},
+    {email: 'eileen.ai@codeboxx.biz',password: '123456',emp: true},
 ]
 
 
@@ -66,16 +66,16 @@ users.each do |user|
 end
 
 
-# Employee.create!(firstNname: 'Mathieu', lastName: 'Houde',title: 'Gopher', user_id: 1 )
-# Employee.create!(firstNname: 'Patrick', lastName: 'Thibault',title: 'Maximalist', user_id: 2 )
-# Employee.create!(firstNname: 'Francis', lastName: 'Patry-Jessop',title: 'Captain', user_id: 3 )
-# Employee.create!(firstNname: 'David', lastName: 'Amyot',title: 'The Man', user_id: 4 )
-# Employee.create!(firstNname: 'Marie-Ève', lastName: 'Goupil',title: 'AI emp', user_id: 5 )
-# Employee.create!(firstNname: 'François', lastName: 'Boivin',title: 'The Tank', user_id: 6 )
-# Employee.create!(firstNname: 'Timothy', lastName: 'Wever',title: 'Beard whisperer', user_id: 7 )
-# Employee.create!(firstNname: 'Kiril', lastName: 'Kleinerman',title: 'I <3 Winnipeg', user_id: 8 )
-# Employee.create!(firstNname: 'Felicia', lastName: 'Hartono',title: 'Scrums are too early', user_id: 9 )
-# Employee.create!(firstNname: 'Eileen', lastName: 'Ai',title: 'They really are.', user_id: 10 )
+Employee.create!(firstNname: 'Mathieu', lastName: 'Houde',title: 'Gopher', user_id: 1 )
+Employee.create!(firstNname: 'Patrick', lastName: 'Thibault',title: 'Maximalist', user_id: 2 )
+Employee.create!(firstNname: 'Francis', lastName: 'Patry-Jessop',title: 'Captain', user_id: 3 )
+Employee.create!(firstNname: 'David', lastName: 'Amyot',title: 'The Man', user_id: 4 )
+Employee.create!(firstNname: 'Marie-Ève', lastName: 'Goupil',title: 'AI emp', user_id: 5 )
+Employee.create!(firstNname: 'François', lastName: 'Boivin',title: 'The Tank', user_id: 6 )
+Employee.create!(firstNname: 'Timothy', lastName: 'Wever',title: 'Beard whisperer', user_id: 7 )
+Employee.create!(firstNname: 'Kiril', lastName: 'Kleinerman',title: 'I <3 Winnipeg', user_id: 8 )
+Employee.create!(firstNname: 'Felicia', lastName: 'Hartono',title: 'Scrums are too early', user_id: 9 )
+Employee.create!(firstNname: 'Eileen', lastName: 'Ai',title: 'They really are.', user_id: 10 )
 
 10.times do
 
@@ -89,7 +89,7 @@ for p in 0..2 do
 
    i = Addresse.create!(
         address_type: ['buisness', 'billing', 'home', 'shipping'].sample,
-        status: ['active', 'inactive'].sample,
+        status: ['Active', 'Inactive'].sample,
         entity: ['building', 'customer'].sample,
         :numberAndStreet => addresse["address1"],
         suiteOrApartment: "",
@@ -137,7 +137,7 @@ b = Building.create!(
 o = Batterie.create!(
         building_id: b.id,
         types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
-        status: Faker::Lorem.word,
+        status: ['Active', 'Inactive'].sample,
         EmployeeId: Faker::Number.number(digits: 5),
         date_commissioning: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
         date_last_inspection: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
@@ -149,7 +149,7 @@ o = Batterie.create!(
    c = Column.create!(
         batterie_id: o.id,
         numberFloorServed: Faker::Number.number(digits: 10),
-        status: Faker::Lorem.word,
+        status: ['Active', 'Inactive'].sample,
         model: Faker::Lorem.word,
         types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
         information: Faker::Lorem.sentence,
@@ -161,7 +161,7 @@ o = Batterie.create!(
         serial_number: Faker::Number.number(digits: 10),
         companyName: Faker::Company.name,
         model:Faker::Lorem.word,
-        status: Faker::Lorem.word,
+        status: ['Active', 'Inactive'].sample,
         fullName: Faker::Name.name,
         email: Faker::Internet.email,
         certificateOperations: Faker::Name.name,
@@ -187,26 +187,43 @@ o = Batterie.create!(
 end
 
 
+mtl_location = ["Édifice Alfred","Édifice Dominion Square","Canada Life Building, Montreal","Édifice Sun Life","Grand Trunk Building","Édifice New-York Life"]
+6.times {
+    |i|  
+    GoogleMapsCustomersLocation.create!(
+    location_building: mtl_location[i],
+    building_floors: rand(8) + 10,
+    client_name: Faker::Name.name.gsub(/\'/,''),
+    nb_columns: rand(3) + 1,
+    nb_elevators: rand(8) + 1,
+    nb_battries: 1,
+    tech_contact: Faker::Name.name.gsub(/\'/,''),
+    )
+} 
+
+
 
 # require 'aws-sdk-polly'
+
 
 # credentials = Aws::Credentials.new('AKIATAAKB5PVDHXSTCYL', 'l/jylKFbiH8DyXP5JxHjifY8nkbLFOCU8qLdz8CI')
 
 # client = Aws::Polly::Client.new(region: 'us-west-2', credentials: credentials)
 
-# x = client.synthesize_speech(output_format: 'mp3',text: 'hello',voice_id: 'Joanna')  
+# tts = "Hello user , #{user}. There are currently #{elevatorNum} 
+#       elevators deployed in the #{buildingNum} buildings of your #{customerNum} customers.
+#       Currently, #{elevatorsMaintenance} elevators are not in Running Status and are being serviced.
+#       You currently have #{leadNum} leads in your contact requests.
+#       {batteryNum} Batteries are deployed across #{cityNum} cities"
 
-#  # Open file and get the contents as a string
-#  if File.exist?("app/assets/audio/tts.mp3")
-#     puts "meow"
-#   else
-#     puts 'No such file: '
-#   end
 
+# x = client.synthesize_speech(output_format: 'mp3',text: tts ,voice_id: 'Joanna')  
+
+# #  Open file and get the contents as a string
   
 #     name = File.basename("tester")
   
-#     Split up name so we get just the xyz part
+#     # Split up name so we get just the xyz part
 #     parts = name.split('.')
 #     first_part = parts[0]
 #     mp3_file = first_part + '.mp3'
@@ -215,6 +232,8 @@ end
   
 #     puts 'Wrote MP3 content to: ' + mp3_file
   
-  
-# x = Base64.decode64(data_from_web_service)
-# File.open('file_name', 'wb') {|f| f.write(x)}
+#     Sound.play(‘tester.mp3’)
+
+    # audio = Sound.new('tester.mp3')
+
+    # audio.play

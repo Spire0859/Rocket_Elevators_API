@@ -5,9 +5,7 @@ ruby '2.7.6'
 
 # Bootstrap
 gem 'bootstrap', '~> 4.0.0'
-
 gem 'owlcarousel-rails'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.8'
 # Use mysql as the database for Active Record
@@ -89,9 +87,15 @@ source 'https://rubygems.org'
 
 gem 'rake'
 
-#gem 'webpacker', '~> 3.0'
+gem 'webpacker', '~> 3.0'
 
 gem "pg", "~> 1.4"
+
+gem 'twilio-ruby', '~> 4.11', '>= 4.11.1'
+
+gem 'slack-notifier', '~> 2.4'
+
+gem 'sendgrid-ruby'
 
 gem 'aws-sdk-s3', '~> 1'
 
@@ -104,4 +108,10 @@ gem 'dropbox_api'
 gem 'dotenv-rails'
 gem 'carrierwave-dropbox'
 	
+gem 'freshdesk-api-v2-rails'
 
+gem 'net-http'
+
+gem 'uri'
+
+gem 'rest-client'
