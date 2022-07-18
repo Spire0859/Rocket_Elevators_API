@@ -33,3 +33,6 @@
 yarn-debug.log*
 .yarn-integrity
 
+google_api.env
+db_authentification.env
+sendgrid.env

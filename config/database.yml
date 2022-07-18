@@ -12,7 +12,9 @@
 #
 # To use your ENV variable you need to create 
 # them first in this environment 
-#   using the command in the terminal: export ENV_VARIABLE=value
+#   using the command in the terminal: echo "export ENV_VARIABLE=value" > file.name
+#   source ./file.name
+#   echo "file.name" >> .gitignore 
 
 default: &default
   adapter: mysql2

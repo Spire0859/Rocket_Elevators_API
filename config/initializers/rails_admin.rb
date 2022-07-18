@@ -8,7 +8,7 @@ RailsAdmin.config do |config|
   #   redirect_to main_app.root_path unless warden.user.emp == true
   #   puts warden.user
   # end
-''
+
   ### Popular gems integration
   
   ## == Devise ==
@@ -65,11 +65,8 @@ RailsAdmin.config do |config|
   end
   
   config.navigation_static_links = {
-    'Play Briefing' => 'rails_admin/data/playbriefing'
+    'Play Briefing' => 'rails_admin/data/playbriefing',
     'Google Maps' => 'pages/customers_location'
-    
   }
-
-  
 end
 
