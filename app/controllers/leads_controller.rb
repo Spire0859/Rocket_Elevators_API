@@ -111,7 +111,6 @@ class LeadsController < ApplicationController
   def dropbox
     pp "hello"
     checkIfLeadIsCustomerAndConnect()
-    format.html { redirect_to lead_url(@lead), notice: "Success!!" }
   end
 
   def checkIfLeadIsCustomerAndConnect
@@ -153,4 +152,3 @@ class LeadsController < ApplicationController
       pp "deleted the local copy "
     end
   end
-end
