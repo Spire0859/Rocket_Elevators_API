@@ -37,11 +37,7 @@ class QuotesController < ApplicationController
             
     end
 
-      flash[:notice] = 'Quote created successfully'
-      redirect_to pages_quote_url action: :new
-    else
-      render :new 
-    end
+
   end
 
   private
