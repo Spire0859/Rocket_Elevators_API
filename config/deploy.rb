@@ -8,21 +8,7 @@ set :rbenv_map_bins, %w{rake gem bundle ruby rails puma pumactl}
 set :rbenv_roles, :all # default value
 
 set :application, "RazakAdegoke"
-set :repo_url, "https://github.com/Spire0859/Rocket_Elevators_API"
-
-
-before "deploy:assets:precompile", "deploy:yarn_install"
-
-namespace :deploy do
-    desc 'Run rake yarn:install'
-    task :yarn_install do
-        on roles(:web) do
-            within release_path do
-                execute("cd #{release_path} && yarn install")
-            end
-        end
-    end
-end
+set :repo_url, "https://github.com/MY-ACCOUNT/MY-REPO.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
