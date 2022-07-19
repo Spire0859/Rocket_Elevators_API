@@ -69,17 +69,25 @@ password: 123456
 Just fill the input fields and send it via the "Submit" button at
 the bottom. It will be saved in the database.
 ------------------------------------------------------------------
-	-- Crew members of this project --
+
+
+##API
+------------------------------------------------------------------
+
+GOOGLE MAPS - Google Maps is a well know service powered by Google. It give us access to a grand variety of location. We use this services to localised our customers dynamicly in our backoffice section. All ours customers location a represented with marker and clicking thes markers show more caracteristics of the building in this location.
+
+SENDGRID - Sendgrid is powerful api who make the connection with our customers more easy. With this api we can send message to our customers depending on diffrent event. In our case we us it to send a personalize greetings email when someone fill the contacts us form.
+
+DROPBOX -The Dropboxx api is connected to the contact us section on the main page. 
+So when a viewer fills te section and the email id happens to match the email id of our customers the file gets sent to dropboxx automaticaly. 
+There is also a section on the header that says leads to customers that allowes the leads to get converted to customers. This also pushes the files into the Dropboxx!
+
+
+-- Crew members of this project --
 
 
 Avinash Gopalakrishnan
 Naked Mate - Tanim Khondaker
 Carlos - Carlos Alexis Almanzar
 Black Mate - Razak Adegoke
------------------------------------------------------------------
-Drop box Api
------------------------------------------------------------------
-The Dropboxx api is connected to the contact us section on the main page. 
-So when a viewer fills te section and the email id happens to match the email id of our customers the file gets sent to dropboxx automaticaly. 
-There is also a section on the header that says leads to customers that allowes the leads to get converted to customers. This also pushes the files into the Dropboxx!
------------------------------------------------------------------------------------------------------------------- 
+
