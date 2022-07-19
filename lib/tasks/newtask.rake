@@ -10,6 +10,7 @@ namespace :dwh do
         Rake::Task["dwh:FactContact"].invoke
         Rake::Task["dwh:FactElevator"].invoke
         Rake::Task["dwh:DimCustomers"].invoke
+        
     end
 
     task init: :environment do
