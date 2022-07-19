@@ -83,7 +83,7 @@ SENDGRID - Sendgrid is powerful api who make the connection with our customers m
 depending on diffrent event. In our case we us it to send a personalize greetings email when someone fill the contacts us form.   
 
 
-	-- Crew members of this project --
+-- Crew members of this project --
 Captain Pan - Marcos Salvador III López
 First Mate - Matias Mansilla
 Naked Mate - Tanim Khondaker
