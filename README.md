@@ -86,8 +86,8 @@ There is also a section on the header that says leads to customers that allowes 
 -- Crew members of this project --
 
 
-Avinash Gopalakrishnan
-Naked Mate - Tanim Khondaker
-Carlos - Carlos Alexis Almanzar
-Black Mate - Razak Adegoke
+Avinash Gopalakrishnan,
+Naked Mate - Tanim Khondaker,
+Carlos - Carlos Alexis Almanzar,
+Black Mate - Razak Adegoke,
 
