@@ -1,4 +1,5 @@
 require "pg"
+require "faker"
 
 conn = PG.connect(host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", dbname: 'MarcosLopez', :user => 'codeboxx', :password => 'Codeboxx1!')
 
@@ -10,6 +11,8 @@ namespace :dwh do
         Rake::Task["dwh:FactContact"].invoke
         Rake::Task["dwh:FactElevator"].invoke
         Rake::Task["dwh:DimCustomers"].invoke
+
+        Rake::Task["dwh:FactIntervention"].invoke
         
     end
 
@@ -25,6 +28,9 @@ namespace :dwh do
     
         conn.exec "DROP TABLE IF EXISTS DimCustomers"
         conn.exec "CREATE TABLE DimCustomers(created_at TEXT, companyName TEXT, fullNameCC TEXT, emailCC TEXT, nbElevator INTEGER, customerCity TEXT)"    
+
+        conn.exec "DROP TABLE IF EXISTS FactIntervention"
+        conn.exec "CREATE TABLE FactIntervention(employeeId TEXT, buildingId TEXT, batteryID TEXT, columnId TEXT, elevatorId TEXT, start_Date_Time_of_intervention timestamp, end_Date_Time_of_intervention timestamp,result VarChar(255),report text, status varchar(255))"
     end
 
     task FactQuotes: :environment do
@@ -64,6 +70,43 @@ namespace :dwh do
                 end
     end
 
+    task FactIntervention: :environment do
+        e_id = []
+        b_id = []
+        ba_id = []
+        c_id = []
+        el_id = []
+        Employee.find_each do |e|
+            e_id.append(e.id)
+        end
+            Building.find_each do |b|
+                b_id.append(b.id)
+            end
+                Batterie.find_each do |ba|
+                    ba_id.append(ba.id)
+                end
+                    Column.find_each do |c|
+                        c_id.append(c.id)
+                    end
+                        Elevator.find_each do |e|
+                            el_id.append(e.id)
+                        end
+
+                        def result
+                            array = ["Success","Failure","Incomplete"]
+                            return array[rand(3)]
+                        end
+                        def status
+                            array = ["Pending","InProgress","Interrupted","Resumed","Complete"]
+                            return array[rand(5)]
+                        end
+                        
+                        for i in 0.. b_id.max
+                        conn.exec ("INSERT INTO FactIntervention(employeeId, buildingId, batteryId, columnId, elevatorId, start_Date_Time_of_intervention, result, status) VALUES ('#{e_id[i]}','#{b_id[i]}','#{ba_id[i]}','#{c_id[i]}','#{el_id[i]}','#{Faker::Date.between(from: '2022-01-01', to: '2022-12-31')}','#{result()}','#{status()}')")
+                        end
+    end 
+
+
 end
 
 namespace :qs do
@@ -84,5 +127,4 @@ namespace :qs do
     task q_three: :environment do
         conn.exec (q_three)
     end
-
 end
