@@ -1,17 +1,17 @@
 RailsAdmin.config do |config|
 
-  # config.authorize_with do
-  #   puts "a"
-  #   puts "a"
-  #   puts "a"
-  #   puts "a"
-  #   redirect_to main_app.root_path unless warden.user.emp == true
-  #   puts warden.user
-  # end
+  config.authorize_with do
+    puts "a"
+    puts "a"
+    puts "a"
+    puts "a"
+    redirect_to main_app.root_path unless warden.user.emp == true
+    puts warden.user
+  end
 ''
   ### Popular gems integration
   
-  ## == Devise ==
+  # == Devise ==
   # config.authenticate_with do
   #   warden.authenticate! scope: :user
   # end
