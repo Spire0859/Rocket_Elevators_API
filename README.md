@@ -43,16 +43,7 @@ question numbers:
 	3. SELECT company_name, nb_elevators
 	   FROM public.dim_customers;
 
-*CHALLENGES WE FACED
-	-- Log Day 7 --
-The moral is low, but the team hold the ship to steady speed...
-We faced some difficulties while developing these new features. The Rails structure felt
-quite complete, but overwhelming at first. Understanding that most files are related and
-have dependencies confused us a lot. It was also the first time that our crew had to deal
-with databases. Setting everything as a whole was a great learning experience that did
-traumatized the crew a little bit. We are now more comfortable with the technology than before
-while only sacrificing our souls during the process... fair exchange I say.
-								-Tanim Khondaker
+
 
 
 *HOW TO USE THE PROJECT
