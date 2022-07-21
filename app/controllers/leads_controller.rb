@@ -122,36 +122,36 @@ class LeadsController < ApplicationController
     end
   end
   ######################################################################################################################################
-  # def dropbox_api
+  def dropbox_api
     
 
-  #   fileurl = @lead.file.current_path 
-  #   file = @lead.file
-  #   name = @lead.fullNameContact
-  #   company = @lead.companyName
+    fileurl = @lead.file.current_path 
+    file = @lead.file
+    name = @lead.fullNameContact
+    company = @lead.companyName
     
-  #   #connects with the api
-  #   client = DropboxApi::Client.new(ENV['DROPBOX_OAUTH_BEARER'])
-  #   #Searches to check if a folder exeist in the name of the companey and project name
-  #   searchResult = client.search("#{company}")
+    #connects with the api
+    client = DropboxApi::Client.new(ENV['DROPBOX_OAUTH_BEARER'])
+    #Searches to check if a folder exeist in the name of the companey and project name
+    searchResult = client.search("#{company}")
     
-  #   if searchResult.matches.length == 0
-  #     pp "folder doesnt exist"
-  #     client.create_folder("/Apps/#{company}")
-  #     pp "created a new folder"
-  #     client.upload("/Apps/#{company}/#{name}",fileurl)
-  #     pp "saved the file to the new foder"
-  #     #@leads.email = nil 
-  #     pp "deleted the local copy "
-  #   elsif
-  #     pp "folder exist"
-  #     client.upload("/Apps/#{company}/#{name}",fileurl)
-  #     pp "saved the file to the existing folder"
-  #     #@leads.email = nil 
-  #     pp "deleted the local copy "
-  #   end
-  #   end
-  # end
+    if searchResult.matches.length == 0
+      pp "folder doesnt exist"
+      client.create_folder("/Apps/#{company}")
+      pp "created a new folder"
+      client.upload("/Apps/#{company}/#{name}",fileurl)
+      pp "saved the file to the new foder"
+      #@leads.email = nil 
+      pp "deleted the local copy "
+    elsif
+      pp "folder exist"
+      client.upload("/Apps/#{company}/#{name}",fileurl)
+      pp "saved the file to the existing folder"
+      #@leads.email = nil 
+      pp "deleted the local copy "
+    end
+    end
+  end
 
 ##################################################################################################################
 
@@ -173,7 +173,7 @@ class LeadsController < ApplicationController
     end
   
   end
-end
+
 
 
 

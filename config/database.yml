@@ -10,8 +10,8 @@
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
 #
-# To use your ENV variable you need to create 
-# them first in this environment 
+# To use your ENV variable you need to create
+# them first in this environment
 #   using the command in the terminal: export ENV_VARIABLE=value
 
 default: &default
@@ -24,12 +24,11 @@ default: &default
   password: "yes"
   host: localhost
   # socket: /var/run/mysqld/mysqld.sock
-  database: rocketdb
   
+
 development:
   <<: *default
   database: rocket_elevators_db_development
-
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
