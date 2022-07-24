@@ -1,26 +1,25 @@
+require 'net/http'
+require 'uri'
+require 'json'
+require 'rest_client'
+
 class QuotesController < ApplicationController
   def create 
     @quotes = Quote.new(quote_params)
     
     if @quotes.save
-      data  = {
+
+      data = {
         status: 2, 
         priority: 1,
         subject: "#{@quotes.companyName}",
         email: "#{@quotes.email}",
-        description: " building type: #{@quotes.type_building}, " + " number of appartment: #{@quotes.numApartment}, " + " number of floor: #{@quotes.numFloor}, " + " number of elevator: #{@quotes.numElevator}, " + " message: #{@quotes.message}"
+        description: "hi"
       }
   
       data_json = JSON.generate(data)
-    #  data = JSON.dump({
-    #       "description" => @leads.message,
-    #       "subject" => @leads.nameProject,
-    #       "email" => @leads.email,
-    #       "priority" => 1,
-    #       "status" =>2,
-    #       "cc_emails" => [
-    #         "support@rocketelevators-support.freshdesk.com",
-    #       ]})
+      
+      puts data_json
   
       request = RestClient::Request.execute(
         method: :post,
@@ -30,6 +29,8 @@ class QuotesController < ApplicationController
         payload: data_json,
         headers: {"Content-Type" => 'application/json'}
       )
+
+      
       
         flash[:notice] = 'Quote created successfully'
         redirect_to pages_quote_url action: :new

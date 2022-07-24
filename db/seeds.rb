@@ -97,6 +97,7 @@ for p in 0..2 do
         :postal_code => addresse["postalCode"],
         country: "United States",
         notes: ""
+       
         )
  end
 
@@ -125,7 +126,9 @@ b = Building.create!(
         phone_building_admin: Faker::Config.locale = 'en-CA',
         full_name_technical_authority: Faker::Name.name,
         phone_technical_authority: Faker::Config.locale = 'en-CA',
-        email_technical_authority: Faker::Internet.email
+        email_technical_authority: Faker::Internet.email,
+        interventionDateStart:Faker::Date.between(from: '2022-01-01', to: '2022-3-1'),
+        interventionDateEnd:Faker::Date.between(from: '2022-4-01', to: '2022-6-1'),
             ) 
 
     Building_Detail.create!(
