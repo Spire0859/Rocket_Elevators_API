@@ -1,5 +1,5 @@
 Project Title : The Rocket Elevators Database
-https://chilisincarne.xyz/
+https://spireee.com/
 
 	Project Description
 *WHAT THE APPLICATION DOES:
@@ -8,13 +8,13 @@ The application uses
 	- Rails 5.2.8
 	- pg gem (for the rake tasks)
 	- faker gem (for the seeds file)
+	
+## IMPORTANT
+our apis keys are obviously not here or are not the up to date ones in the project, please either specify your api keys int he .env folder
+or directly in the api calls
 
 
-1. The website is improving and can now take quotes into account and save it to our MySQL database.
-	To get there, just click on "Get a Quote" from the banners at the top of the main page.
-2. It can also takes messages via the CONTACT US form at the bottom of the main page.
-3. You can create an account or log in in the "LOG IN" section at the top right of any page.
-4. If you have an admin account, you can just use your admin email address (from
+If you have an admin account, you can just use your admin email address (from
 the employee list) and enter the password : 123456 	// (Very safe!)
 
 WHY THIS TECHNOLOGY?
@@ -73,12 +73,16 @@ DROPBOX -The Dropboxx api is connected to the contact us section on the main pag
 So when a viewer fills te section and the email id happens to match the email id of our customers the file gets sent to dropboxx automaticaly. 
 There is also a section on the header that says leads to customers that allowes the leads to get converted to customers. This also pushes the files into the Dropboxx!
 
+FRESHDESK - Freshdesk helps wesites manage client tickets. We use Freshdesk in our app to handle any new quote or any new contact us request.
+
+Amazon Polly - Amazon Polly is used to have a text to speach portion in the admin panel where an admin can get an up to date situation of rocket elevators
+
 
 -- Crew members of this project --
 
 
 Avinash Gopalakrishnan,
-Naked Mate - Tanim Khondaker,
+Speed Jockey - Tanim Khondaker,
 Carlos - Carlos Alexis Almanzar,
 Black Mate - Razak Adegoke,
 
