@@ -218,5 +218,18 @@ ActiveRecord::Schema.define(version: 2022_07_25_023045) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
+  add_foreign_key :employees, :users
+  add_foreign_key :batteries, :buildings
+  add_foreign_key :buildings, :customers
+  add_foreign_key :building_details, :buildings
+  add_foreign_key :elevators, :columns
+  add_foreign_key :leads, :customers
+  add_foreign_key :quotes, :users
+  add_foreign_key :customers, :users
+  # add_foreign_key :columns, :batteries
+  add_foreign_key :interventions, :employees
+  add_foreign_key :interventions, :buildings
+  # add_foreign_key :interventions, :batteries
+  add_foreign_key :interventions, :columns
+  add_foreign_key :interventions, :elevators
 end
