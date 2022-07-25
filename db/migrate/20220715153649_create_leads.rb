@@ -11,6 +11,7 @@ class CreateLeads < ActiveRecord::Migration[5.2]
       t.string :message
       t.blob :file
       t.datetime :date
+      t.belongs_to :customer
 
       t.timestamps
     end

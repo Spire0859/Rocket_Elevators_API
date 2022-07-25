@@ -3,6 +3,7 @@ require 'slack-notifier'
 
 class Elevator < ApplicationRecord
     belongs_to :column
+    has_one :intervention
     after_update do
         elevator = self.status_changed?
         notifier = Slack::Notifier.new 'https://hooks.slack.com/services/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', channel: "#elevator_operations", username: "calexis_slack_api"
