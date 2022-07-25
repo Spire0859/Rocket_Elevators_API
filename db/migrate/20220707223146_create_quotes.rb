@@ -11,6 +11,7 @@ class CreateQuotes < ActiveRecord::Migration[5.2]
       t.string :email
       t.datetime :created_at, null: false
       t.datetime :updated_at, null: false
+      t.belongs_to :user
       t.timestamps
     end
   end

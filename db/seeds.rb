@@ -23,7 +23,7 @@ data_hash = JSON.parse(file)
 
 # Customer.delete_all
 # Customer.connection.execute('ALTER TABLE customers AUTO_INCREMENT = 1')
-
+puts "hiass"
 users = [
     
     {email: 'mathieu.houde@codeboxx.biz' ,password: '123456' ,emp: true},
@@ -97,13 +97,14 @@ for p in 0..2 do
         :postal_code => addresse["postalCode"],
         country: "United States",
         notes: ""
+       
         )
  end
 
 usertmp = User.create!(email: Faker::Internet.email ,password: '123456')
 
-y = Customer.create!(
-        user_id: usertmp,
+customerOBJ = Customer.create!(
+        user_id: usertmp.id,
         companyHqAddresse: addresse['address1'] + " " + addresse['city'],
         dateCreation: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
         created_at: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
@@ -117,25 +118,27 @@ y = Customer.create!(
         technicalAuthorityEmail: Faker::Internet.email
         )
 
-b = Building.create!(
-        customer_id: y.id,
+buildingOBJ = Building.create!(
+        customer_id: customerOBJ.id,
         addressOfBuilding: i.numberAndStreet + " " + i.city,
         full_name_building_admin: Faker::Name.name,
         email_building_admin: Faker::Internet.email,
         phone_building_admin: Faker::Config.locale = 'en-CA',
         full_name_technical_authority: Faker::Name.name,
         phone_technical_authority: Faker::Config.locale = 'en-CA',
-        email_technical_authority: Faker::Internet.email
+        email_technical_authority: Faker::Internet.email,
+        interventionDateStart:Faker::Date.between(from: '2022-01-01', to: '2022-3-1'),
+        interventionDateEnd:Faker::Date.between(from: '2022-4-01', to: '2022-6-1'),
             ) 
 
     Building_Detail.create!(
-        BuildingID: Faker::Number.number(digits: 5),
+        building_id: buildingOBJ.id,
         InformationKey: Faker::Lorem.sentence,
         Value: Faker::Lorem.sentence
         )
 
-o = Batterie.create!(
-        building_id: b.id,
+batterieOBJ = Batterie.create!(
+        building_id: buildingOBJ.id,
         types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
         status: ['Active', 'Inactive'].sample,
         EmployeeId: Faker::Number.number(digits: 5),
@@ -146,8 +149,8 @@ o = Batterie.create!(
         notes: Faker::Lorem.sentence
         )
 
-   c = Column.create!(
-        batterie_id: o.id,
+   columnOBJ = Column.create!(
+        batterie_id: batterieOBJ.id,
         numberFloorServed: Faker::Number.number(digits: 10),
         status: ['Active', 'Inactive'].sample,
         model: Faker::Lorem.word,
@@ -156,8 +159,8 @@ o = Batterie.create!(
         notes: Faker::Lorem.sentence
         )
 
-    Elevator.create!(
-        column_id: c.id,
+    elevatorOBJ = Elevator.create!(
+        column_id: columnOBJ.id,
         serial_number: Faker::Number.number(digits: 10),
         companyName: Faker::Company.name,
         model:Faker::Lorem.word,
@@ -171,8 +174,9 @@ o = Batterie.create!(
         information: Faker::Lorem.sentence,
         notes: Faker::Lorem.sentence
         )
-
+        puts "hisss"
     Lead.create!(
+        customer_id: customerOBJ.id,
         fullNameContact: Faker::Name.name,
         companyName: Faker::Company.name,
         email: Faker::Internet.email,
@@ -184,7 +188,41 @@ o = Batterie.create!(
         file: Faker::Lorem.word,
         date: Faker::Date.between(from: '2022-01-01', to: '2022-12-31')
     )
+    puts "hiaqs"
+    Intervention.create!(
+       
+        employee_id: 1,
+        building_id: buildingOBJ.id,
+        batterie_id: batterieOBJ.id,
+        column_id: columnOBJ.id,
+        elevator_id: elevatorOBJ.id,
+        interventionDateStart: Faker::Date.between(from: '2022-01-01', to: '2022-3-1'),
+        interventionDateEnd: Faker::Date.between(from: '2022-4-01', to: '2022-6-1'),
+        result: ['success', 'failed'].sample,
+        report: Faker::Lorem.sentence,
+        status: ['Active', 'Inactive'].sample
+    )
 end
+
+
+# create_table "interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+#     t.string "interventionDateStart", null: false
+#     t.string "interventionDateEnd", null: false
+#     t.string "result", null: false
+#     t.string "report"
+#     t.string "status", null: false
+#     t.bigint "employee_id"
+#     t.bigint "building_id"
+#     t.bigint "batterie_id"
+#     t.bigint "column_id"
+#     t.bigint "elevator_id"
+#     t.index ["batterie_id"], name: "index_interventions_on_batterie_id"
+#     t.index ["building_id"], name: "index_interventions_on_building_id"
+#     t.index ["column_id"], name: "index_interventions_on_column_id"
+#     t.index ["elevator_id"], name: "index_interventions_on_elevator_id"
+#     t.index ["employee_id"], name: "index_interventions_on_employee_id"
+#   end
+
 
 
 mtl_location = ["Édifice Alfred","Édifice Dominion Square","Canada Life Building, Montreal","Édifice Sun Life","Grand Trunk Building","Édifice New-York Life"]
