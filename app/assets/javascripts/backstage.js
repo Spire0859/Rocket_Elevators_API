@@ -12,8 +12,25 @@ function reset(){
             }
 
 }
+original = document.getElementById("meow").children[1].innerHTML;
+
+function test(){
+    // resets the fields
+
+    // first sort
+    views = document.getElementById("meow").children[1].innerHTML;
+    viewsID = document.getElementById("meow").children[0].value;
+    viewsName = document.getElementById("meow").children[0].children[viewsID].innerHTML;
+    let query = "optgroup[label='" + viewsName + "']"
+  options = $(views).filter(query).html();
+  
+  document.getElementById("meow").children[1].innerHTML = options
 
 
+console.log(original);
+
+
+}
 
 function section(){
     var pageSlect = document.getElementById("building-type").value;

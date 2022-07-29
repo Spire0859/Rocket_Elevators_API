@@ -8,11 +8,9 @@ class CreateInterventions < ActiveRecord::Migration[5.2]
       a.string :status, null: false
       a.belongs_to :employee
       a.belongs_to :building
-      a.belongs_to :batterie
+      a.belongs_to :battery
       a.belongs_to :column
       a.belongs_to :elevator
     end
   end
 end
-
-

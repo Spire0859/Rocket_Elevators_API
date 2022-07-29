@@ -36,9 +36,15 @@ class DataController < ActionController::Base
         buildingNum = Building.count
         customerNum = Customer.count
         elevatorsMaintenance = 0
-        batterieNum =  Batterie.count
+        batterieNum =  Battery.count
         leadNum = Lead.count
         cityNum = Addresse.pluck(:city).uniq.count
+puts Battery.count
+puts "hi"
+puts "hi"
+puts "hi"
+puts "hi"
+puts "hi"
 
         credentials = Aws::Credentials.new('AKIATAAKB5PVDHXSTCYL', 'l/jylKFbiH8DyXP5JxHjifY8nkbLFOCU8qLdz8CI')
         client = Aws::Polly::Client.new(region: 'us-west-2', credentials: credentials)
