@@ -14,21 +14,119 @@ function reset(){
 }
 original = document.getElementById("meow").children[1].innerHTML;
 
-function test(){
+function customer(){
     // resets the fields
 
-    // first sort
-    views = document.getElementById("meow").children[1].innerHTML;
-    viewsID = document.getElementById("meow").children[0].value;
-    viewsName = document.getElementById("meow").children[0].children[viewsID].innerHTML;
-    let query = "optgroup[label='" + viewsName + "']"
-  options = $(views).filter(query).html();
+    // sort the customer and building
+    customerFieldID = document.getElementById("customerField").children[1].value;
+    customerFieldName = document.getElementById("customerField").children[1].children[customerFieldID].innerHTML;
+    let query = "optgroup[label='" +  customerFieldName + "']"
+
+    let dummy = "<option value='6969'>Please Select</option>"
+   
+    buildingField = document.getElementById("buildingField").children[1].innerHTML;
+    options = $(buildingField).filter(query).html();
+
+    let end = dummy + options;
+    
+    document.getElementById("buildingField").children[1].innerHTML = end;
+
+   
+    document.getElementById("buildingField").style.display = "block"
+    // sort the building and battery
+ 
+}
+
+function battery(){
+    // resets the fields
+
+    // sort the customer and building
+    buildingFieldID = document.getElementById("buildingField").children[1].value;
+    buildingFiel= document.getElementById("buildingField").children[1].innerHTML;
+
+    let buildingFieldSelected;
+    if (buildingFieldID % 2 == 0){
+        buildingFieldSelected = 2; 
+    }else{
+        buildingFieldSelected = 1;
+    }
+
+    buildingFielddName = document.getElementById("buildingField").children[1].children[buildingFieldSelected].innerHTML;
+    let query1 = "optgroup[label='" +  buildingFielddName + "']"
+
+
+    batteryField = document.getElementById("batteryField").children[1].innerHTML;
+    let dummy = "<option value='6969'>Please Select</option>"
+
+    options1 = $(batteryField).filter(query1).html();
+    let end = dummy + options1;
+
+    document.getElementById("batteryField").children[1].innerHTML = end;
+
+    document.getElementById("batteryField").style.display = "block"
+
+
+    
   
-  document.getElementById("meow").children[1].innerHTML = options
+
+}
+
+function column(){
+    // resets the fields
+
+    // sort the customer and building
+   batteryFieldID = document.getElementById("batteryField").children[1].value;
+   batteryFieldFiel= document.getElementById("batteryField").children[1].innerHTML;
+
+    let batteryFieldSelected;
+    if (batteryFieldID % 2 == 0){
+        batteryFieldSelected = 2; 
+    }else{
+        batteryFieldSelected = 1;
+    }
+
+    batteryFieldName = document.getElementById("batteryField").children[1].children[batteryFieldSelected].innerHTML;
+    let query1 = "optgroup[label='" +  batteryFieldName + "']"
 
 
-console.log(original);
+   columnField = document.getElementById("columnField").children[1].innerHTML;
+    let dummy = "<option value='6969'>Please Select</option>"
 
+    options1 = $(columnField).filter(query1).html();
+    let end = dummy + options1;
+
+    document.getElementById("columnField").children[1].innerHTML = end;
+
+    document.getElementById("columnField").style.display = "block"
+
+}
+
+function elevator(){
+    // resets the fields
+
+    // sort the customer and building
+   columnFieldID = document.getElementById("columnField").children[1].value;
+
+    let  columnFieldSelected;
+    if ( columnFieldID % 2 == 0){
+        columnFieldSelected = 2; 
+    }else{
+        columnFieldSelected = 1;
+    }
+
+    columnFieldName = document.getElementById("columnField").children[1].children[columnFieldSelected].innerHTML;
+    let query1 = "optgroup[label='" +   columnFieldName + "']"
+
+
+   elevatorField = document.getElementById("elevatorField").children[1].innerHTML;
+    let dummy = "<option value='6969'>Please Select</option>"
+
+    options1 = $(elevatorField).filter(query1).html();
+    let end = dummy + options1;
+
+    document.getElementById("elevatorField").children[1].innerHTML = end;
+
+    document.getElementById("elevatorField").style.display = "block"
 
 }
 

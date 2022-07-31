@@ -151,11 +151,11 @@ ActiveRecord::Schema.define(version: 2022_07_28_034051) do
   end
 
   create_table "interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.string "interventionDateStart", null: false
-    t.string "interventionDateEnd", null: false
-    t.string "result", null: false
+    t.string "interventionDateStart", default: "0"
+    t.string "interventionDateEnd"
+    t.string "result", default: "incomplete"
     t.string "report"
-    t.string "status", null: false
+    t.string "status", default: "pending"
     t.bigint "employee_id"
     t.bigint "building_id"
     t.bigint "battery_id"
@@ -217,20 +217,19 @@ ActiveRecord::Schema.define(version: 2022_07_28_034051) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    
   end
-
-
-  add_foreign_key :employees, :users
-  add_foreign_key :batteries, :buildings
-  add_foreign_key :building_details, :buildings
-  add_foreign_key :elevators, :columns
-  add_foreign_key :leads, :customers
-  add_foreign_key :quotes, :users
-  add_foreign_key :customers, :users
-  add_foreign_key :columns, :batteries
-  add_foreign_key :interventions, :employees
-  add_foreign_key :interventions, :buildings
-  add_foreign_key :interventions, :batteries
-  add_foreign_key :interventions, :columns
-  add_foreign_key :interventions, :elevators
+    add_foreign_key :employees, :users
+    add_foreign_key :batteries, :buildings
+    add_foreign_key :building_details, :buildings
+    add_foreign_key :elevators, :columns
+    add_foreign_key :leads, :customers
+    add_foreign_key :quotes, :users
+    add_foreign_key :customers, :users
+    add_foreign_key :columns, :batteries
+    add_foreign_key :interventions, :employees
+    add_foreign_key :interventions, :buildings
+    add_foreign_key :interventions, :batteries
+    add_foreign_key :interventions, :columns
+    add_foreign_key :interventions, :elevators
 end

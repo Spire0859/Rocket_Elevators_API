@@ -163,7 +163,7 @@ batterieOBJ = Battery.create!(
         )
 
  batterieOBJ2 = Battery.create!(
-        building_id: buildingOBJ2.id,
+        building_id: buildingOBJ.id,
         types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
         status: ['Active', 'Inactive'].sample,
         EmployeeId: Faker::Number.number(digits: 5),
@@ -185,7 +185,7 @@ batterieOBJ = Battery.create!(
         )
 
 columnOBJ2 = Column.create!(
-        battery_id: batterieOBJ2.id,
+        battery_id: batterieOBJ.id,
         numberFloorServed: Faker::Number.number(digits: 10),
         status: ['Active', 'Inactive'].sample,
         model: Faker::Lorem.word,
@@ -211,7 +211,7 @@ columnOBJ2 = Column.create!(
         )
  
     elevatorOBJ2 = Elevator.create!(
-        column_id: columnOBJ2.id,
+        column_id: columnOBJ.id,
         serial_number: Faker::Number.number(digits: 10),
         companyName: Faker::Company.name,
         model:Faker::Lorem.word,

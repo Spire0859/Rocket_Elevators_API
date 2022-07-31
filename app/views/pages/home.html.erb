@@ -881,20 +881,67 @@ Did we convince you?
 
 
 					<%= form_with url:interventions_path, class:"type-answer col-sm-12 m-4", local:true, method: :post do %>
-                     <div onchange="test()" id="meow">
-
-                        <%=collection_select(:interventions, :status, Customer.all, :id, :companyName, :prompt => true, )%>
-
-                        <%=grouped_collection_select(:interventions, :report, Customer.all,:buildings , :companyName, :id,:addressOfBuilding) %>
-
-                        <%=collection_select(:interventions, :status, Building.all, :id, :addressOfBuilding, :prompt => true, )%>
-
-                        <%=grouped_collection_select(:interventions, :report,Building.all,:batteries , :addressOfBuilding, :id,:types) %>
 
 
+                        <div class="col-md-6 customerFieldc" id="customerField" onchange="customer()">
 
-                     </div>
-                  <%= submit_tag "Submit", id:"submit", class:"btn btn-primary btn-lg" %>
-               <% end %>
+                           <label>Please pick a customer</label>
+                           <%=collection_select(:interventions, :customer_id, Customer.all, :id, :companyName, :prompt => true, )%>
+
+                        </div>
+                                    
+                       
+                        <div class="col-md-6 buildingFieldc" id="buildingField" onchange="battery()" style="display: none">
+                     
+                           <label>Please pick a building</label>
+                           <%=grouped_collection_select(:interventions, :building_id, Customer.all,:buildings , :companyName, :id,:addressOfBuilding,:prompt => true) %>
+
+                        </div>
+
+                        <div class="col-md-6 batteryFieldc" id="batteryField" onchange="column()" style="display: none">
+
+                           <label>Please pick a battery</label>
+                           <%=grouped_collection_select(:interventions, :battery_id,Building.all,:batteries , :addressOfBuilding, :id,:id) %>
+
+                        </div>
+
+                        <div class="col-md-6 columnFieldc" id="columnField" onchange="elevator()" style="display: none" >
+
+                           <label>Please pick a culumn</label>                        
+                           <%=grouped_collection_select(:interventions, :column_id,Battery.all,:columns , :id, :id,:id) %>
+
+                        </div>
+
+                        <div class="col-md-6 elevatorFieldc" id="elevatorField" style="display: none">
+
+                           <label>Please pick an elevator</label>                       
+                           <%=grouped_collection_select(:interventions, :elevator_id,Column.all,:elevators , :id, :id,:id) %>
+
+                        </div>
+
+                        
+                        <div class="col-md-6 elevatorFieldc" id="elevatorField" >
+
+                           <label>Please pick an employee to assign</label>                       
+                           <%=collection_select(:interventions, :employee_id, Employee.all, :id, :firstNname, :prompt => true, )%>
+
+                        </div>
+
+                        
+                        <div class="col-md-6 elevatorFieldc" id="elevatorField" >
+
+                           <label>Please pick an elevator</label>                       
+                           <textarea required maxlength="100" rows="4" class="form-control" name="interventions[report]" id="project_description"></textarea>
+
+                        </div>
+
+
+                     <div class="col-md-6" style="margin-top:1%">
+
+                        <%= submit_tag "Submit", id:"submit", class:"btn btn-primary btn-lg" %>
+
+                      </div>
+                      
+                     <% end %>
 
 

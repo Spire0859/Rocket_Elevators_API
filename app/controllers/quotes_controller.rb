@@ -9,27 +9,7 @@ class QuotesController < ApplicationController
     
     if @quotes.save
 
-      data = {
-        status: 2, 
-        priority: 1,
-        subject: "#{@quotes.companyName}",
-        email: "#{@quotes.email}",
-        description: "hi"
-      }
-  
-      data_json = JSON.generate(data)
-      
-      puts data_json
-  
-      request = RestClient::Request.execute(
-        method: :post,
-        url: 'https://rocketelevators-support.freshdesk.com/api/v2/tickets',
-        user: "iohhGOT939hTYz9tk2",
-        password: 'X',
-        payload: data_json,
-        headers: {"Content-Type" => 'application/json'}
-      )
-
+     
       
       
         flash[:notice] = 'Quote created successfully'
