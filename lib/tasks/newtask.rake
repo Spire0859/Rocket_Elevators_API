@@ -82,7 +82,7 @@ namespace :dwh do
             Building.find_each do |b|
                 b_id.append(b.id)
             end
-                Batterie.find_each do |ba|
+                Battery.find_each do |ba|
                     ba_id.append(ba.id)
                 end
                     Column.find_each do |c|

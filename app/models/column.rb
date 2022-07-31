@@ -1,5 +1,5 @@
 class Column < ApplicationRecord
-    belongs_to :batterie
-    has_one :intervention
-    has_one :elevator
+    belongs_to :battery
+    has_many :interventions
+    has_many :elevators
 end

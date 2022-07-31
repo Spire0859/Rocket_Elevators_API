@@ -79,7 +79,7 @@ Employee.create!(firstNname: 'Eileen', lastName: 'Ai',title: 'They really are.',
 
 10.times do
 
-for p in 0..2 do
+for p in 0..30 do
     addresse = data_hash["addresses"][p]
     if addresse["city"].nil?
         city = "N/A"
@@ -105,7 +105,7 @@ usertmp = User.create!(email: Faker::Internet.email ,password: '123456')
 
 customerOBJ = Customer.create!(
         user_id: usertmp.id,
-        companyHqAddresse: addresse['address1'] + " " + addresse['city'],
+        companyHqAddresse: Faker::Address.street_address,
         dateCreation: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
         created_at: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
         companyName: Faker::Company.name,
@@ -119,6 +119,19 @@ customerOBJ = Customer.create!(
         )
 
 buildingOBJ = Building.create!(
+        customer_id: customerOBJ.id,
+        addressOfBuilding: Faker::Address.street_address,
+        full_name_building_admin: Faker::Name.name,
+        email_building_admin: Faker::Internet.email,
+        phone_building_admin: Faker::Config.locale = 'en-CA',
+        full_name_technical_authority: Faker::Name.name,
+        phone_technical_authority: Faker::Config.locale = 'en-CA',
+        email_technical_authority: Faker::Internet.email,
+        interventionDateStart:Faker::Date.between(from: '2022-01-01', to: '2022-3-1'),
+        interventionDateEnd:Faker::Date.between(from: '2022-4-01', to: '2022-6-1'),
+            ) 
+
+    buildingOBJ2 =  Building.create!(
         customer_id: customerOBJ.id,
         addressOfBuilding: i.numberAndStreet + " " + i.city,
         full_name_building_admin: Faker::Name.name,
@@ -137,7 +150,7 @@ buildingOBJ = Building.create!(
         Value: Faker::Lorem.sentence
         )
 
-batterieOBJ = Batterie.create!(
+batterieOBJ = Battery.create!(
         building_id: buildingOBJ.id,
         types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
         status: ['Active', 'Inactive'].sample,
@@ -149,8 +162,20 @@ batterieOBJ = Batterie.create!(
         notes: Faker::Lorem.sentence
         )
 
+ batterieOBJ2 = Battery.create!(
+        building_id: buildingOBJ.id,
+        types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
+        status: ['Active', 'Inactive'].sample,
+        EmployeeId: Faker::Number.number(digits: 5),
+        date_commissioning: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
+        date_last_inspection: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
+        certificate_of_operations: Faker::Lorem.sentence,
+        information: Faker::Lorem.sentence,
+        notes: Faker::Lorem.sentence
+        )       
+
    columnOBJ = Column.create!(
-        batterie_id: batterieOBJ.id,
+        battery_id: batterieOBJ.id,
         numberFloorServed: Faker::Number.number(digits: 10),
         status: ['Active', 'Inactive'].sample,
         model: Faker::Lorem.word,
@@ -158,6 +183,16 @@ batterieOBJ = Batterie.create!(
         information: Faker::Lorem.sentence,
         notes: Faker::Lorem.sentence
         )
+
+columnOBJ2 = Column.create!(
+        battery_id: batterieOBJ.id,
+        numberFloorServed: Faker::Number.number(digits: 10),
+        status: ['Active', 'Inactive'].sample,
+        model: Faker::Lorem.word,
+        types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
+        information: Faker::Lorem.sentence,
+        notes: Faker::Lorem.sentence
+        )        
 
     elevatorOBJ = Elevator.create!(
         column_id: columnOBJ.id,
@@ -174,7 +209,23 @@ batterieOBJ = Batterie.create!(
         information: Faker::Lorem.sentence,
         notes: Faker::Lorem.sentence
         )
-        puts "hisss"
+ 
+    elevatorOBJ2 = Elevator.create!(
+        column_id: columnOBJ.id,
+        serial_number: Faker::Number.number(digits: 10),
+        companyName: Faker::Company.name,
+        model:Faker::Lorem.word,
+        status: ['Active', 'Inactive'].sample,
+        fullName: Faker::Name.name,
+        email: Faker::Internet.email,
+        certificateOperations: Faker::Name.name,
+        dateCommissioning: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
+        dateLastInspection: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
+        types: ['residential', 'commercial', 'corporate', 'hybrid'].sample,
+        information: Faker::Lorem.sentence,
+        notes: Faker::Lorem.sentence
+        )       
+        
     Lead.create!(
         customer_id: customerOBJ.id,
         fullNameContact: Faker::Name.name,
@@ -188,12 +239,11 @@ batterieOBJ = Batterie.create!(
         file: Faker::Lorem.word,
         date: Faker::Date.between(from: '2022-01-01', to: '2022-12-31')
     )
-    puts "hiaqs"
     Intervention.create!(
        
         employee_id: 1,
         building_id: buildingOBJ.id,
-        batterie_id: batterieOBJ.id,
+        battery_id: batterieOBJ.id,
         column_id: columnOBJ.id,
         elevator_id: elevatorOBJ.id,
         interventionDateStart: Faker::Date.between(from: '2022-01-01', to: '2022-3-1'),
