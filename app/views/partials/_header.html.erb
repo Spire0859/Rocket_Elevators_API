@@ -66,15 +66,16 @@
 										    <%= link_to 'SIGN OUT', destroy_user_session_path(:authenticity_token => form_authenticity_token()), method: 'delete' %>
 											</li>
 
+											<li>
+										    <%= link_to 'Interventions Form', pages_interventions_path %>
+											</li>
+
 										<% else %>
 
                                             <%= link_to "LOGIN", new_user_session_path%>
 
                                         <%end%>
 
-											<li>
-										    <%= link_to 'Interventions Form', pages_interventions_path %>
-											</li>
 
 									</li>
 								</ul>
