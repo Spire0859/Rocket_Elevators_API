@@ -16,6 +16,8 @@ or directly in the api calls
 
 If you have an admin account, you can just use your admin email address (from
 the employee list) and enter the password : 123456 	// (Very safe!)
+You will see top right that two options are available if you are singed in, one to enter the interventions section to request a form and another to log out. If you 
+are not logged in, you will only see an option to log in
 
 WHY THIS TECHNOLOGY?
 MySQL is used as an operative database were most of the data get treated. But we also used a
