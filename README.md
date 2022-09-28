@@ -84,7 +84,7 @@ Amazon Polly - Amazon Polly is used to have a text to speach portion in the admi
 
 
 Avinash Gopalakrishnan,
-Speed Jockey - Tanim Khondaker,
-Carlos - Carlos Alexis Almanzar,
-Black Mate - Razak Adegoke,
+Tanim Khondaker,
+Carlos Alexis Almanzar,
+Razak Adegoke,
 
